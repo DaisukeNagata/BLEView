@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'BLEView_Example' do
+  pod 'BLEView', :path => '../'
+
+  target 'BLEView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
