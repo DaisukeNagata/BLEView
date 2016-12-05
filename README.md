@@ -22,8 +22,8 @@ pod "BLEView"
 
 ## Author
 
-永田大祐, dbank0208@gmail.com
+DaisukeNagata dbank0208@gmail.com
 
 ## License
-
+If you want to use, please give me a star.
 BLEView is available under the MIT license. See the LICENSE file for more info.
