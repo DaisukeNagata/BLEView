@@ -147,7 +147,6 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         }
         
         print("Read成功",characteristic.service.uuid, characteristic.uuid, characteristic.value!)
-        let serString = String(data: characteristic.value!,encoding: String.Encoding.utf8)
           }
     
     public func peripheral(_ peripheral: CBPeripheral,
@@ -270,7 +269,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
             UIApplication.shared.registerForRemoteNotifications()
             let content = UNMutableNotificationContent()
             let synthesizer = AVSpeechSynthesizer()
-            let utterance = AVSpeechUtterance(string: "\(serString!)")
+            let utterance = AVSpeechUtterance(string: serString!)
             synthesizer.speak(utterance)
             content.body =  serString!
         }
