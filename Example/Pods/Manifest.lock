@@ -1,5 +1,5 @@
 PODS:
-  - BLEView (0.2.0)
+  - BLEView (0.3.0)
 
 DEPENDENCIES:
   - BLEView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BLEView: 8d2a48b56763f5cd25ac0134d6246a1d377f860c
+  BLEView: 8bd4d4802f3cd8cfbd67deeee52892f788c11807
 
 PODFILE CHECKSUM: 32e6b54c8b6393f2114732a4e5830fa383a07e64
 

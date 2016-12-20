@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		23F438DD3041321086FABA7CD0E13363 /* Pods-BLEView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E1F9992DCACB951F31F3516ED747B19D /* Pods-BLEView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3DD72CE14033FD1667FD66ECC524B6AF /* BLEView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98472FE941EC49C8A37B7DD1C1DB5CFC /* BLEView.swift */; };
-		648E3FED590681E1A6D43A4CD80FD65A /* BLEView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 76A9359641A9C01907A4893D3C76E1E0 /* BLEView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2ADC240B71AC0717A6885A4F8E028BF8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		59ED9215DE1A490575862AEC0B9C193D /* BLEView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB121CD037071FCCE82F616ED1D0C029 /* BLEView-dummy.m */; };
 		69119578D0B9C99AD999500A5208E819 /* Pods-BLEView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 21F7E8814C452CF704297B0C2A91FAB6 /* Pods-BLEView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CAC1763EFD8BE6A967723B8D3D09D33 /* Pods-BLEView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 60106E219FDAE9FC155D80D9E2D99594 /* Pods-BLEView_Tests-dummy.m */; };
-		728C56EDF382FF7C0203445B1CA6FFF8 /* BLEView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB121CD037071FCCE82F616ED1D0C029 /* BLEView-dummy.m */; };
 		8409DF3825BE24448602D127143D5285 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		8954AB5EB6DB06036631AD725225F17C /* blText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF81C18B6C77823CE4401C1D275CC41 /* blText.swift */; };
 		A52AC4C21B6711E76D46FEBF7EBE5D19 /* Pods-BLEView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E2870CA763EF300C0E4C6922863CABC6 /* Pods-BLEView_Example-dummy.m */; };
-		AD79619DE79502151B06628B58D52FD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		BB4DC3C01DFD7F61006FC582 /* blText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4DC3BF1DFD7F61006FC582 /* blText.swift */; };
+		A9AFC72DE11750B40B866656A6F3B280 /* BLEView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC123F3B1B1725DC6F8F6291FEB112A8 /* BLEView.swift */; };
+		CDFF557D4A57B779A17189AB73F553E0 /* BLEView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 76A9359641A9C01907A4893D3C76E1E0 /* BLEView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7C27E0F4140CE6F7EF58829E82CF113 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +25,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A090B9C1579D56A3CBC7E8B3A60166FF;
+			remoteGlobalIDString = 68C2FF4A5370694C85D90DCD33EAB56E;
 			remoteInfo = BLEView;
 		};
 /* End PBXContainerItemProxy section */
@@ -34,23 +34,22 @@
 		04E9E63175B2C492F59DD8C136588820 /* Pods-BLEView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BLEView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		0ABDC41389B4FEA5D1EA8211028ABCBE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21F7E8814C452CF704297B0C2A91FAB6 /* Pods-BLEView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BLEView_Example-umbrella.h"; sourceTree = "<group>"; };
-		294DBE0E3535185E1BD880119286EE4A /* Pods-BLEView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BLEView_Example.modulemap"; sourceTree = "<group>"; };
+		294DBE0E3535185E1BD880119286EE4A /* Pods-BLEView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BLEView_Example.modulemap"; sourceTree = "<group>"; };
 		36A2272A1FC90F09D0B106CAB996350F /* Pods-BLEView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BLEView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3BF0B1F3E5D05B65790720D27AF0E296 /* Pods-BLEView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BLEView_Tests-resources.sh"; sourceTree = "<group>"; };
 		5092418E3488351AA2BC4419564CDD30 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C9DFA9CF48A9113D99288CB14AB5D0 /* Pods-BLEView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BLEView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		60106E219FDAE9FC155D80D9E2D99594 /* Pods-BLEView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BLEView_Tests-dummy.m"; sourceTree = "<group>"; };
-		76850E9F9D87A9393A6FE2FB478F352D /* Pods_BLEView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BLEView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CF81C18B6C77823CE4401C1D275CC41 /* blText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = blText.swift; sourceTree = "<group>"; };
+		76850E9F9D87A9393A6FE2FB478F352D /* Pods_BLEView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BLEView_Example.framework; path = "Pods-BLEView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76A9359641A9C01907A4893D3C76E1E0 /* BLEView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BLEView-umbrella.h"; sourceTree = "<group>"; };
 		7F03882921962B8071CBBD61EFF38B1A /* BLEView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BLEView-prefix.pch"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		98472FE941EC49C8A37B7DD1C1DB5CFC /* BLEView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BLEView.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		985897A0F5AFF918F918B9C44547E58E /* Pods-BLEView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BLEView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9CDF01B23D62B2EF85C0A00382A9E5AA /* Pods-BLEView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BLEView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A5A41FCFB0509EB7AC4E4A40937B9664 /* BLEView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BLEView.xcconfig; sourceTree = "<group>"; };
 		A5D851DBA9693058FD9B245943889F04 /* Pods-BLEView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BLEView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		BB4DC3BF1DFD7F61006FC582 /* blText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = blText.swift; sourceTree = "<group>"; };
-		C486B810042EC746767DA3605DE9D34F /* BLEView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BLEView.modulemap; sourceTree = "<group>"; };
+		C486B810042EC746767DA3605DE9D34F /* BLEView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BLEView.modulemap; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D1497F3928F6337CDD235C25C9FA6449 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D934078827CD9925E37C0DC231CAD3E9 /* Pods-BLEView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BLEView_Tests-frameworks.sh"; sourceTree = "<group>"; };
@@ -58,12 +57,13 @@
 		E1F9992DCACB951F31F3516ED747B19D /* Pods-BLEView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BLEView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		E2870CA763EF300C0E4C6922863CABC6 /* Pods-BLEView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BLEView_Example-dummy.m"; sourceTree = "<group>"; };
 		E9060FB6826F78B21EA8C0A5BDA98EA6 /* Pods-BLEView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BLEView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F30F830BAFB846196D3F66B1B171B866 /* Pods-BLEView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BLEView_Tests.modulemap"; sourceTree = "<group>"; };
+		F30F830BAFB846196D3F66B1B171B866 /* Pods-BLEView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BLEView_Tests.modulemap"; sourceTree = "<group>"; };
 		F674F310121186F3EC5840C2847FECE9 /* Pods-BLEView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BLEView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		F872D4BED63AF8851904902E29172B15 /* Pods-BLEView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BLEView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		FB121CD037071FCCE82F616ED1D0C029 /* BLEView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BLEView-dummy.m"; sourceTree = "<group>"; };
-		FD9AAD2CD0ACDF6B35FDB474CB0CC3A9 /* Pods_BLEView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BLEView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE9C881CB4FFB3BECA6C2BBB196E1D39 /* BLEView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BLEView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC123F3B1B1725DC6F8F6291FEB112A8 /* BLEView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BLEView.swift; sourceTree = "<group>"; };
+		FD9AAD2CD0ACDF6B35FDB474CB0CC3A9 /* Pods_BLEView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BLEView_Tests.framework; path = "Pods-BLEView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE9C881CB4FFB3BECA6C2BBB196E1D39 /* BLEView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BLEView.framework; path = BLEView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,14 +75,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3D76905AB121F902334124DCD971BB37 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AD79619DE79502151B06628B58D52FD7 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BCB2747A6041E5CD99C1FC0FA0300194 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,9 +83,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D7A4BC122DA77A67D3BFB863543EE57F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2ADC240B71AC0717A6885A4F8E028BF8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FD2B334A26B264F3B6711B138A936F3 /* BLEView */ = {
+			isa = PBXGroup;
+			children = (
+				974769797E0099CCFBD4C4FAAC3DCAEF /* Classes */,
+			);
+			name = BLEView;
+			path = BLEView;
+			sourceTree = "<group>";
+		};
 		293B17D73258888A4B003F4CE7F0C9BA /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,12 +155,13 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		B99C146EB41C9C1E495E799310327355 /* Classes */ = {
+		974769797E0099CCFBD4C4FAAC3DCAEF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				98472FE941EC49C8A37B7DD1C1DB5CFC /* BLEView.swift */,
-				BB4DC3BF1DFD7F61006FC582 /* blText.swift */,
+				FC123F3B1B1725DC6F8F6291FEB112A8 /* BLEView.swift */,
+				6CF81C18B6C77823CE4401C1D275CC41 /* blText.swift */,
 			);
+			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -166,7 +176,7 @@
 		BE6AC8220C71639AA40B84A69E905F74 /* BLEView */ = {
 			isa = PBXGroup;
 			children = (
-				F4199B6D6C99E0C75E71B81BB62F4890 /* BLEView */,
+				0FD2B334A26B264F3B6711B138A936F3 /* BLEView */,
 				293B17D73258888A4B003F4CE7F0C9BA /* Support Files */,
 			);
 			name = BLEView;
@@ -217,14 +227,6 @@
 			path = "Target Support Files/Pods-BLEView_Example";
 			sourceTree = "<group>";
 		};
-		F4199B6D6C99E0C75E71B81BB62F4890 /* BLEView */ = {
-			isa = PBXGroup;
-			children = (
-				B99C146EB41C9C1E495E799310327355 /* Classes */,
-			);
-			path = BLEView;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -236,11 +238,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		509E59D7031CB6DEB14C5ABA0C1BE487 /* Headers */ = {
+		613C912664E27549D73393D36177CCA1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				648E3FED590681E1A6D43A4CD80FD65A /* BLEView-umbrella.h in Headers */,
+				CDFF557D4A57B779A17189AB73F553E0 /* BLEView-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +275,23 @@
 			productReference = 76850E9F9D87A9393A6FE2FB478F352D /* Pods_BLEView_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		68C2FF4A5370694C85D90DCD33EAB56E /* BLEView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C04DAB57B3B078330D5528E8A431F7D9 /* Build configuration list for PBXNativeTarget "BLEView" */;
+			buildPhases = (
+				E2FA38FECFFBD822D7A49C5F8460F8EA /* Sources */,
+				D7A4BC122DA77A67D3BFB863543EE57F /* Frameworks */,
+				613C912664E27549D73393D36177CCA1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BLEView;
+			productName = BLEView;
+			productReference = FE9C881CB4FFB3BECA6C2BBB196E1D39 /* BLEView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		7F2B01BDAC9CCEBE8702E4FAB6605AD2 /* Pods-BLEView_Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5774A063DA14AC4190731E2926CCCE5 /* Build configuration list for PBXNativeTarget "Pods-BLEView_Tests" */;
@@ -288,23 +307,6 @@
 			name = "Pods-BLEView_Tests";
 			productName = "Pods-BLEView_Tests";
 			productReference = FD9AAD2CD0ACDF6B35FDB474CB0CC3A9 /* Pods_BLEView_Tests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		A090B9C1579D56A3CBC7E8B3A60166FF /* BLEView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ECA8443C6DB35EFE68DC163BF1571B17 /* Build configuration list for PBXNativeTarget "BLEView" */;
-			buildPhases = (
-				2A52D610F389C46503F30033DE10C864 /* Sources */,
-				3D76905AB121F902334124DCD971BB37 /* Frameworks */,
-				509E59D7031CB6DEB14C5ABA0C1BE487 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = BLEView;
-			productName = BLEView;
-			productReference = FE9C881CB4FFB3BECA6C2BBB196E1D39 /* BLEView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -328,7 +330,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A090B9C1579D56A3CBC7E8B3A60166FF /* BLEView */,
+				68C2FF4A5370694C85D90DCD33EAB56E /* BLEView */,
 				29FC3C9E18E2A46B3EC7DD05B2C03C04 /* Pods-BLEView_Example */,
 				7F2B01BDAC9CCEBE8702E4FAB6605AD2 /* Pods-BLEView_Tests */,
 			);
@@ -344,21 +346,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2A52D610F389C46503F30033DE10C864 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BB4DC3C01DFD7F61006FC582 /* blText.swift in Sources */,
-				728C56EDF382FF7C0203445B1CA6FFF8 /* BLEView-dummy.m in Sources */,
-				3DD72CE14033FD1667FD66ECC524B6AF /* BLEView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		742D6711BFFA53CBE1BAD894F76BD7CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A52AC4C21B6711E76D46FEBF7EBE5D19 /* Pods-BLEView_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2FA38FECFFBD822D7A49C5F8460F8EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59ED9215DE1A490575862AEC0B9C193D /* BLEView-dummy.m in Sources */,
+				A9AFC72DE11750B40B866656A6F3B280 /* BLEView.swift in Sources */,
+				8954AB5EB6DB06036631AD725225F17C /* blText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +370,7 @@
 		932750A0A5FA31FE338F9D3BB4CC880D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BLEView;
-			target = A090B9C1579D56A3CBC7E8B3A60166FF /* BLEView */;
+			target = 68C2FF4A5370694C85D90DCD33EAB56E /* BLEView */;
 			targetProxy = 0A2EEAC33AC949C1BEB0A1F799495A65 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -453,39 +455,7 @@
 			};
 			name = Debug;
 		};
-		266B7A5706556F1857955CABF54D0E01 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A5A41FCFB0509EB7AC4E4A40937B9664 /* BLEView.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/BLEView/BLEView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BLEView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BLEView/BLEView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = BLEView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		415FB8925A15FA2C79480DBC86D7A0FD /* Debug */ = {
+		4A43D77A2D260D94928DA2ABDD99C1CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5A41FCFB0509EB7AC4E4A40937B9664 /* BLEView.xcconfig */;
 			buildSettings = {
@@ -517,6 +487,38 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		56EF55195E74D18D9511B83002E8A4D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5A41FCFB0509EB7AC4E4A40937B9664 /* BLEView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BLEView/BLEView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BLEView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BLEView/BLEView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = BLEView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		736278B5863B11545AE740C61B9AA41F /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -685,11 +687,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ECA8443C6DB35EFE68DC163BF1571B17 /* Build configuration list for PBXNativeTarget "BLEView" */ = {
+		C04DAB57B3B078330D5528E8A431F7D9 /* Build configuration list for PBXNativeTarget "BLEView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				415FB8925A15FA2C79480DBC86D7A0FD /* Debug */,
-				266B7A5706556F1857955CABF54D0E01 /* Release */,
+				4A43D77A2D260D94928DA2ABDD99C1CE /* Debug */,
+				56EF55195E74D18D9511B83002E8A4D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
