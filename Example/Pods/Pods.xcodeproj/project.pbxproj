@@ -16,6 +16,7 @@
 		8409DF3825BE24448602D127143D5285 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		A52AC4C21B6711E76D46FEBF7EBE5D19 /* Pods-BLEView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E2870CA763EF300C0E4C6922863CABC6 /* Pods-BLEView_Example-dummy.m */; };
 		AD79619DE79502151B06628B58D52FD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		BB4DC3C01DFD7F61006FC582 /* blText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4DC3BF1DFD7F61006FC582 /* blText.swift */; };
 		F7C27E0F4140CE6F7EF58829E82CF113 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,22 +34,23 @@
 		04E9E63175B2C492F59DD8C136588820 /* Pods-BLEView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BLEView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		0ABDC41389B4FEA5D1EA8211028ABCBE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21F7E8814C452CF704297B0C2A91FAB6 /* Pods-BLEView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BLEView_Example-umbrella.h"; sourceTree = "<group>"; };
-		294DBE0E3535185E1BD880119286EE4A /* Pods-BLEView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BLEView_Example.modulemap"; sourceTree = "<group>"; };
+		294DBE0E3535185E1BD880119286EE4A /* Pods-BLEView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BLEView_Example.modulemap"; sourceTree = "<group>"; };
 		36A2272A1FC90F09D0B106CAB996350F /* Pods-BLEView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BLEView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3BF0B1F3E5D05B65790720D27AF0E296 /* Pods-BLEView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BLEView_Tests-resources.sh"; sourceTree = "<group>"; };
 		5092418E3488351AA2BC4419564CDD30 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C9DFA9CF48A9113D99288CB14AB5D0 /* Pods-BLEView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BLEView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		60106E219FDAE9FC155D80D9E2D99594 /* Pods-BLEView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BLEView_Tests-dummy.m"; sourceTree = "<group>"; };
-		76850E9F9D87A9393A6FE2FB478F352D /* Pods_BLEView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BLEView_Example.framework; path = "Pods-BLEView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		76850E9F9D87A9393A6FE2FB478F352D /* Pods_BLEView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BLEView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76A9359641A9C01907A4893D3C76E1E0 /* BLEView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BLEView-umbrella.h"; sourceTree = "<group>"; };
 		7F03882921962B8071CBBD61EFF38B1A /* BLEView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BLEView-prefix.pch"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		98472FE941EC49C8A37B7DD1C1DB5CFC /* BLEView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BLEView.swift; sourceTree = "<group>"; };
 		985897A0F5AFF918F918B9C44547E58E /* Pods-BLEView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BLEView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9CDF01B23D62B2EF85C0A00382A9E5AA /* Pods-BLEView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BLEView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A5A41FCFB0509EB7AC4E4A40937B9664 /* BLEView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BLEView.xcconfig; sourceTree = "<group>"; };
 		A5D851DBA9693058FD9B245943889F04 /* Pods-BLEView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BLEView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		C486B810042EC746767DA3605DE9D34F /* BLEView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BLEView.modulemap; sourceTree = "<group>"; };
+		BB4DC3BF1DFD7F61006FC582 /* blText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = blText.swift; sourceTree = "<group>"; };
+		C486B810042EC746767DA3605DE9D34F /* BLEView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BLEView.modulemap; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D1497F3928F6337CDD235C25C9FA6449 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D934078827CD9925E37C0DC231CAD3E9 /* Pods-BLEView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BLEView_Tests-frameworks.sh"; sourceTree = "<group>"; };
@@ -56,12 +58,12 @@
 		E1F9992DCACB951F31F3516ED747B19D /* Pods-BLEView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BLEView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		E2870CA763EF300C0E4C6922863CABC6 /* Pods-BLEView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BLEView_Example-dummy.m"; sourceTree = "<group>"; };
 		E9060FB6826F78B21EA8C0A5BDA98EA6 /* Pods-BLEView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BLEView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F30F830BAFB846196D3F66B1B171B866 /* Pods-BLEView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BLEView_Tests.modulemap"; sourceTree = "<group>"; };
+		F30F830BAFB846196D3F66B1B171B866 /* Pods-BLEView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BLEView_Tests.modulemap"; sourceTree = "<group>"; };
 		F674F310121186F3EC5840C2847FECE9 /* Pods-BLEView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BLEView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		F872D4BED63AF8851904902E29172B15 /* Pods-BLEView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BLEView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		FB121CD037071FCCE82F616ED1D0C029 /* BLEView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BLEView-dummy.m"; sourceTree = "<group>"; };
-		FD9AAD2CD0ACDF6B35FDB474CB0CC3A9 /* Pods_BLEView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BLEView_Tests.framework; path = "Pods-BLEView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE9C881CB4FFB3BECA6C2BBB196E1D39 /* BLEView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BLEView.framework; path = BLEView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD9AAD2CD0ACDF6B35FDB474CB0CC3A9 /* Pods_BLEView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BLEView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE9C881CB4FFB3BECA6C2BBB196E1D39 /* BLEView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BLEView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				98472FE941EC49C8A37B7DD1C1DB5CFC /* BLEView.swift */,
+				BB4DC3BF1DFD7F61006FC582 /* blText.swift */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -220,7 +222,6 @@
 			children = (
 				B99C146EB41C9C1E495E799310327355 /* Classes */,
 			);
-			name = BLEView;
 			path = BLEView;
 			sourceTree = "<group>";
 		};
@@ -347,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB4DC3C01DFD7F61006FC582 /* blText.swift in Sources */,
 				728C56EDF382FF7C0203445B1CA6FFF8 /* BLEView-dummy.m in Sources */,
 				3DD72CE14033FD1667FD66ECC524B6AF /* BLEView.swift in Sources */,
 			);
