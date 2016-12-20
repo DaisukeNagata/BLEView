@@ -11,6 +11,7 @@ import BLEView
 
 class ViewController: BLEView {
     var dd = BLEView().textSam
+    static let viewSet = ViewController()
     override func viewDidLoad() {
         
         super.viewDidLoad()

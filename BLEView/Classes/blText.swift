@@ -8,8 +8,10 @@
 
 import Foundation
 import CoreBluetooth
+import UserNotifications
+import AVFoundation
 
-class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheralManagerDelegate {
+class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheralManagerDelegate,AVSpeechSynthesizerDelegate {
     
     var characteristicMutable: CBMutableCharacteristic!
     var centralManager:CBCentralManager!
@@ -18,7 +20,18 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     let serviceUUID = CBUUID(string: "DD9B8295-E177-4F8A-A5E1-DC5FED19556D")
     var peripheralManager: CBPeripheralManager!
     var characteristicCBC:CBMutableCharacteristic!
+    var name :  String!
 
+    static let shared = blText()
+    func bleSetting(){
+    
+        // ペリフェラルマネージャ初期化
+                let option : Dictionary =  [
+                    CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
+                ]
+                peripheralManager = CBPeripheralManager(delegate: self, queue: nil , options:option)
+                centralManager = CBCentralManager(delegate: self, queue: nil)
+    }
     
     func peripheralManager(_ peripheral: CBPeripheralManager,
                                   willRestoreState dict: [String : Any]) {
@@ -30,13 +43,22 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         print("Peripheral Manager Restored")
     }
      func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]){
-        centralManager = CBCentralManager(delegate: self, queue: nil)
 
         print("Central Manager Restored")
     }
      func  centralManagerDidUpdateState(_ central:CBCentralManager){
         print("CentralManagerDidUpdateState", central.state)
     }
+    public func centralManager(_ central: CBCentralManager,
+                               didDiscover peripheral: CBPeripheral,
+                               advertisementData: [String : Any],
+                               rssi RSSI: NSNumber) {
+        print("発見したBLEデバイス", peripheral)
+         name = peripheral.name
+        self.peripheral = peripheral
+      BLEView.shared.action(name:name)
+}
+    
     //接続開始
     public  func pushStart(){
         // ペリフェラルマネージャ初期化
@@ -211,6 +233,56 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         print("アドバタイズ開始成功！")
         //スキャン開始
         self.centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
+        
     }
-    
+
+  open  func setVoice2(data:Data)   {
+        if   self.characteristic != nil {
+            peripheral?.writeValue(data, for: characteristic, type: CBCharacteristicWriteType.withResponse)
+            }else{
+                print("characteristicがnillです。")
+            }
+            
+        }
+    // Writeリクエスト受信時に呼ばれる
+    @available(iOS 10.0, *)
+    public func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
+        
+        print("\(requests.count) 件のWriteリクエストを受信！")
+        
+        for request in requests {
+            if characteristicCBC != nil  {
+                
+                if request.characteristic.uuid.isEqual(characteristicCBC.uuid){
+                    
+                    // CBMutableCharacteristicのvalueに、CBATTRequestのvalueをセット
+                    characteristicCBC.value = request.value
+                    
+                }
+            }
+            let serString = String(data: characteristicCBC.value!,encoding: String.Encoding.utf8)
+            
+            // リクエストに応答
+            peripheralManager.respond(to: requests[0] , withResult: CBATTError.Code.success)
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+                (granted, error) in
+            }
+            UIApplication.shared.registerForRemoteNotifications()
+            let content = UNMutableNotificationContent()
+            let synthesizer = AVSpeechSynthesizer()
+            let utterance = AVSpeechUtterance(string: "\(serString!)")
+            synthesizer.speak(utterance)
+            content.body =  serString!
+        }
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: () -> Void) {
+        completionHandler()
+    }
 }
