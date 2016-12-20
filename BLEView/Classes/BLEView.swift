@@ -25,7 +25,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
         self.textSam.delegate = self
         self.view.addSubview(textSam)
         let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        //掛け算の後、割り算をしたい場合など掛け算をしてから実施する。
+
         DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
             if blText.shared.characteristic == nil {
                 self.action(name: blText.shared.name)
