@@ -24,13 +24,6 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
         self.textSam = UITextField(frame: CGRect(x: 0, y: 100, width: self.view.bounds.width, height: 30))
         self.textSam.delegate = self
         self.view.addSubview(textSam)
-        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-            if blText.shared.characteristic == nil {
-                self.action(name: blText.shared.name)
-            }
-        })
     }
     
     override open func didReceiveMemoryWarning() {
