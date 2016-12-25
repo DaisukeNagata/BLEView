@@ -33,6 +33,9 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear (animated)
+        if blText.shared.characteristic != nil {
+            self.action(name: blText.shared.name)
+        }
     }
     
     //接続開始
