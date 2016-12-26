@@ -50,9 +50,9 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         print("CentralManagerDidUpdateState", central.state)
     }
     func centralManager(_ central: CBCentralManager,
-                               didDiscover peripheral: CBPeripheral,
-                               advertisementData: [String : Any],
-                               rssi RSSI: NSNumber) {
+                        didDiscover peripheral: CBPeripheral,
+                        advertisementData: [String : Any],
+                        rssi RSSI: NSNumber) {
         print("発見したBLEデバイス", peripheral)
         name = peripheral.name
         self.peripheral = peripheral
@@ -94,7 +94,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // サービス発見時に呼ばれる
-     func peripheral(_ peripheral : CBPeripheral, didDiscoverServices error : Error?){
+    func peripheral(_ peripheral : CBPeripheral, didDiscoverServices error : Error?){
         
         if let error = error {
             print("エラー\(error)")
@@ -113,8 +113,8 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     
     // キャラクタリスティック発見時に呼ばれる
     func peripheral(_ peripheral: CBPeripheral,
-                           didDiscoverCharacteristicsFor service: CBService,
-                           error: Error?){
+                    didDiscoverCharacteristicsFor service: CBService,
+                    error: Error?){
         if let error = error {
             print("エラー\(error)")
             return
@@ -137,8 +137,8 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     func  peripheral (_ peripheral: CBPeripheral,
-                             didUpdateValueFor characteristic: CBCharacteristic,
-                             error: Error?) {
+                      didUpdateValueFor characteristic: CBCharacteristic,
+                      error: Error?) {
         if let error = error {
             
             print("Read失敗", error, characteristic.uuid)
@@ -149,9 +149,9 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         print("Read成功",characteristic.service.uuid, characteristic.uuid, characteristic.value!)
     }
     
-     func peripheral(_ peripheral: CBPeripheral,
-                           didWriteValueFor characteristic: CBCharacteristic,
-                           error: Error?){
+    func peripheral(_ peripheral: CBPeripheral,
+                    didWriteValueFor characteristic: CBCharacteristic,
+                    error: Error?){
         print("Write成功!")
     }
     
@@ -195,7 +195,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // ペリフェラルマネージャの状態が変化すると呼ばれる
-     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         print("state: \(peripheral.state)")
         
         switch peripheral.state {
@@ -204,13 +204,16 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
             // サービス登録開始
             publishservice()
             
+        case.poweredOff:
+            pushCut()
+            
         default:
             break
         }
     }
     
     // サービス追加処理が完了すると呼ばれる
-     func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
+    func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
         if let error = error {
             
             print("サービス追加失敗！ error: \(error)")
@@ -223,7 +226,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // アドバタイズ開始処理が完了すると呼ばれる
-     func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
+    func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
         if let error = error {
             
             print("アドバタイズ開始失敗！ error: \(error)")
