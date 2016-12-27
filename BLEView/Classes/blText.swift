@@ -2,7 +2,7 @@
 //  blText.swift
 //  Pods
 //
-//  Created by 永田大祐 on 2016/12/11.
+//  Created by 永田大祐 on 2016/12/27.
 //
 //
 
@@ -13,13 +13,13 @@ import AVFoundation
 
 class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheralManagerDelegate,AVSpeechSynthesizerDelegate {
     
-    fileprivate var characteristicMutable: CBMutableCharacteristic!
-    fileprivate var centralManager:CBCentralManager!
-    fileprivate  var peripheral:CBPeripheral!
-    fileprivate var peripheralManager: CBPeripheralManager!
-    fileprivate var characteristicCBC:CBMutableCharacteristic!
-    fileprivate let serviceUUID = CBUUID(string: "DD9B8295-E177-4F8A-A5E1-DC5FED19556D")
+    var characteristicMutable: CBMutableCharacteristic!
+    var centralManager:CBCentralManager!
+    var peripheral:CBPeripheral!
     var characteristic:CBCharacteristic!
+    let serviceUUID = CBUUID(string: "DD9B8295-E177-4F8A-A5E1-DC5FED19556D")
+    var peripheralManager: CBPeripheralManager!
+    var characteristicCBC:CBMutableCharacteristic!
     var name :  String!
     
     static let shared = blText()
@@ -49,23 +49,28 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     func  centralManagerDidUpdateState(_ central:CBCentralManager){
         print("CentralManagerDidUpdateState", central.state)
     }
-    func centralManager(_ central: CBCentralManager,
-                        didDiscover peripheral: CBPeripheral,
-                        advertisementData: [String : Any],
-                        rssi RSSI: NSNumber) {
+    public func centralManager(_ central: CBCentralManager,
+                               didDiscover peripheral: CBPeripheral,
+                               advertisementData: [String : Any],
+                               rssi RSSI: NSNumber) {
         print("発見したBLEデバイス", peripheral)
         name = peripheral.name
         self.peripheral = peripheral
-        BLEView.shared.action(name:name)
     }
     
     //接続開始
-    public  func pushStart(){
+    public  func pushStart(dddString:Data){
         // ペリフェラルマネージャ初期化
         let option : Dictionary =  [
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
         self.centralManager.connect(peripheral, options: option)
+        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+            blText.shared.setVoice2(data:dddString)
+        })
+        
     }
     
     //接続解除
@@ -94,7 +99,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // サービス発見時に呼ばれる
-    func peripheral(_ peripheral : CBPeripheral, didDiscoverServices error : Error?){
+    public func peripheral(_ peripheral : CBPeripheral, didDiscoverServices error : Error?){
         
         if let error = error {
             print("エラー\(error)")
@@ -112,9 +117,9 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // キャラクタリスティック発見時に呼ばれる
-    func peripheral(_ peripheral: CBPeripheral,
-                    didDiscoverCharacteristicsFor service: CBService,
-                    error: Error?){
+    public func peripheral(_ peripheral: CBPeripheral,
+                           didDiscoverCharacteristicsFor service: CBService,
+                           error: Error?){
         if let error = error {
             print("エラー\(error)")
             return
@@ -136,9 +141,9 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         }
     }
     
-    func  peripheral (_ peripheral: CBPeripheral,
-                      didUpdateValueFor characteristic: CBCharacteristic,
-                      error: Error?) {
+    public func  peripheral (_ peripheral: CBPeripheral,
+                             didUpdateValueFor characteristic: CBCharacteristic,
+                             error: Error?) {
         if let error = error {
             
             print("Read失敗", error, characteristic.uuid)
@@ -149,9 +154,9 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         print("Read成功",characteristic.service.uuid, characteristic.uuid, characteristic.value!)
     }
     
-    func peripheral(_ peripheral: CBPeripheral,
-                    didWriteValueFor characteristic: CBCharacteristic,
-                    error: Error?){
+    public func peripheral(_ peripheral: CBPeripheral,
+                           didWriteValueFor characteristic: CBCharacteristic,
+                           error: Error?){
         print("Write成功!")
     }
     
@@ -195,7 +200,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // ペリフェラルマネージャの状態が変化すると呼ばれる
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+    public func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         print("state: \(peripheral.state)")
         
         switch peripheral.state {
@@ -203,17 +208,15 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
             
             // サービス登録開始
             publishservice()
-            
         case.poweredOff:
             pushCut()
-            
         default:
             break
         }
     }
     
     // サービス追加処理が完了すると呼ばれる
-    func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
+    public func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
         if let error = error {
             
             print("サービス追加失敗！ error: \(error)")
@@ -226,7 +229,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // アドバタイズ開始処理が完了すると呼ばれる
-    func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
+    public func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
         if let error = error {
             
             print("アドバタイズ開始失敗！ error: \(error)")
@@ -244,14 +247,12 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         }else{
             print("characteristicがnillです。")
         }
-        
     }
     // Writeリクエスト受信時に呼ばれる
     @available(iOS 10.0, *)
     public func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
         
         print("\(requests.count) 件のWriteリクエストを受信！")
-        
         for request in requests {
             if characteristicCBC != nil  {
                 
@@ -275,16 +276,9 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
             let utterance = AVSpeechUtterance(string: serString!)
             synthesizer.speak(utterance)
             content.body =  serString!
+            BLEView.shared.getString(rt:serString!)
+            //userNotificationCenter
+            BLEView.shared.notification()
         }
-    }
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                willPresent notification: UNNotification,
-                                withCompletionHandler completionHandler: (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound])
-    }
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: () -> Void) {
-        completionHandler()
     }
 }

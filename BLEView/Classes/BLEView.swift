@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  BleSetSample
 //
-//  Created by 永田大祐 on 2016/09/19.
+//  Created by 永田大祐 on 2016/12/27.
 //  Copyright © 2016年 永田大祐. All rights reserved.
 //
 
@@ -12,18 +12,21 @@ import AVFoundation
 import UserNotifications
 
 @available(iOS 10.0, *)
-open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDelegate,UITextFieldDelegate {
+open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDelegate,UITextFieldDelegate,UNUserNotificationCenterDelegate {
     
     open var textSam: UITextField!
+    open var rtUserDefaults = UserDefaults.standard
     
     static let shared = BLEView()
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         blText.shared.bleSetting()
-        self.textSam = UITextField(frame: CGRect(x: 0, y: 100, width: self.view.bounds.width, height: 30))
+        self.textSam = UITextField(frame: CGRect(x: 0, y: 150, width: self.view.bounds.width, height: 30))
         self.textSam.delegate = self
         self.view.addSubview(textSam)
+        rtUserDefaults.set("", forKey: "DataStore")
+        
     }
     
     override open func didReceiveMemoryWarning() {
@@ -31,21 +34,26 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
         
     }
     
-    override open func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear (animated)
-        if blText.shared.characteristic != nil {
-            self.action(name: blText.shared.name)
-        }
+    open func getString(rt:String)->String {
+        
+        // Keyを指定して保存
+        rtUserDefaults.set(rt, forKey: "DataStore")
+        notification()
+        return rt
     }
-    
     //接続開始
     open func setVoice(ddd:String)   {
-        if blText.shared.characteristic == nil {
-            self.action(name: blText.shared.name)
-        }
-        
         let data2 = ddd.data(using: String.Encoding.utf8, allowLossyConversion:true)
-        blText.shared.setVoice2(data:data2!)
+        
+        if blText.shared.characteristic == nil {
+            blText.shared.pushStart(dddString:data2!)
+        }else if  blText.shared.characteristic != nil {
+            blText.shared.pushStart(dddString:data2!)
+        }
+    }
+    //接続解除
+    open func setCut(){
+        blText.shared.pushCut()
     }
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textSam.resignFirstResponder()
@@ -56,22 +64,32 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
         
         return true
     }
-    
-    func action(name:String) {
-        //アラート表示
-        let alertController = UIAlertController(title: "Hello!", message: "This is Bluetooth", preferredStyle: .alert)
-        let otherAction = UIAlertAction(title: "\(name)", style: .default) {
-            action in blText.shared.pushStart()
-        }
-        let cutAction = UIAlertAction(title: "Cancel", style: .default) {
-            action in blText.shared.pushCut()
-        }
+    open func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                     willPresent notification: UNNotification,
+                                     withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void){
+        completionHandler([.badge])
+    }
+    open func notification() {
         
-        for _ in 0..<[name].count {
-            alertController.addAction(otherAction)
-            present(alertController, animated: true, completion: nil)
+        let centerAuthorization = UNUserNotificationCenter.current()
+        centerAuthorization.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
         }
+        //UNUserNotificationCenterDelegate
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
         
-        alertController.addAction(cutAction)
+        let content = UNMutableNotificationContent()
+        content.title = "Title"
+        content.subtitle = "Subtitle"
+        content.body = "Body"
+        content.sound = UNNotificationSound.default()
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+        let request = UNNotificationRequest(identifier: "Second",
+                                            content: content,
+                                            trigger: trigger)
+        
+        center.add(request, withCompletionHandler: nil)
+        
     }
 }
