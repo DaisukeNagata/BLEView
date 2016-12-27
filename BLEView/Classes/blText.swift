@@ -26,7 +26,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     static let shared = blText()
     func bleSetting(){
         
-        // ペリフェラルマネージャ初期化
+        // 初期化
         let option : Dictionary =  [
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
@@ -36,7 +36,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     
     func peripheralManager(_ peripheral: CBPeripheralManager,
                            willRestoreState dict: [String : Any]) {
-        // ペリフェラルマネージャ初期化
+
         let option : Dictionary =  [
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
@@ -50,7 +50,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     func  centralManagerDidUpdateState(_ central:CBCentralManager){
         print("CentralManagerDidUpdateState", central.state)
     }
-    public func centralManager(_ central: CBCentralManager,
+    func centralManager(_ central: CBCentralManager,
                                didDiscover peripheral: CBPeripheral,
                                advertisementData: [String : Any],
                                rssi RSSI: NSNumber) {
@@ -60,8 +60,8 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     //接続開始
-    public  func pushStart(dddString:Data){
-        // ペリフェラルマネージャ初期化
+    func pushStart(dddString:Data){
+
         let option : Dictionary =  [
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
@@ -72,14 +72,14 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     //接続解除
-    public func pushCut(){
+    func pushCut(){
         
         print("接続カット！")
         self.centralManager.cancelPeripheralConnection(peripheral)
         
     }
     
-    public func centralManager(_ central: CBCentralManager,
+    func centralManager(_ central: CBCentralManager,
                                didConnect peripheral: CBPeripheral){
         
         print("接続成功！")
@@ -97,7 +97,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // サービス発見時に呼ばれる
-    public func peripheral(_ peripheral : CBPeripheral, didDiscoverServices error : Error?){
+    func peripheral(_ peripheral : CBPeripheral, didDiscoverServices error : Error?){
         
         if let error = error {
             print("エラー\(error)")
@@ -115,7 +115,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // キャラクタリスティック発見時に呼ばれる
-    public func peripheral(_ peripheral: CBPeripheral,
+    func peripheral(_ peripheral: CBPeripheral,
                            didDiscoverCharacteristicsFor service: CBService,
                            error: Error?){
         if let error = error {
@@ -139,7 +139,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         }
     }
     
-    public func  peripheral (_ peripheral: CBPeripheral,
+    func  peripheral (_ peripheral: CBPeripheral,
                              didUpdateValueFor characteristic: CBCharacteristic,
                              error: Error?) {
         if let error = error {
@@ -152,7 +152,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         print("Read成功",characteristic.service.uuid, characteristic.uuid, characteristic.value!)
     }
     
-    public func peripheral(_ peripheral: CBPeripheral,
+    func peripheral(_ peripheral: CBPeripheral,
                            didWriteValueFor characteristic: CBCharacteristic,
                            error: Error?){
         print("Write成功!")
@@ -198,7 +198,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // ペリフェラルマネージャの状態が変化すると呼ばれる
-    public func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         print("state: \(peripheral.state)")
         
         switch peripheral.state {
@@ -214,7 +214,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // サービス追加処理が完了すると呼ばれる
-    public func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
+    func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
         if let error = error {
             
             print("サービス追加失敗！ error: \(error)")
@@ -227,9 +227,9 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     
     // アドバタイズ開始処理が完了すると呼ばれる
-    public func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
+     func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
         if let error = error {
-            
+    
             print("アドバタイズ開始失敗！ error: \(error)")
             return
         }
@@ -254,7 +254,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     }
     // Writeリクエスト受信時に呼ばれる
     @available(iOS 10.0, *)
-    public func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
+     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
         
         print("\(requests.count) 件のWriteリクエストを受信！")
         for request in requests {
