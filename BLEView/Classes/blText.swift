@@ -21,7 +21,8 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     var peripheralManager: CBPeripheralManager!
     var characteristicCBC:CBMutableCharacteristic!
     var name :  String!
-    
+    var serString : String!
+
     static let shared = blText()
     func bleSetting(){
         
@@ -266,7 +267,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
                     
                 }
             }
-            let serString = String(data: characteristicCBC.value!,encoding: String.Encoding.utf8)
+            serString = String(data: characteristicCBC.value!,encoding: String.Encoding.utf8)
             
             // リクエストに応答
             peripheralManager.respond(to: requests[0] , withResult: CBATTError.Code.success)
