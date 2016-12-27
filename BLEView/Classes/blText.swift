@@ -65,11 +65,8 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
         self.centralManager.connect(peripheral, options: option)
-        let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-            blText.shared.setVoice2(data:dddString)
-        })
+        blText.shared.setVoice2(data:dddString)
         
     }
     
@@ -245,7 +242,13 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         if   self.characteristic != nil {
             peripheral?.writeValue(data, for: characteristic, type: CBCharacteristicWriteType.withResponse)
         }else{
-            print("characteristicがnillです。")
+            self.centralManager.connect(peripheral)
+            let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
+                if self.characteristic != nil {
+                    self.peripheral?.writeValue(data, for: self.characteristic, type: CBCharacteristicWriteType.withResponse)
+                }
+            })
         }
     }
     // Writeリクエスト受信時に呼ばれる
