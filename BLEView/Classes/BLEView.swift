@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  BleSetSample
 //
-//  Created by 永田大祐 on 2016/12/27.
+//  Created by 永田大祐 on 2016/09/19.
 //  Copyright © 2016年 永田大祐. All rights reserved.
 //
 
@@ -79,9 +79,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
         center.delegate = self
         
         let content = UNMutableNotificationContent()
-        content.title = "Title"
-        content.subtitle = "Subtitle"
-        content.body = "Body"
+        content.body = blText.shared.serString
         content.sound = UNNotificationSound.default()
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
