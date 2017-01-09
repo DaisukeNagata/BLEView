@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  DddBleView
+//  BLEView
 //
 //  Created by 永田大祐 on 12/05/2016.
 //  Copyright (c) 2016 永田大祐. All rights reserved.

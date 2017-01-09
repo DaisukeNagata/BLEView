@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  BleSetSample
+//  BLEView.swift
+//  pods
 //
 //  Created by 永田大祐 on 2016/09/19.
 //  Copyright © 2016年 永田大祐. All rights reserved.
