@@ -285,7 +285,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
             let utterance = AVSpeechUtterance(string: serString!)
             synthesizer.speak(utterance)
             content.body =  serString!
-            //userNotificationCenter
+
             BLEView.shared.notification()
         }
     }
