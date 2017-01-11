@@ -34,13 +34,6 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
         
     }
     
-    open func getString(rt:String)->String {
-        
-        // Keyを指定して保存
-        rtUserDefaults.set(rt, forKey: "DataStore")
-        notification()
-        return rt
-    }
     //接続開始
     open func setVoice(ddd:String)   {
         let data2 = ddd.data(using: String.Encoding.utf8, allowLossyConversion:true)

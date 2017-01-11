@@ -32,7 +32,7 @@ class ViewController: BLEView {
         if dd?.text == "" {
             BLEView().setCut()
             textView.text = ""
-        }else{
+        }else if dd?.text != "" {
             setVoice(ddd: textSam.text!)
             //BLEの電波強度を測定します。
             let numRssi = BLEView().setRSSI(rssi: self.num)
