@@ -13,7 +13,7 @@ class ViewController: BLEView {
     var dd = BLEView().textSam
     var num = NSNumber()
     @IBOutlet weak var textView: UITextView!
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class ViewController: BLEView {
         dd?.backgroundColor = UIColor.lightGray
         self.view.addSubview(dd!)
         dd?.delegate = self
-
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -29,10 +29,15 @@ class ViewController: BLEView {
     }
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textSam.text = dd?.text
-        setVoice(ddd: textSam.text!)
-        let numRssi = BLEView().setRSSI(rssi: self.num)
-        textView.text = ("\("Radial strength"+numRssi.description)")
-        
+        if dd?.text == "" {
+            BLEView().setCut()
+            textView.text = ""
+        }else{
+            setVoice(ddd: textSam.text!)
+            //BLEの電波強度を測定します。
+            let numRssi = BLEView().setRSSI(rssi: self.num)
+            textView.text = ("\("Radial strength"+numRssi.description)")
+        }
         dd?.resignFirstResponder()
         return true
     }
