@@ -22,7 +22,8 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
     var characteristicCBC:CBMutableCharacteristic!
     var name :  String!
     var serString : String!
-
+    var number : NSNumber!
+    
     static let shared = blText()
     func bleSetting(){
         
@@ -57,6 +58,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         print("発見したBLEデバイス", peripheral)
         name = peripheral.name
         self.peripheral = peripheral
+        number = RSSI
     }
     
     //接続開始

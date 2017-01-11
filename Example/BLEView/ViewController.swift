@@ -30,7 +30,7 @@ class ViewController: BLEView {
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textSam.text = dd?.text
         setVoice(ddd: textSam.text!)
-        let numRssi = BLEView().setNumber(num: self.num)
+        let numRssi = BLEView().setRSSI(rssi: self.num)
         textView.text = ("\("Radial strength"+numRssi.description)")
         
         dd?.resignFirstResponder()
