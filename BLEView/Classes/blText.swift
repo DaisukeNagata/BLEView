@@ -65,10 +65,13 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         let option : Dictionary =  [
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
+        if peripheral != nil {
+            
         self.centralManager.connect(peripheral, options: option)
         
         blText.shared.setVoice2(data:dddString)
-        
+            
+        }
     }
     
     //接続解除
