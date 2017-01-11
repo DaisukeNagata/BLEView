@@ -11,7 +11,7 @@ import CoreBluetooth
 import UserNotifications
 import AVFoundation
 
-class blTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
+class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
 
     var characteristicMutable: CBMutableCharacteristic!
     var centralManager:CBCentralManager!
@@ -21,7 +21,7 @@ class blTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     var name :  String!
     var number : NSNumber!
     
-    static let shared = blTextCentral()
+    static let shared = BlTextCentral()
     
     func bleSetting(){
         
@@ -45,7 +45,7 @@ class blTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
                         rssi RSSI: NSNumber) {
         print("発見したBLEデバイス", peripheral)
         name = peripheral.name
-        blTextPeripheral.shared.peripheral = peripheral
+        BlTextPeripheral.shared.peripheral = peripheral
         number = RSSI
     }
 
@@ -55,9 +55,9 @@ class blTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         let option : Dictionary =  [
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
-        if blTextPeripheral.shared.peripheral != nil {
+        if BlTextPeripheral.shared.peripheral != nil {
             
-            self.centralManager.connect(blTextPeripheral.shared.peripheral, options: option)
+            self.centralManager.connect(BlTextPeripheral.shared.peripheral, options: option)
             
             setVoice2(data:dddString)
             
@@ -65,14 +65,14 @@ class blTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     }
     
     open  func setVoice2(data:Data)   {
-        if   blTextPeripheral.shared.characteristic != nil {
-            blTextPeripheral.shared.peripheral?.writeValue(data, for: blTextPeripheral.shared.characteristic, type: CBCharacteristicWriteType.withResponse)
+        if   BlTextPeripheral.shared.characteristic != nil {
+            BlTextPeripheral.shared.peripheral?.writeValue(data, for: BlTextPeripheral.shared.characteristic, type: CBCharacteristicWriteType.withResponse)
         }else{
-            self.centralManager.connect(blTextPeripheral.shared.peripheral)
+            self.centralManager.connect(BlTextPeripheral.shared.peripheral)
             let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-                if blTextPeripheral.shared.characteristic != nil {
-                    blTextPeripheral.shared.peripheral?.writeValue(data, for: blTextPeripheral.shared.characteristic, type: CBCharacteristicWriteType.withResponse)
+                if BlTextPeripheral.shared.characteristic != nil {
+                    BlTextPeripheral.shared.peripheral?.writeValue(data, for: BlTextPeripheral.shared.characteristic, type: CBCharacteristicWriteType.withResponse)
                 }
             })
         }
@@ -83,7 +83,7 @@ class blTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     func pushCut(){
         
         print("接続カット！")
-        self.centralManager.cancelPeripheralConnection(blTextPeripheral.shared.peripheral)
+        self.centralManager.cancelPeripheralConnection(BlTextPeripheral.shared.peripheral)
         
     }
     
@@ -91,7 +91,7 @@ class blTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
                         didConnect peripheral: CBPeripheral){
         
         print("接続成功！")
-        peripheral.delegate = blTextPeripheral.shared
+        peripheral.delegate = BlTextPeripheral.shared
         //サービス探索開始
        peripheral.discoverServices(nil)
     }

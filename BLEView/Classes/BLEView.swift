@@ -8,11 +8,10 @@
 
 import UIKit
 import CoreBluetooth
-import AVFoundation
-import UserNotifications
+
 
 @available(iOS 10.0, *)
-open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDelegate,UITextFieldDelegate,UNUserNotificationCenterDelegate {
+open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
     
     open var textSam: UITextField!
     open var rtUserDefaults = UserDefaults.standard
@@ -21,8 +20,8 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        blTextCentral.shared.bleSetting()
-        blTextPeripheral.shared.bleSetting()
+        BlTextCentral.shared.bleSetting()
+        BlTextPeripheral.shared.bleSetting()
         self.textSam = UITextField(frame: CGRect(x: 0, y: 150, width: self.view.bounds.width, height: 30))
         self.textSam.delegate = self
         self.view.addSubview(textSam)
@@ -39,21 +38,21 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
     open func setVoice(ddd:String)   {
         let data2 = ddd.data(using: String.Encoding.utf8, allowLossyConversion:true)
         
-        if blTextPeripheral.shared.characteristic == nil {
-            blTextCentral.shared.pushStart(dddString:data2!)
-        }else if  blTextPeripheral.shared.characteristic != nil {
-            blTextCentral.shared.pushStart(dddString:data2!)
+        if BlTextPeripheral.shared.characteristic == nil {
+            BlTextCentral.shared.pushStart(dddString:data2!)
+        }else if  BlTextPeripheral.shared.characteristic != nil {
+            BlTextCentral.shared.pushStart(dddString:data2!)
         }
     }
     
     //接続解除
     open func setCut(){
-        blTextCentral.shared.pushCut()
+        BlTextCentral.shared.pushCut()
     }
     
     //接続情報の確認
     open func setRSSI(rssi:NSNumber)->NSNumber{
-        var  rssi = blTextCentral.shared.number
+        var  rssi = BlTextCentral.shared.number
         if rssi == nil {
             rssi = 0
         }
@@ -62,7 +61,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
     
     //接続端末名の確認
     open func setName(name:String)->String{
-        var name = blTextCentral.shared.name
+        var name = BlTextCentral.shared.name
         if name == nil {
             name  =  ""
         }
@@ -71,39 +70,8 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
     
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textSam.resignFirstResponder()
-        
-        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: "\(textSam.text!)")
-        synthesizer.speak(utterance)
-        
+        SoundNotification.shared.notification()
         return true
     }
     
-    open func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                     willPresent notification: UNNotification,
-                                     withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void){
-        completionHandler([.badge])
-    }
-    
-    open func notification() {
-        
-        let centerAuthorization = UNUserNotificationCenter.current()
-        centerAuthorization.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-        }
-        //UNUserNotificationCenterDelegate
-        let center = UNUserNotificationCenter.current()
-        center.delegate = self
-        
-        let content = UNMutableNotificationContent()
-        content.body = blTextPeripheral.shared.serString
-        content.sound = UNNotificationSound.default()
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
-        let request = UNNotificationRequest(identifier: "Second",
-                                            content: content,
-                                            trigger: trigger)
-        
-        center.add(request, withCompletionHandler: nil)
-        
-    }
 }

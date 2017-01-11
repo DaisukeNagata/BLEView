@@ -11,7 +11,7 @@ import CoreBluetooth
 import UserNotifications
 import AVFoundation
 
-class blTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate,AVSpeechSynthesizerDelegate {
+class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate,UNUserNotificationCenterDelegate{
     
     var peripheral:CBPeripheral!
     var characteristic:CBCharacteristic!
@@ -20,7 +20,7 @@ class blTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
     var characteristicCBC:CBMutableCharacteristic!
     var serString : String!
     
-    static let shared = blTextPeripheral()
+    static let shared = BlTextPeripheral()
     func bleSetting(){
         
         // 初期化
@@ -133,7 +133,7 @@ class blTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
             // サービス登録開始
            publishservice()
         case.poweredOff:
-           blTextCentral.shared.pushCut()
+           BlTextCentral.shared.pushCut()
         default:
             break
         }
@@ -180,7 +180,7 @@ class blTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         }
         print("アドバタイズ開始成功！")
         //スキャン開始
-        blTextCentral.shared.centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
+        BlTextCentral.shared.centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
         
     }
     
@@ -212,7 +212,7 @@ class blTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
             let utterance = AVSpeechUtterance(string: serString!)
             synthesizer.speak(utterance)
             content.body =  serString!
-            BLEView.shared.notification()
+            SoundNotification.shared.notification()
         }
     }
 }
