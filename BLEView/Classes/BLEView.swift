@@ -55,6 +55,12 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
     open func setCut(){
         blText.shared.pushCut()
     }
+    //接続情報の確認
+    open func setRSSI(rssi:NSArray)->NSArray{
+        let  rssi = blText.shared.peripheral.services
+        return rssi! as NSArray
+    }
+
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textSam.resignFirstResponder()
         

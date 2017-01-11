@@ -11,6 +11,8 @@ import BLEView
 
 class ViewController: BLEView {
     var dd = BLEView().textSam
+    var num = NSNumber()
+    @IBOutlet weak var textView: UITextView!
 
     override func viewDidLoad() {
         
@@ -19,6 +21,7 @@ class ViewController: BLEView {
         dd?.backgroundColor = UIColor.lightGray
         self.view.addSubview(dd!)
         dd?.delegate = self
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -27,6 +30,9 @@ class ViewController: BLEView {
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textSam.text = dd?.text
         setVoice(ddd: textSam.text!)
+        let numRssi = BLEView().setNumber(num: self.num)
+        textView.text = ("\("Radial strength"+numRssi.description)")
+        
         dd?.resignFirstResponder()
         return true
     }
