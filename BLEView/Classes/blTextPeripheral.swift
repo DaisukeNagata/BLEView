@@ -11,20 +11,16 @@ import CoreBluetooth
 import UserNotifications
 import AVFoundation
 
-class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheralManagerDelegate,AVSpeechSynthesizerDelegate {
+class blTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate,AVSpeechSynthesizerDelegate {
     
-    var characteristicMutable: CBMutableCharacteristic!
-    var centralManager:CBCentralManager!
     var peripheral:CBPeripheral!
     var characteristic:CBCharacteristic!
     let serviceUUID = CBUUID(string: "DD9B8295-E177-4F8A-A5E1-DC5FED19556D")
     var peripheralManager: CBPeripheralManager!
     var characteristicCBC:CBMutableCharacteristic!
-    var name :  String!
     var serString : String!
-    var number : NSNumber!
     
-    static let shared = blText()
+    static let shared = blTextPeripheral()
     func bleSetting(){
         
         // 初期化
@@ -32,7 +28,6 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil , options:option)
-        centralManager = CBCentralManager(delegate: self, queue: nil)
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager,
@@ -44,62 +39,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil , options:option)
         print("Peripheral Manager Restored")
     }
-    func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]){
-        
-        print("Central Manager Restored")
-    }
-    func  centralManagerDidUpdateState(_ central:CBCentralManager){
-        print("CentralManagerDidUpdateState", central.state)
-    }
-    func centralManager(_ central: CBCentralManager,
-                               didDiscover peripheral: CBPeripheral,
-                               advertisementData: [String : Any],
-                               rssi RSSI: NSNumber) {
-        print("発見したBLEデバイス", peripheral)
-        name = peripheral.name
-        self.peripheral = peripheral
-        number = RSSI
-    }
     
-    //接続開始
-    func pushStart(dddString:Data){
-
-        let option : Dictionary =  [
-            CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
-        ]
-        if peripheral != nil {
-            
-        self.centralManager.connect(peripheral, options: option)
-        
-        blText.shared.setVoice2(data:dddString)
-            
-        }
-    }
-    
-    //接続解除
-    func pushCut(){
-        
-        print("接続カット！")
-        self.centralManager.cancelPeripheralConnection(peripheral)
-        
-    }
-    
-    func centralManager(_ central: CBCentralManager,
-                               didConnect peripheral: CBPeripheral){
-        
-        print("接続成功！")
-        peripheral.delegate = self
-        //サービス探索開始
-        peripheral.discoverServices(nil)
-    }
-    
-    func centralManager(_ central:CBCentralManager,peripheral:CBPeripheral,error: NSError!){
-        
-        print("接続失敗！")
-        //スキャン開始
-        self.centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
-        
-    }
     
     // サービス発見時に呼ばれる
     func peripheral(_ peripheral : CBPeripheral, didDiscoverServices error : Error?){
@@ -163,26 +103,7 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         print("Write成功!")
     }
     
-    func publishservice () {
-        
-        // サービスを作成
-        let service = CBMutableService(type: serviceUUID, primary: true)
-        let characteristicUUID = CBUUID(string: "45088E4B-B847-4E20-ACD7-0BEA181075C2")
-        let properties: CBCharacteristicProperties = [.read, .write]
-        let permissions: CBAttributePermissions = [.readable, .writeable]
-        
-        characteristicCBC = CBMutableCharacteristic(
-            type: characteristicUUID,
-            properties: properties,
-            value: nil,
-            permissions: permissions)
-        
-        // キャラクタリスティックをサービスにセット
-        service.characteristics = [characteristicCBC]
-        peripheralManager.add(service)
-        
-    }
-    
+      
     func startAdvertise() {
         // アドバタイズメントデータを作成する
         let advertisementData = [
@@ -210,14 +131,33 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         case .poweredOn:
             
             // サービス登録開始
-            publishservice()
+           publishservice()
         case.poweredOff:
-            pushCut()
+           blTextCentral.shared.pushCut()
         default:
             break
         }
     }
     
+    func publishservice () {
+        
+        // サービスを作成
+        let service = CBMutableService(type: serviceUUID, primary: true)
+        let characteristicUUID = CBUUID(string: "45088E4B-B847-4E20-ACD7-0BEA181075C2")
+        let properties: CBCharacteristicProperties = [.read, .write]
+        let permissions: CBAttributePermissions = [.readable, .writeable]
+        
+        characteristicCBC = CBMutableCharacteristic(
+            type: characteristicUUID,
+            properties: properties,
+            value: nil,
+            permissions: permissions)
+        
+        // キャラクタリスティックをサービスにセット
+        service.characteristics = [characteristicCBC]
+        peripheralManager.add(service)
+    }
+
     // サービス追加処理が完了すると呼ばれる
     func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
         if let error = error {
@@ -240,24 +180,11 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
         }
         print("アドバタイズ開始成功！")
         //スキャン開始
-        self.centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
+        blTextCentral.shared.centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
         
     }
     
-    open  func setVoice2(data:Data)   {
-        if   self.characteristic != nil {
-            peripheral?.writeValue(data, for: characteristic, type: CBCharacteristicWriteType.withResponse)
-        }else{
-            self.centralManager.connect(peripheral)
-            let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-                if self.characteristic != nil {
-                    self.peripheral?.writeValue(data, for: self.characteristic, type: CBCharacteristicWriteType.withResponse)
-                }
-            })
-        }
-    }
-    // Writeリクエスト受信時に呼ばれる
+      // Writeリクエスト受信時に呼ばれる
     @available(iOS 10.0, *)
      func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
         
@@ -285,7 +212,6 @@ class blText:NSObject,CBCentralManagerDelegate,CBPeripheralDelegate,CBPeripheral
             let utterance = AVSpeechUtterance(string: serString!)
             synthesizer.speak(utterance)
             content.body =  serString!
-
             BLEView.shared.notification()
         }
     }

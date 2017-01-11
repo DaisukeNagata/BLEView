@@ -21,7 +21,8 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        blText.shared.bleSetting()
+        blTextCentral.shared.bleSetting()
+        blTextPeripheral.shared.bleSetting()
         self.textSam = UITextField(frame: CGRect(x: 0, y: 150, width: self.view.bounds.width, height: 30))
         self.textSam.delegate = self
         self.view.addSubview(textSam)
@@ -38,19 +39,21 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
     open func setVoice(ddd:String)   {
         let data2 = ddd.data(using: String.Encoding.utf8, allowLossyConversion:true)
         
-        if blText.shared.characteristic == nil {
-            blText.shared.pushStart(dddString:data2!)
-        }else if  blText.shared.characteristic != nil {
-            blText.shared.pushStart(dddString:data2!)
+        if blTextPeripheral.shared.characteristic == nil {
+            blTextCentral.shared.pushStart(dddString:data2!)
+        }else if  blTextPeripheral.shared.characteristic != nil {
+            blTextCentral.shared.pushStart(dddString:data2!)
         }
     }
+    
     //接続解除
     open func setCut(){
-        blText.shared.pushCut()
+        blTextCentral.shared.pushCut()
     }
+    
     //接続情報の確認
     open func setRSSI(rssi:NSNumber)->NSNumber{
-        var  rssi = blText.shared.number
+        var  rssi = blTextCentral.shared.number
         if rssi == nil {
             rssi = 0
         }
@@ -59,7 +62,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
     
     //接続端末名の確認
     open func setName(name:String)->String{
-        var name = blText.shared.name
+        var name = blTextCentral.shared.name
         if name == nil {
             name  =  ""
         }
@@ -75,11 +78,13 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
         
         return true
     }
+    
     open func userNotificationCenter(_ center: UNUserNotificationCenter,
                                      willPresent notification: UNNotification,
                                      withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void){
         completionHandler([.badge])
     }
+    
     open func notification() {
         
         let centerAuthorization = UNUserNotificationCenter.current()
@@ -90,7 +95,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
         center.delegate = self
         
         let content = UNMutableNotificationContent()
-        content.body = blText.shared.serString
+        content.body = blTextPeripheral.shared.serString
         content.sound = UNNotificationSound.default()
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
