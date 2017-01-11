@@ -12,6 +12,7 @@ import BLEView
 class ViewController: BLEView {
     var dd = BLEView().textSam
     var num = NSNumber()
+    var st = String()
     @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
@@ -36,7 +37,9 @@ class ViewController: BLEView {
             setVoice(ddd: textSam.text!)
             //BLEの電波強度を測定します。
             let numRssi = BLEView().setRSSI(rssi: self.num)
-            textView.text = ("\("Radial strength"+numRssi.description)")
+            //接続端末の取得
+            let name = BLEView().setName(name:st)
+            textView.text = ("\("Radial strength"+numRssi.description + "\n"+name)")
         }
         dd?.resignFirstResponder()
         return true

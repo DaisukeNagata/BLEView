@@ -50,10 +50,22 @@ open class BLEView: UIViewController,CBPeripheralDelegate,AVSpeechSynthesizerDel
     }
     //接続情報の確認
     open func setRSSI(rssi:NSNumber)->NSNumber{
-        let  rssi = blText.shared.number
+        var  rssi = blText.shared.number
+        if rssi == nil {
+            rssi = 0
+        }
         return rssi! as NSNumber
     }
-
+    
+    //接続端末名の確認
+    open func setName(name:String)->String{
+        var name = blText.shared.name
+        if name == nil {
+            name  =  ""
+        }
+        return name!
+    }
+    
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textSam.resignFirstResponder()
         
