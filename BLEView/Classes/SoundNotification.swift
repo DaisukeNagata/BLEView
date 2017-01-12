@@ -20,7 +20,7 @@ class SoundNotification: NSObject,AVSpeechSynthesizerDelegate,UNUserNotification
     
     open func notification() {
         let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: "\(BLEView.shared.textSam.text!)")
+        let utterance = AVSpeechUtterance(string: "\(BlTextPeripheral.shared.serString)")
         synthesizer.speak(utterance)
 
         let centerAuthorization = UNUserNotificationCenter.current()
