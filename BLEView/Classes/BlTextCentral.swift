@@ -36,9 +36,11 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         
         print("Central Manager Restored")
     }
+    
     func  centralManagerDidUpdateState(_ central:CBCentralManager){
         print("CentralManagerDidUpdateState", central.state)
     }
+    
     func centralManager(_ central: CBCentralManager,
                         didDiscover peripheral: CBPeripheral,
                         advertisementData: [String : Any],
@@ -55,6 +57,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         let option : Dictionary =  [
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
+        
         if BlTextPeripheral.shared.peripheral != nil {
             
             self.centralManager.connect(BlTextPeripheral.shared.peripheral, options: option)
@@ -65,6 +68,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     }
     
     open  func setVoice2(data:Data)   {
+        
         if   BlTextPeripheral.shared.characteristic != nil {
             BlTextPeripheral.shared.peripheral?.writeValue(data, for: BlTextPeripheral.shared.characteristic, type: CBCharacteristicWriteType.withResponse)
         }else{
@@ -73,6 +77,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
             DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                 if BlTextPeripheral.shared.characteristic != nil {
                     BlTextPeripheral.shared.peripheral?.writeValue(data, for: BlTextPeripheral.shared.characteristic, type: CBCharacteristicWriteType.withResponse)
+                    
                 }
             })
         }
@@ -94,6 +99,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         peripheral.delegate = BlTextPeripheral.shared
         //サービス探索開始
        peripheral.discoverServices(nil)
+        
     }
     
     func centralManager(_ central:CBCentralManager,peripheral:CBPeripheral,error: NSError!){
