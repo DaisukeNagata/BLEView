@@ -11,6 +11,7 @@ import UserNotifications
 import AVFoundation
 
 class SoundNotification: NSObject,AVSpeechSynthesizerDelegate,UNUserNotificationCenterDelegate {
+    
     static let shared = SoundNotification()
     open func userNotificationCenter(_ center: UNUserNotificationCenter,
                                      willPresent notification: UNNotification,
@@ -19,18 +20,22 @@ class SoundNotification: NSObject,AVSpeechSynthesizerDelegate,UNUserNotification
     }
     
     open func notification() {
-        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: "\(BlTextPeripheral.shared.serString)")
-        synthesizer.speak(utterance)
-
+        
         let centerAuthorization = UNUserNotificationCenter.current()
         centerAuthorization.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
         }
+
+        UIApplication.shared.registerForRemoteNotifications()
+        
+        let content = UNMutableNotificationContent()
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: BlTextPeripheral.shared.serString!)
+        synthesizer.speak(utterance)
+        content.body =  BlTextPeripheral.shared.serString!
+
         //UNUserNotificationCenterDelegate
         let center = UNUserNotificationCenter.current()
         center.delegate = self
-        
-        let content = UNMutableNotificationContent()
         content.body = BlTextPeripheral.shared.serString
         content.sound = UNNotificationSound.default()
         
@@ -42,5 +47,4 @@ class SoundNotification: NSObject,AVSpeechSynthesizerDelegate,UNUserNotification
         center.add(request, withCompletionHandler: nil)
         
     }
-
 }

@@ -203,15 +203,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
             
             // リクエストに応答
             peripheralManager.respond(to: requests[0] , withResult: CBATTError.Code.success)
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-                (granted, error) in
-            }
-            UIApplication.shared.registerForRemoteNotifications()
-            let content = UNMutableNotificationContent()
-            let synthesizer = AVSpeechSynthesizer()
-            let utterance = AVSpeechUtterance(string: serString!)
-            synthesizer.speak(utterance)
-            content.body =  serString!
+            SoundNotification.shared.notification()
         }
     }
 }
