@@ -29,18 +29,22 @@ class ViewController: BLEView {
         // Dispose of any resources that can be recreated.
     }
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textSam.text = dd?.text
+        
         if dd?.text == "" {
+            
             BLEView().setCut()
-            textView.text = ""
+            dd?.text = ""
+            
         }else if dd?.text != "" {
-            setVoice(ddd: textSam.text!)
+            
+            setVoice(ddd: (dd?.text!)!)
             //BLEの電波強度を測定します。
             let numRssi = BLEView().setRSSI(rssi: self.num)
             //接続端末の取得
             let name = BLEView().setName(name:st)
             textView.text = ("\("Radial strength"+numRssi.description + "\n"+name)")
         }
+        
         dd?.resignFirstResponder()
         return true
     }
