@@ -147,6 +147,10 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         let properties: CBCharacteristicProperties = [.read, .write]
         let permissions: CBAttributePermissions = [.readable, .writeable]
         
+        BlTextPeripheral.shared.stopAdvertise()
+        BlTextPeripheral.shared.startAdvertise()
+        BlTextPeripheral.shared.characteristic = nil
+
         characteristicCBC = CBMutableCharacteristic(
             type: characteristicUUID,
             properties: properties,
