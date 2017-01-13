@@ -7,9 +7,12 @@
 
 初回起動で同じアプリケーションを持った端末があれば、接続できます。
 文字列を入力して、改行を押すと接続した端末に入力した文字列が音声で流れます。
-
-If you have a terminal with the same application at the first launch, you can connect.
-When you enter a character string and press a line break, audio will flow to the connected terminal.
+文字を入力すると電波の強度を表します。端末が離れるて、強度が弱くなることに値が増加します。
+空文字を入力すると再度電波強度を取得します。
+If you have a terminal with the same application on first launch, you can connect.
+When you enter a character string and press line feed, the character string entered to the connected terminal flows by voice.
+When you enter a letter, it represents the strength of the radio waves. As the terminal leaves, the value increases because the strength becomes weak.
+When you enter empty characters, you will get the explosion strength.
 
 ## Example
 
