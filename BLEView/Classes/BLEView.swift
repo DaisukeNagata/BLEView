@@ -48,6 +48,9 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
     //接続解除
     open func setCut(){
         BlTextCentral.shared.pushCut()
+        BlTextPeripheral.shared.stopAdvertise()
+        BlTextPeripheral.shared.startAdvertise()
+        BlTextPeripheral.shared.characteristic = nil
     }
     
     //接続情報の確認
