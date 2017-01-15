@@ -83,9 +83,5 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
         let testDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/2))
         self.view.addSubview(testDraw)
     }
-    func drawDelete(){
-        let testDraw = BLEGraph(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        self.view.addSubview(testDraw)
-    }
 
 }

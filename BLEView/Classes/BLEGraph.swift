@@ -17,48 +17,41 @@ class BLEGraph: UIView {
     var num = NSNumber()
     
     override func draw(_ rect: CGRect) {
-        numArray = BlModel.sharedBLEGraph.getArray().0
+        numArray = BlModel.sharedBLEGraph.getArray()
         
         self.transform = CGAffineTransform(scaleX: 1, y: -1)
-        let line = UIBezierPath()
-
+        var line = UIBezierPath()
+        line.move(to: CGPoint(x: 0, y: 0));
         if numArray.count > 0 {
-        line.move(to: CGPoint(x: 25, y: 0));
-        line.addLine(to: CGPoint(x: 25, y: numArray[0]))
+            line.addLine(to: CGPoint(x: 25, y: self.numArray[0]))
         }
         if numArray.count > 1 {
-            line.move(to: CGPoint(x: 75, y: 0));
-            line.addLine(to: CGPoint(x: 75, y: numArray[1]))
+            line.addLine(to: CGPoint(x: 75, y: self.numArray[1]))
         }
         if numArray.count > 2 {
-            line.move(to: CGPoint(x: 125, y: 0));
-            line.addLine(to: CGPoint(x: 125, y: numArray[2]))
+            line.addLine(to: CGPoint(x: 125, y: self.numArray[2]))
         }
         if numArray.count > 3 {
-            line.move(to: CGPoint(x: 175, y: 0));
-            line.addLine(to: CGPoint(x: 175, y: numArray[3]))
+            line.addLine(to: CGPoint(x: 175, y: self.numArray[3]))
         }
         if numArray.count > 4 {
-            line.move(to: CGPoint(x: 225, y: 0));
-            line.addLine(to: CGPoint(x: 225, y: numArray[4]))
+            line.addLine(to: CGPoint(x: 225, y: self.numArray[4]))
         }
         if numArray.count > 5 {
-            line.move(to: CGPoint(x: 275, y: 0));
-            line.addLine(to: CGPoint(x: 275, y: numArray[5]))
+            line.addLine(to: CGPoint(x: 275, y: self.numArray[5]))
         }
         if numArray.count > 6 {
-            line.move(to: CGPoint(x: 325, y: 0));
-            line.addLine(to: CGPoint(x: 325, y: numArray[6]))
+            line.addLine(to: CGPoint(x: 325, y: self.numArray[6]))
         }
         if numArray.count > 7 {
-            line.move(to: CGPoint(x: 375, y: 0));
-            line.addLine(to: CGPoint(x: 375, y: numArray[7]))
+            line.addLine(to: CGPoint(x: 375, y: self.numArray[7]))
         }
+        
         UIColor.red.setStroke()
         line.lineWidth = 4
         line.stroke()
         line.close()
-
+        
         // UIBezierPath のインスタンス生成
         let lineW = UIBezierPath();
         // 起点
@@ -90,16 +83,14 @@ class BLEGraph: UIView {
         lineW.lineWidth = 1
         // 描画
         lineW.stroke();
-        
     }
     
-    func getArray()->([Int],Int){
+    func getArray()->[Int]{
         let number = BLEView().setRSSI(rssi: num) as! Int
         numArray+=[number * -4]
         if numArray.count > 8 {
             numArray.removeAll()
         }
-        return (numArray,numArray.count)
+        return numArray
     }
-    
 }
