@@ -12,8 +12,7 @@ import AVFoundation
 
 class SoundNotification: NSObject,AVSpeechSynthesizerDelegate,UNUserNotificationCenterDelegate {
     
-    static let shared = SoundNotification()
-    open func userNotificationCenter(_ center: UNUserNotificationCenter,
+        open func userNotificationCenter(_ center: UNUserNotificationCenter,
                                      willPresent notification: UNNotification,
                                      withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void){
         completionHandler([.badge])
@@ -29,14 +28,14 @@ class SoundNotification: NSObject,AVSpeechSynthesizerDelegate,UNUserNotification
         
         let content = UNMutableNotificationContent()
         let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: BlTextPeripheral.shared.serString!)
+        let utterance = AVSpeechUtterance(string: BlModel.sharedBlTextPeripheral.serString!)
         synthesizer.speak(utterance)
-        content.body =  BlTextPeripheral.shared.serString!
+        content.body =  BlModel.sharedBlTextPeripheral.serString!
 
         //UNUserNotificationCenterDelegate
         let center = UNUserNotificationCenter.current()
         center.delegate = self
-        content.body = BlTextPeripheral.shared.serString
+        content.body = BlModel.sharedBlTextPeripheral.serString
         content.sound = UNNotificationSound.default()
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)

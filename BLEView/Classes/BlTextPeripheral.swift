@@ -20,7 +20,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
     var characteristicCBC:CBMutableCharacteristic!
     var serString : String!
     
-    static let shared = BlTextPeripheral()
+    
     func bleSetting(){
         
         // 初期化
@@ -133,7 +133,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
             // サービス登録開始
             publishservice()
         case.poweredOff:
-            BlTextCentral.shared.pushCut()
+            BlModel.sharedBlTextCentral.pushCut()
         default:
             break
         }
@@ -147,9 +147,9 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         let properties: CBCharacteristicProperties = [.read, .write]
         let permissions: CBAttributePermissions = [.readable, .writeable]
         
-        BlTextPeripheral.shared.stopAdvertise()
-        BlTextPeripheral.shared.startAdvertise()
-        BlTextPeripheral.shared.characteristic = nil
+        BlModel.sharedBlTextPeripheral.stopAdvertise()
+        BlModel.sharedBlTextPeripheral.startAdvertise()
+        BlModel.sharedBlTextPeripheral.characteristic = nil
 
         characteristicCBC = CBMutableCharacteristic(
             type: characteristicUUID,
@@ -184,7 +184,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         }
         print("アドバタイズ開始成功！")
         //スキャン開始
-        BlTextCentral.shared.centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
+        BlModel.sharedBlTextCentral.centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
         
     }
     
@@ -207,7 +207,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
             
             // リクエストに応答
             peripheralManager.respond(to: requests[0] , withResult: CBATTError.Code.success)
-            SoundNotification.shared.notification()
+            BlModel.sharedSoundNotification.notification()
         }
     }
 }

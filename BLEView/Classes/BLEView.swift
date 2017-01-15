@@ -16,12 +16,10 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
     open var textSam: UITextField!
     open var rtUserDefaults = UserDefaults.standard
     
-    static let shared = BLEView()
-    
     override open func viewDidLoad() {
         super.viewDidLoad()
-        BlTextCentral.shared.bleSetting()
-        BlTextPeripheral.shared.bleSetting()
+        BlModel.sharedBlTextCentral.bleSetting()
+         BlModel.sharedBlTextPeripheral.bleSetting()
         self.textSam = UITextField(frame: CGRect(x: 0, y: 150, width: self.view.bounds.width, height: 30))
         self.textSam.delegate = self
         self.view.addSubview(textSam)
@@ -38,24 +36,24 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
     open func setVoice(ddd:String)   {
         let data2 = ddd.data(using: String.Encoding.utf8, allowLossyConversion:true)
         
-        if BlTextPeripheral.shared.characteristic == nil {
-            BlTextCentral.shared.pushStart(dddString:data2!)
-        }else if  BlTextPeripheral.shared.characteristic != nil {
-            BlTextCentral.shared.pushStart(dddString:data2!)
+        if  BlModel.sharedBlTextPeripheral.characteristic == nil {
+            BlModel.sharedBlTextCentral.pushStart(dddString:data2!)
+        }else if  BlModel.sharedBlTextPeripheral.characteristic != nil {
+            BlModel.sharedBlTextCentral.pushStart(dddString:data2!)
         }
     }
     
     //接続解除
     open func setCut(){
-        BlTextCentral.shared.pushCut()
-        BlTextPeripheral.shared.stopAdvertise()
-        BlTextPeripheral.shared.startAdvertise()
-        BlTextPeripheral.shared.characteristic = nil
+        BlModel.sharedBlTextCentral.pushCut()
+        BlModel.sharedBlTextPeripheral.stopAdvertise()
+        BlModel.sharedBlTextPeripheral.startAdvertise()
+        BlModel.sharedBlTextPeripheral.characteristic = nil
     }
     
     //接続情報の確認
     open func setRSSI(rssi:NSNumber)->NSNumber{
-        var  rssi = BlTextCentral.shared.number
+        var  rssi = BlModel.sharedBlTextCentral.number
         if rssi == nil {
             rssi = 0
         }
@@ -64,7 +62,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
     
     //接続端末名の確認
     open func setName(name:String)->String{
-        var name = BlTextCentral.shared.name
+        var name = BlModel.sharedBlTextCentral.name
         if name == nil {
             name  =  ""
         }
@@ -73,7 +71,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
     
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textSam.resignFirstResponder()
-        SoundNotification.shared.notification()
+        BlModel.sharedSoundNotification.notification()
         return true
     }
     

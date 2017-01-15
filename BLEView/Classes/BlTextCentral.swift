@@ -21,7 +21,6 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     var name :  String!
     var number : NSNumber!
     
-    static let shared = BlTextCentral()
     
     func bleSetting(){
         
@@ -47,7 +46,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
                         rssi RSSI: NSNumber) {
         print("発見したBLEデバイス", peripheral)
         name = peripheral.name
-        BlTextPeripheral.shared.peripheral = peripheral
+        BlModel.sharedBlTextPeripheral.peripheral = peripheral
         number = RSSI
     }
 
@@ -58,9 +57,9 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
         
-        if BlTextPeripheral.shared.peripheral != nil {
+        if BlModel.sharedBlTextPeripheral.peripheral != nil {
             
-            self.centralManager.connect(BlTextPeripheral.shared.peripheral, options: option)
+            self.centralManager.connect(BlModel.sharedBlTextPeripheral.peripheral, options: option)
             
             setVoice2(data:dddString)
             
@@ -69,14 +68,14 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     
     open  func setVoice2(data:Data)   {
         
-        if   BlTextPeripheral.shared.characteristic != nil {
-            BlTextPeripheral.shared.peripheral?.writeValue(data, for: BlTextPeripheral.shared.characteristic, type: CBCharacteristicWriteType.withResponse)
+        if   BlModel.sharedBlTextPeripheral.characteristic != nil {
+            BlModel.sharedBlTextPeripheral.peripheral?.writeValue(data, for: BlModel.sharedBlTextPeripheral.characteristic, type: CBCharacteristicWriteType.withResponse)
         }else{
-            self.centralManager.connect(BlTextPeripheral.shared.peripheral)
+            self.centralManager.connect(BlModel.sharedBlTextPeripheral.peripheral)
             let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
-                if BlTextPeripheral.shared.characteristic != nil {
-                    BlTextPeripheral.shared.peripheral?.writeValue(data, for: BlTextPeripheral.shared.characteristic, type: CBCharacteristicWriteType.withResponse)
+                if BlModel.sharedBlTextPeripheral.characteristic != nil {
+                    BlModel.sharedBlTextPeripheral.peripheral?.writeValue(data, for: BlModel.sharedBlTextPeripheral.characteristic, type: CBCharacteristicWriteType.withResponse)
                     
                 }
             })
@@ -88,7 +87,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     func pushCut(){
         
         print("接続カット！")
-        self.centralManager.cancelPeripheralConnection(BlTextPeripheral.shared.peripheral)
+        self.centralManager.cancelPeripheralConnection(BlModel.sharedBlTextPeripheral.peripheral)
         
     }
     
@@ -96,7 +95,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
                         didConnect peripheral: CBPeripheral){
         
         print("接続成功！")
-        peripheral.delegate = BlTextPeripheral.shared
+        peripheral.delegate = BlModel.sharedBlTextPeripheral
         //サービス探索開始
        peripheral.discoverServices(nil)
         
