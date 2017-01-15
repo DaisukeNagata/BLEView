@@ -80,8 +80,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
         let screenWidth = self.view.bounds.width
         let screenHeight = self.view.bounds.height
         
-        let testDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/2))
-        self.view.addSubview(testDraw)
+        let BLEDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/2))
+        self.view.addSubview(BLEDraw)
     }
-
 }
