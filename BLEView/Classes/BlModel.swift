@@ -14,5 +14,7 @@ class BlModel {
     static let sharedSoundNotification = SoundNotification()
     static let sharedBlTextPeripheral = BlTextPeripheral()
     static let sharedBlTextCentral = BlTextCentral()
+    static let sharedBlModel = BlModel()
+    static let sharedBLEGraph = BLEGraph()
     
 }

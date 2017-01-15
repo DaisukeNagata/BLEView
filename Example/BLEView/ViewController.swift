@@ -24,7 +24,6 @@ class ViewController: BLEView {
         dd?.backgroundColor = UIColor.lightGray
         self.view.addSubview(dd!)
         dd?.delegate = self
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,6 +46,7 @@ class ViewController: BLEView {
         //接続端末の取得
         let name = BLEView().setName(name:st)
         textView.text = ("\("Radial strength"+numRssi.description + "\n"+name)")
+        drawView(num: self.num)
         return true
     }
 }

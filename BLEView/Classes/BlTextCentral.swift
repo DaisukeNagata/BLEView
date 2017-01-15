@@ -21,7 +21,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     var name :  String!
     var number : NSNumber!
     
-    
+
     func bleSetting(){
         
         // 初期化

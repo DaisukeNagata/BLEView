@@ -15,7 +15,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
     
     open var textSam: UITextField!
     open var rtUserDefaults = UserDefaults.standard
-    
+    var num = NSNumber()
     override open func viewDidLoad() {
         super.viewDidLoad()
         BlModel.sharedBlTextCentral.bleSetting()
@@ -24,7 +24,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
         self.textSam.delegate = self
         self.view.addSubview(textSam)
         rtUserDefaults.set("", forKey: "DataStore")
-        
+    
     }
     
     override open func didReceiveMemoryWarning() {
@@ -75,4 +75,17 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
         return true
     }
     
+    public func drawView(num:NSNumber){
+        // Screen Size の取得
+        let screenWidth = self.view.bounds.width
+        let screenHeight = self.view.bounds.height
+        
+        let testDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/2))
+        self.view.addSubview(testDraw)
+    }
+    func drawDelete(){
+        let testDraw = BLEGraph(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        self.view.addSubview(testDraw)
+    }
+
 }
