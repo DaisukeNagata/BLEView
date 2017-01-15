@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BlModel: UIView {
+class BlModel {
 
     static let sharedBLEView = BLEView()
     static let sharedSoundNotification = SoundNotification()
