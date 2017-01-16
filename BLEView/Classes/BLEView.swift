@@ -19,12 +19,12 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
     override open func viewDidLoad() {
         super.viewDidLoad()
         BlModel.sharedBlTextCentral.bleSetting()
-         BlModel.sharedBlTextPeripheral.bleSetting()
+        BlModel.sharedBlTextPeripheral.bleSetting()
         self.textSam = UITextField(frame: CGRect(x: 0, y: 150, width: self.view.bounds.width, height: 30))
         self.textSam.delegate = self
         self.view.addSubview(textSam)
         rtUserDefaults.set("", forKey: "DataStore")
-    
+        
     }
     
     override open func didReceiveMemoryWarning() {
@@ -83,4 +83,6 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
         let BLEDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/2))
         self.view.addSubview(BLEDraw)
     }
+    
 }
+

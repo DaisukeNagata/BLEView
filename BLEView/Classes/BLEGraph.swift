@@ -9,6 +9,7 @@
 import UIKit
 
 class BLEGraph: UIView {
+    
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     var numArray :[Int] = []
@@ -17,129 +18,105 @@ class BLEGraph: UIView {
     var lineLayer = CAShapeLayer()
     var animation = CABasicAnimation(keyPath: "strokeEnd")
     var lineW = UIBezierPath()
+    var count = 0
+    var lineCheck  =  0
+    var countLine : CGFloat  =  0
+    var labelCount = Int()
+    var one = BlModel.sharedBlUILabelOne
+    var two = BlModel.sharedBlUILabelTwo
+    var three = BlModel.sharedBlUILabelThree
+    var four = BlModel.sharedBlUILabelFour
+    var five = BlModel.sharedBlUILabelFive
+    var six = BlModel.sharedBlUILabelSix
+    var seven = BlModel.sharedBlUILabelSeven
+    var eight = BlModel.sharedBlUILabelEight
+    
     
     override func draw(_ rect: CGRect) {
+        
         
         numArray = BlModel.sharedBLEGraph.getArray()
         self.transform = CGAffineTransform(scaleX: 1, y: -1)
         line.lineWidth = 4
+        line.move(to: CGPoint(x: 0, y: 0))
+        lineLayer.fillColor = UIColor.clear.cgColor
+        if numArray.count != 0 {
+            for _ in 1...numArray.count {
+                self.count += 50
+                labelCount += 1
+                line.addLine(to: CGPoint(x: self.count, y: self.numArray[numArray.count-1]))
+                lineLayer.fillColor = UIColor.clear.cgColor
+            }
+        }
+        if labelCount > 0 {
+            labelSet(label: one)
+            one.frame = CGRect(x:25,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+            one.text = (self.numArray[numArray.count-1]/4).description
+            self.addSubview(one)
+        }
+        if labelCount > 1 {
+            labelSet(label: two)
+            two.frame = CGRect(x:75,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+            two.text = (self.numArray[numArray.count-1]/4).description
+            self.addSubview(two)
+        }
+        if labelCount > 2 {
+            labelSet(label: three)
+            three.frame = CGRect(x:125,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+            three.text = (self.numArray[numArray.count-1]/4).description
+            self.addSubview(three)
+        }
+        if labelCount > 3 {
+            labelSet(label: four)
+            four.frame = CGRect(x:175,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+            four.text = (self.numArray[numArray.count-1]/4).description
+            self.addSubview(four)
+        }
+        if labelCount > 4 {
+            labelSet(label: five)
+            five.frame = CGRect(x:225,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+            five.text = (self.numArray[numArray.count-1]/4).description
+            self.addSubview(five)
+        }
+        if labelCount > 5 {
+            labelSet(label: six)
+            six.frame = CGRect(x:275,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+            six.text = (self.numArray[numArray.count-1]/4).description
+            self.addSubview(six)
+        }
+        if labelCount > 6 {
+            labelSet(label: seven)
+            seven.frame = CGRect(x:325,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+            seven.text = (self.numArray[numArray.count-1]/4).description
+            self.addSubview(seven)
+        }
+        if labelCount > 7 {
+            labelSet(label: eight)
+            eight.frame = CGRect(x:375,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+            eight.text = (self.numArray[numArray.count-1]/4).description
+            self.addSubview(eight)
+        }
         
-        if numArray.count > 0 {
-            line.move(to: CGPoint(x: 0, y: 0))
-            line.addLine(to: CGPoint(x: 25, y: self.numArray[0]))
-            lineLayer.fillColor = UIColor.clear.cgColor
-            BlModel.sharedBlUILabelOne.alpha = 1
-            BlModel.sharedBlUILabelOne.transform = self.transform
-            BlModel.sharedBlUILabelOne.frame = CGRect(x:25,y:self.numArray[0]+20,width:25,height:25)
-            BlModel.sharedBlUILabelOne.text = (self.numArray[0]/4).description
-            self.addSubview(BlModel.sharedBlUILabelOne)
-        }
-        if numArray.count == 1{
-            setShapeLayer()
-        }
-        if numArray.count > 1 {
-            line.addLine(to: CGPoint(x: 75, y: self.numArray[1]))
-            BlModel.sharedBlUILabelTwo.alpha = 1
-            BlModel.sharedBlUILabelTwo.transform = self.transform
-            BlModel.sharedBlUILabelTwo.frame = CGRect(x:75,y:self.numArray[1]+20,width:25,height:25)
-            BlModel.sharedBlUILabelTwo.text = (self.numArray[1]/4).description
-            self.addSubview(BlModel.sharedBlUILabelTwo)
-        }
-        if numArray.count == 2{
-            setShapeLayer()
-        }
-        if numArray.count > 2 {
-            line.addLine(to: CGPoint(x: 125, y: self.numArray[2]))
-            BlModel.sharedBlUILabelThree.alpha = 1
-            BlModel.sharedBlUILabelThree.transform = self.transform
-            BlModel.sharedBlUILabelThree.frame = CGRect(x:125,y:self.numArray[2]+20,width:25,height:25)
-            BlModel.sharedBlUILabelThree.text = (self.numArray[2]/4).description
-            self.addSubview(BlModel.sharedBlUILabelThree)
-            UIColor.red.setStroke()
-        }
-        if numArray.count == 3{
-            setShapeLayer()
-        }
-        if numArray.count > 3 {
-            line.addLine(to: CGPoint(x: 175, y: self.numArray[3]))
-            BlModel.sharedBlUILabelFour.alpha = 1
-            BlModel.sharedBlUILabelFour.transform = self.transform
-            BlModel.sharedBlUILabelFour.frame = CGRect(x:175,y:self.numArray[3]+20,width:25,height:25)
-            BlModel.sharedBlUILabelFour.text = (self.numArray[3]/4).description
-            self.addSubview(BlModel.sharedBlUILabelFour)
-        }
-        if numArray.count == 4{
-            setShapeLayer()
-        }
-        if numArray.count > 4 {
-            line.addLine(to: CGPoint(x: 225, y: self.numArray[4]))
-            BlModel.sharedBlUILabelFive.alpha = 1
-            BlModel.sharedBlUILabelFive.transform = self.transform
-            BlModel.sharedBlUILabelFive.frame = CGRect(x:225,y:self.numArray[4]+20,width:25,height:25)
-            BlModel.sharedBlUILabelFive.text = (self.numArray[4]/4).description
-            self.addSubview(BlModel.sharedBlUILabelFive)
-        }
-        if numArray.count == 5{
-            setShapeLayer()
-        }
-        if numArray.count > 5 {
-            line.addLine(to: CGPoint(x: 275, y: self.numArray[5]))
-            BlModel.sharedBlUILabelSix.alpha = 1
-            BlModel.sharedBlUILabelSix.transform = self.transform
-            BlModel.sharedBlUILabelSix.frame = CGRect(x:275,y:self.numArray[5]+20,width:25,height:25)
-            BlModel.sharedBlUILabelSix.text = (self.numArray[5]/4).description
-            self.addSubview(BlModel.sharedBlUILabelSix)
-        }
-        if numArray.count == 6{
-            setShapeLayer()
-        }
-        if numArray.count > 6 {
-            line.addLine(to: CGPoint(x: 325, y: self.numArray[6]))
-            BlModel.sharedBlUILabelSeven.alpha = 1
-            BlModel.sharedBlUILabelSeven.transform = self.transform
-            BlModel.sharedBlUILabelSeven.frame = CGRect(x:325,y:self.numArray[6]+20,width:25,height:25)
-            BlModel.sharedBlUILabelSeven.text = (self.numArray[6]/4).description
-            self.addSubview(BlModel.sharedBlUILabelSeven)
-        }
-        if numArray.count == 7{
-            setShapeLayer()
-        }
-        if numArray.count > 7 {
-            line.addLine(to: CGPoint(x: 375, y: self.numArray[7]))
-            BlModel.sharedBlUILabelEight.alpha = 1
-            BlModel.sharedBlUILabelEight.transform = self.transform
-            BlModel.sharedBlUILabelEight.frame = CGRect(x:375,y:self.numArray[7]+20,width:25,height:25)
-            BlModel.sharedBlUILabelEight.text = (self.numArray[7]/4).description
-            self.addSubview(BlModel.sharedBlUILabelEight)
-        }
-        if numArray.count == 8{
-            setShapeLayer()
-        }
-         UIColor.red.setStroke()
+        UIColor.red.setStroke()
         line.stroke()
-        // 起点
-        lineW.move(to: CGPoint(x: 0, y: 50));
-        lineW.addLine(to: CGPoint(x: screenWidth, y: 50));
-        lineW.move(to: CGPoint(x: 0, y: 100));
-        lineW.addLine(to: CGPoint(x: screenWidth, y: 100));
-        lineW.move(to: CGPoint(x: 0, y: 150));
-        lineW.addLine(to: CGPoint(x: screenWidth, y: 150));
-        lineW.move(to: CGPoint(x: 0, y: 200));
-        lineW.addLine(to: CGPoint(x: screenWidth, y: 200));
-        lineW.move(to: CGPoint(x: 0, y: 250));
-        lineW.addLine(to: CGPoint(x: screenWidth, y: 250));
-        lineW.move(to: CGPoint(x: 0, y: 300));
-        lineW.addLine(to: CGPoint(x: screenWidth, y: 300));
-        lineW.move(to: CGPoint(x: 0, y: 350));
-        lineW.addLine(to: CGPoint(x: screenWidth, y: 350));
-        lineW.close()
         
-        // 色の設定
-        UIColor.white.setStroke()
-        // ライン幅
-        lineW.lineWidth = 1
-        // 描画
-        lineW.stroke();
+        for _ in 0...8{
+            lineCheck += 50
+            countLine += 50
+            lineW.move(to: CGPoint(x: 0, y: lineCheck))
+            lineW.addLine(to: CGPoint(x: screenWidth, y: countLine))
+            lineW.close()
+            UIColor.white.setStroke()
+            lineW.lineWidth = 1
+            lineW.stroke()
+        }
+    }
+    
+    func labelSet(label:UILabel)->UILabel{
+        label.alpha = 1
+        label.transform = self.transform
+        setShapeLayer()
+        return label
     }
     
     func setShapeLayer(){
@@ -173,12 +150,6 @@ class BLEGraph: UIView {
         if numArray.count > 8 {
             numArray.removeAll()
             BlModel.sharedBlUILabelOne.alpha = 0
-            BlModel.sharedBlUILabelTwo.alpha = 0
-            BlModel.sharedBlUILabelThree.alpha = 0
-            BlModel.sharedBlUILabelFour.alpha = 0
-            BlModel.sharedBlUILabelFive.alpha = 0
-            BlModel.sharedBlUILabelSix.alpha = 0
-            BlModel.sharedBlUILabelSeven.alpha = 0
         }
         return numArray
     }
