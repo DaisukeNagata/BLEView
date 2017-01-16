@@ -24,5 +24,6 @@ class BlModel {
     static let sharedBlUILabelFive = BLUILabel()
     static let sharedBlUILabelSix = BLUILabel()
     static let sharedBlUILabelSeven = BLUILabel()
+    static let sharedBlUILabelEight = BLUILabel()
     
 }
