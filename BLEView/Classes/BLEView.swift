@@ -52,12 +52,13 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
     }
     
     //接続情報の確認
-    open func setRSSI(rssi:NSNumber)->NSNumber{
+    open func setRSSI(rssi:NSNumber)->Int{
         var  rssi = BlModel.sharedBlTextCentral.number
+        var rssiSet = rssi as! Int
         if rssi == nil {
             rssi = 0
         }
-        return rssi! as NSNumber
+        return  rssi as! Int
     }
     
     //接続端末名の確認
@@ -79,7 +80,6 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
         // Screen Size の取得
         let screenWidth = self.view.bounds.width
         let screenHeight = self.view.bounds.height
-        
         let BLEDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/2))
         self.view.addSubview(BLEDraw)
     }

@@ -45,7 +45,7 @@ class ViewController: BLEView {
         let numRssi = BLEView().setRSSI(rssi: self.num)
         //接続端末の取得
         let name = BLEView().setName(name:st)
-        textView.text = ("\("Radial strength"+numRssi.description + "\n"+name)")
+        textView.text = ("\("Radial strength"+(numRssi * -1 ).description + "\n"+name)")
         drawView(num: self.num)
         return true
     }
