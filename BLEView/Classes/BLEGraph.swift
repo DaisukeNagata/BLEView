@@ -17,48 +17,144 @@ class BLEGraph: UIView {
     var lineLayer = CAShapeLayer()
     var animation = CABasicAnimation(keyPath: "strokeEnd")
     var lineW = UIBezierPath()
-
+    var label = UILabel()
+    var label2 = UILabel()
+    var label3 = UILabel()
+    var label4 = UILabel()
+    var label5 = UILabel()
+    var label6 = UILabel()
+    var label7 = UILabel()
+    var label8 = UILabel()
+    
     override func draw(_ rect: CGRect) {
         
         numArray = BlModel.sharedBLEGraph.getArray()
         self.transform = CGAffineTransform(scaleX: 1, y: -1)
         line.lineWidth = 4
-
+        label.backgroundColor = UIColor.gray
+        label2.backgroundColor = UIColor.gray
+        label3.backgroundColor = UIColor.gray
+        label4.backgroundColor = UIColor.gray
+        label5.backgroundColor = UIColor.gray
+        label6.backgroundColor = UIColor.gray
+        label7.backgroundColor = UIColor.gray
+        label8.backgroundColor = UIColor.gray
+        label.alpha = 1
+        label2.alpha = 1
+        label3.alpha = 1
+        label4.alpha = 1
+        label5.alpha = 1
+        label6.alpha = 1
+        label7.alpha = 1
+        label8.alpha = 1
+        
         if numArray.count > 0 {
             line.move(to: CGPoint(x: 0, y: 0))
             line.addLine(to: CGPoint(x: 25, y: self.numArray[0]))
             lineLayer.fillColor = UIColor.clear.cgColor
-            setShapeLayer()
+            label.frame = CGRect(x:25,y:self.numArray[0]+20,width:25,height:25)
+            label.transform = self.transform
+            label.text = (self.numArray[0]/4).description
+            self.addSubview(label)
+            UIColor.red.setStroke()
+            line.lineWidth = 4
+            line.stroke()
+            if numArray.count == 1{
+                setShapeLayer()
+            }
         }
         if numArray.count > 1 {
             line.addLine(to: CGPoint(x: 75, y: self.numArray[1]))
-            setShapeLayer()
+            label2.frame = CGRect(x:75,y:self.numArray[1]+20,width:25,height:25)
+            label2.transform = self.transform
+            label2.text = (self.numArray[1]/4).description
+            self.addSubview(label2)
+            UIColor.red.setStroke()
+            line.lineWidth = 4
+            line.stroke()
+            if numArray.count == 2{
+                setShapeLayer()
+            }
         }
         if numArray.count > 2 {
             line.addLine(to: CGPoint(x: 125, y: self.numArray[2]))
-            setShapeLayer()
+            label3.frame = CGRect(x:125,y:self.numArray[2]+20,width:25,height:25)
+            label3.transform = self.transform
+            label3.text = (self.numArray[2]/4).description
+            self.addSubview(label3)
+            UIColor.red.setStroke()
+            line.lineWidth = 4
+            line.stroke()
+            if numArray.count == 3{
+                setShapeLayer()
+            }
         }
         if numArray.count > 3 {
             line.addLine(to: CGPoint(x: 175, y: self.numArray[3]))
-            setShapeLayer()
+            label4.frame = CGRect(x:175,y:self.numArray[3]+20,width:25,height:25)
+            label4.transform = self.transform
+            label4.text = (self.numArray[3]/4).description
+            self.addSubview(label4)
+            UIColor.red.setStroke()
+            line.lineWidth = 4
+            line.stroke()
+            if numArray.count == 4{
+                setShapeLayer()
+            }
         }
         if numArray.count > 4 {
             line.addLine(to: CGPoint(x: 225, y: self.numArray[4]))
-            setShapeLayer()
+            label5.frame = CGRect(x:225,y:self.numArray[4]+20,width:25,height:25)
+            label5.transform = self.transform
+            label5.text = (self.numArray[4]/4).description
+            self.addSubview(label5)
+            UIColor.red.setStroke()
+            line.lineWidth = 4
+            line.stroke()
+            if numArray.count == 5{
+                setShapeLayer()
+            }
         }
         if numArray.count > 5 {
             line.addLine(to: CGPoint(x: 275, y: self.numArray[5]))
-            setShapeLayer()
+            label6.frame = CGRect(x:275,y:self.numArray[5]+20,width:25,height:25)
+            label6.transform = self.transform
+            label6.text = (self.numArray[5]/4).description
+            self.addSubview(label6)
+            UIColor.red.setStroke()
+            line.lineWidth = 4
+            line.stroke()
+            if numArray.count == 6{
+                setShapeLayer()
+            }
         }
         if numArray.count > 6 {
             line.addLine(to: CGPoint(x: 325, y: self.numArray[6]))
-            setShapeLayer()
+            label7.frame = CGRect(x:325,y:self.numArray[6]+20,width:25,height:25)
+            label7.transform = self.transform
+            label7.text = (self.numArray[6]/4).description
+            self.addSubview(label7)
+            UIColor.red.setStroke()
+            line.lineWidth = 4
+            line.stroke()
+            if numArray.count == 7{
+                setShapeLayer()
+            }
         }
         if numArray.count > 7 {
             line.addLine(to: CGPoint(x: 375, y: self.numArray[7]))
-            setShapeLayer()
+            label8.frame = CGRect(x:375,y:self.numArray[7]+20,width:25,height:25)
+            label8.transform = self.transform
+            label8.text = (self.numArray[7]/4).description
+            self.addSubview(label8)
+            UIColor.red.setStroke()
+            line.lineWidth = 4
+            line.stroke()
+            if numArray.count == 8{
+                setShapeLayer()
+            }
         }
-
+        
         // 起点
         lineW.move(to: CGPoint(x: 0, y: 50));
         lineW.addLine(to: CGPoint(x: screenWidth, y: 50));
@@ -83,12 +179,14 @@ class BLEGraph: UIView {
         // 描画
         lineW.stroke();
     }
+    
     func setShapeLayer(){
         shapeLayer(shape: lineLayer)
         animationDraw(animation: animation)
         self.layer.addSublayer(shapeLayer(shape: lineLayer))
         shapeLayer(shape: lineLayer).add(animation, forKey: nil)
     }
+    
     func shapeLayer(shape:CAShapeLayer)->CAShapeLayer{
         shape.lineWidth = 4
         shape.strokeColor = UIColor.blue.cgColor
@@ -106,11 +204,20 @@ class BLEGraph: UIView {
         animation.isRemovedOnCompletion = true
         return animation
     }
+    
     func getArray()->[Int]{
         let number = BLEView().setRSSI(rssi: num) as! Int
         numArray+=[number * -4]
         if numArray.count > 8 {
             numArray.removeAll()
+            label.alpha = 0
+            label2.alpha = 0
+            label3.alpha = 0
+            label4.alpha = 0
+            label5.alpha = 0
+            label6.alpha = 0
+            label7.alpha = 0
+            label8.alpha = 0
         }
         return numArray
     }
