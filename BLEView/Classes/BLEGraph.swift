@@ -17,10 +17,8 @@ class BLEGraph: UIView {
     var lineLayer = CAShapeLayer()
     var animation = CABasicAnimation(keyPath: "strokeEnd")
     var lineW = UIBezierPath()
-    var count = 0
     var lineCheck  =  0
     var countLine : CGFloat  =  0
-    var labelCount = Int()
     var one = BlModel.sharedBlUILabelOne
     var two = BlModel.sharedBlUILabelTwo
     var three = BlModel.sharedBlUILabelThree
