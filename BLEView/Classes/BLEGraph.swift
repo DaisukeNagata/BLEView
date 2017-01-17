@@ -42,14 +42,14 @@ class BLEGraph: UIView {
         
         if numArray.count > 0 {
             line.addLine(to: CGPoint(x: 25, y: self.numArray[0]))
-            one.frame = CGRect(x:25,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+            one.frame = CGRect(x:25,y:self.numArray[0]+20,width:25,height:25)
             one.text = (self.numArray[0]/4).description
             self.addSubview(one)
             labelSet(label: one)
         }
         if numArray.count > 1 {
             line.addLine(to: CGPoint(x: 75, y: self.numArray[1]))
-            two.frame = CGRect(x:75,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+            two.frame = CGRect(x:75,y:self.numArray[1]+20,width:25,height:25)
             two.text = (self.numArray[1]/4).description
             self.addSubview(two)
             labelSet(label: two)
