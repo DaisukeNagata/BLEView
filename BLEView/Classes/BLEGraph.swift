@@ -39,61 +39,56 @@ class BLEGraph: UIView {
         line.lineWidth = 4
         line.move(to: CGPoint(x: 0, y: 0))
         lineLayer.fillColor = UIColor.clear.cgColor
-        if numArray.count != 0 {
-            for _ in 1...numArray.count {
-                self.count += 50
-                labelCount += 1
-                line.addLine(to: CGPoint(x: self.count, y: self.numArray[numArray.count-1]))
-                lineLayer.fillColor = UIColor.clear.cgColor
-            }
-        }
-        if labelCount > 0 {
-            labelSet(label: one)
+        
+        if numArray.count > 0 {
+            line.addLine(to: CGPoint(x: 25, y: self.numArray[0]))
             one.frame = CGRect(x:25,y:self.numArray[numArray.count-1]+20,width:25,height:25)
-            one.text = (self.numArray[numArray.count-1]/4).description
+            one.text = (self.numArray[0]/4).description
             self.addSubview(one)
+            labelSet(label: one)
         }
-        if labelCount > 1 {
-            labelSet(label: two)
+        if numArray.count > 1 {
+            line.addLine(to: CGPoint(x: 50, y: self.numArray[1]))
             two.frame = CGRect(x:75,y:self.numArray[numArray.count-1]+20,width:25,height:25)
-            two.text = (self.numArray[numArray.count-1]/4).description
+            two.text = (self.numArray[1]/4).description
             self.addSubview(two)
+            labelSet(label: two)
         }
-        if labelCount > 2 {
-            labelSet(label: three)
-            three.frame = CGRect(x:125,y:self.numArray[numArray.count-1]+20,width:25,height:25)
-            three.text = (self.numArray[numArray.count-1]/4).description
+        if numArray.count > 2 {
+            three.frame = CGRect(x:125,y:self.numArray[2]+20,width:25,height:25)
+            three.text = (self.numArray[2]/4).description
             self.addSubview(three)
+            labelSet(label: three)
         }
-        if labelCount > 3 {
-            labelSet(label: four)
-            four.frame = CGRect(x:175,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+        if numArray.count > 3 {
+            four.frame = CGRect(x:175,y:self.numArray[3]+20,width:25,height:25)
             four.text = (self.numArray[numArray.count-1]/4).description
             self.addSubview(four)
+            labelSet(label: four)
         }
-        if labelCount > 4 {
-            labelSet(label: five)
-            five.frame = CGRect(x:225,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+        if numArray.count > 4 {
+            five.frame = CGRect(x:225,y:self.numArray[4]+20,width:25,height:25)
             five.text = (self.numArray[numArray.count-1]/4).description
             self.addSubview(five)
+            labelSet(label: five)
         }
-        if labelCount > 5 {
-            labelSet(label: six)
-            six.frame = CGRect(x:275,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+        if numArray.count > 5 {
+            six.frame = CGRect(x:275,y:self.numArray[5]+20,width:25,height:25)
             six.text = (self.numArray[numArray.count-1]/4).description
             self.addSubview(six)
+            labelSet(label: six)
         }
-        if labelCount > 6 {
-            labelSet(label: seven)
-            seven.frame = CGRect(x:325,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+        if numArray.count > 6 {
+            seven.frame = CGRect(x:325,y:self.numArray[6]+20,width:25,height:25)
             seven.text = (self.numArray[numArray.count-1]/4).description
             self.addSubview(seven)
+            labelSet(label: seven)
         }
-        if labelCount > 7 {
-            labelSet(label: eight)
-            eight.frame = CGRect(x:375,y:self.numArray[numArray.count-1]+20,width:25,height:25)
+        if numArray.count > 7 {
+            eight.frame = CGRect(x:375,y:self.numArray[7]+20,width:25,height:25)
             eight.text = (self.numArray[numArray.count-1]/4).description
             self.addSubview(eight)
+            labelSet(label: eight)
         }
         
         UIColor.red.setStroke()

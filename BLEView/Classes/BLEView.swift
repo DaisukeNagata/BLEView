@@ -11,7 +11,7 @@ import CoreBluetooth
 
 
 @available(iOS 10.0, *)
-open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
+open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UIViewControllerPreviewingDelegate {
     
     open var textSam: UITextField!
     open var rtUserDefaults = UserDefaults.standard
@@ -24,7 +24,10 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
         self.textSam.delegate = self
         self.view.addSubview(textSam)
         rtUserDefaults.set("", forKey: "DataStore")
-        
+        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+            print("3D Touch available")
+            registerForPreviewing(with: self, sourceView: view)
+        }
     }
     
     override open func didReceiveMemoryWarning() {
@@ -81,8 +84,26 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate {
         let screenWidth = self.view.bounds.width
         let screenHeight = self.view.bounds.height
         let BLEDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/2))
+        
         self.view.addSubview(BLEDraw)
     }
+    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        print("viewControllerForLocation")
+        
+//        // UIViewControllerのサブクラスであれば良さそうなのでUIAlertControllerで代用
+//        let alert = UIAlertController(title: "3D Touch", message: "Pressed", preferredStyle: UIAlertControllerStyle.alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action -> Void in print("OKが押されました。") })
+        // Screen Size の取得
+        let screenWidth = self.view.bounds.width
+        let screenHeight = self.view.bounds.height
+        let BLEDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/2))
+        self.view.addSubview(BLEDraw)
+        return BlModel.sharedBLEView
+    }
     
+    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        print("viewControllerToCommit")
+    }
 }
+
 
