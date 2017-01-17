@@ -81,7 +81,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         return true
     }
     
-    public func drawView(num:NSNumber){
+    public func BLEDrawView(num:NSNumber){
         // Screen Size の取得
         let screenWidth = self.view.bounds.width
         let screenHeight = self.view.bounds.height
