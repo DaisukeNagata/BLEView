@@ -87,8 +87,9 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     func pushCut(){
         
         print("接続カット！")
-        self.centralManager.cancelPeripheralConnection(BlModel.sharedBlTextPeripheral.peripheral)
-        
+        if BlModel.sharedBlTextPeripheral.peripheral != nil {
+            self.centralManager.cancelPeripheralConnection(BlModel.sharedBlTextPeripheral.peripheral)
+        }        
     }
     
     func centralManager(_ central: CBCentralManager,
