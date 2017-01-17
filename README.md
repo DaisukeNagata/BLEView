@@ -15,7 +15,9 @@ If you have a terminal with the same application on first launch, you can connec
 When you enter a character string and press line feed, the character string entered to the connected terminal flows by voice.
 When you enter a letter, it represents the strength of the radio waves. As the terminal leaves, the value increases because the strength becomes weak.
 When you enter empty characters, you will get the explosion strength.
-
+###文字入力で音声BLE通信と電波強度を表示します。画面タップで電波強度を表示します。
+###Voice BLE communication and radio field intensity are displayed by character input. Display the radio field intensity with the screen tap.
+![](https://github.com/daisukenagata/BLEView/blob/master/BLE_MOVIE.gif?raw=true)
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
