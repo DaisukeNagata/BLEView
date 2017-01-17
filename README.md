@@ -8,13 +8,13 @@
 初回起動で同じアプリケーションを持った端末と通信接続できます。
 文字列を入力して、改行を押すと接続した端末に入力した文字列が音声で流れます。
 文字を入力すると電波の強度を表します。端末が離れると、強度が弱くなることに値が増加します。
-空文字を入力すると再度電波強度を取得します。
-
-If you have a terminal with the same application on first launch, you can connect.
+空文字を入力すると再度電波強度を取得します。画面をタップすると、電波強度のみ取得します。
+A communication connection can be established with a terminal that has the same application at the first activation.
 When you enter a character string and press line feed, the character string entered to the connected terminal flows by voice.
-When you enter a letter, it represents the strength of the radio waves. As the terminal leaves, the value increases because the strength becomes weak.
-When you enter empty characters, you will get the explosion strength.
-Voice BLE communication and radio field intensity are displayed by character input. Display the radio field intensity with the screen tap.
+When you enter a letter, it represents the strength of the radio waves. When the terminal leaves, the value increases to weakening intensity.
+When you enter empty characters, you will gain explosive strength. Tap the screen to get the radio field intensity.
+
+
 ![](https://github.com/daisukenagata/BLEView/blob/master/BLE.gif?raw=true)
 ## Example
 
