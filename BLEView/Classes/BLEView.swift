@@ -88,7 +88,6 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         self.view.addSubview(BLEDraw)
     }
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        print("viewControllerForLocation")
         
         setCut()
         let screenWidth = self.view.bounds.width
@@ -99,7 +98,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     }
     
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        print("viewControllerToCommit")
+
     }
 }
 
