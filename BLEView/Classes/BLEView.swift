@@ -57,7 +57,9 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     //接続情報の確認
     open func setRSSI(rssi:NSNumber)->Int{
         var  rssi = BlModel.sharedBlTextCentral.number
+        if rssi != nil {
         var rssiSet = rssi as! Int
+        }
         if rssi == nil {
             rssi = 0
         }

@@ -47,6 +47,7 @@ class ViewController: BLEView {
         let name = BLEView().setName(name:st)
         textView.text = ("\("Radial strength"+(numRssi * -1 ).description + "\n"+name)")
         drawView(num: self.num)
+            
         return true
     }
 }
