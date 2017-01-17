@@ -11,7 +11,6 @@ import UIKit
 class BLEGraph: UIView {
     
     let screenWidth = UIScreen.main.bounds.width
-    let screenHeight = UIScreen.main.bounds.height
     var numArray :[Int] = []
     var num = NSNumber()
     var line = UIBezierPath()
