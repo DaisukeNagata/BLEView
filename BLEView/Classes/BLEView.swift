@@ -90,10 +90,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         print("viewControllerForLocation")
         
-//        // UIViewControllerのサブクラスであれば良さそうなのでUIAlertControllerで代用
-//        let alert = UIAlertController(title: "3D Touch", message: "Pressed", preferredStyle: UIAlertControllerStyle.alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action -> Void in print("OKが押されました。") })
-        // Screen Size の取得
+        setCut()
         let screenWidth = self.view.bounds.width
         let screenHeight = self.view.bounds.height
         let BLEDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/2))
