@@ -9,6 +9,8 @@
 文字列を入力して、改行を押すと接続した端末に入力した文字列が音声で流れます。
 文字を入力すると電波の強度を表します。端末が離れると、強度が弱くなることに値が増加します。
 空文字を入力すると再度電波強度を取得します。画面をタップすると、電波強度のみ取得します。
+
+
 A communication connection can be established with a terminal that has the same application at the first activation.
 When you enter a character string and press line feed, the character string entered to the connected terminal flows by voice.
 When you enter a letter, it represents the strength of the radio waves. When the terminal leaves, the value increases to weakening intensity.
