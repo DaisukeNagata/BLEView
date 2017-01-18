@@ -139,7 +139,7 @@ class BLEGraph: UIView {
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         animation.fromValue = 0.0
         animation.toValue = 1.0
-        animation.fillMode = kCAFillModeBackwards
+        animation.fillMode = kCAFillModeForwards
         animation.isRemovedOnCompletion = true
         return animation
     }
