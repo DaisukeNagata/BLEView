@@ -85,7 +85,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         // Screen Size の取得
         let screenWidth = self.view.bounds.width
         let screenHeight = self.view.bounds.height
-        let BLEDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/1.5))
+        let BLEDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2.495, width: screenWidth, height: screenHeight/1.5))
         
         self.view.addSubview(BLEDraw)
     }
@@ -94,7 +94,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         setCut()
         let screenWidth = self.view.bounds.width
         let screenHeight = self.view.bounds.height
-        let BLEDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/1.5))
+        let BLEDraw = BLEGraph(frame: CGRect(x: 0, y: screenHeight/2.495, width: screenWidth, height: screenHeight/1.5))
         self.view.addSubview(BLEDraw)
         return BlModel.sharedBLEView
     }
