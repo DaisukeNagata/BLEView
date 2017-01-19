@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BLEView'
-  s.version          = '0.5.5'
+  s.version          = '0.6.0'
   s.summary       = 'It is a BLE communication librarySetting'
 
 # This description is used to generate tags and improve search results.
@@ -28,7 +28,7 @@ TODO: It is a BLE communication library. Two devices are required.
   s.source           = { :git => 'https://github.com/daisukenagata/BLEView.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/dbank0208'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '10.2'
 
   s.source_files = 'BLEView/Classes/**/*'
   
