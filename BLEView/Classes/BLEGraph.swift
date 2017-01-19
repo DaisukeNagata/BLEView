@@ -44,57 +44,57 @@ class BLEGraph: UIView {
             line.addLine(to: CGPoint(x: 25, y: self.numArray[0]))
             one.frame = CGRect(x:25,y:self.numArray[0]+countHeight,width:cgrect,height:cgrect)
             one.text = (self.numArray[0]/4).description
-            self.addSubview(one)
             labelSet(label: one)
+            self.addSubview(one)
         }
         if numArray.count > 1 {
             line.addLine(to: CGPoint(x: 75, y: self.numArray[1]))
             two.frame = CGRect(x:75,y:self.numArray[1]+countHeight,width:cgrect,height:cgrect)
             two.text = (self.numArray[1]/4).description
-            self.addSubview(two)
             labelSet(label: two)
+            self.addSubview(two)
         }
         if numArray.count > 2 {
             line.addLine(to: CGPoint(x: 125, y: self.numArray[2]))
             three.frame = CGRect(x:125,y:self.numArray[2]+countHeight,width:cgrect,height:cgrect)
             three.text = (self.numArray[2]/4).description
-            self.addSubview(three)
             labelSet(label: three)
+            self.addSubview(three)
         }
         if numArray.count > 3 {
             line.addLine(to: CGPoint(x: 175, y: self.numArray[3]))
             four.frame = CGRect(x:175,y:self.numArray[3]+countHeight,width:cgrect,height:cgrect)
             four.text = (self.numArray[3]/4).description
-            self.addSubview(four)
             labelSet(label: four)
+            self.addSubview(four)
         }
         if numArray.count > 4 {
             line.addLine(to: CGPoint(x: 225, y: self.numArray[4]))
             five.frame = CGRect(x:225,y:self.numArray[4]+countHeight,width:cgrect,height:cgrect)
             five.text = (self.numArray[4]/4).description
-            self.addSubview(five)
             labelSet(label: five)
+            self.addSubview(five)
         }
         if numArray.count > 5 {
             line.addLine(to: CGPoint(x: 275, y: self.numArray[5]))
             six.frame = CGRect(x:275,y:self.numArray[5]+countHeight,width:cgrect,height:cgrect)
             six.text = (self.numArray[5]/4).description
-            self.addSubview(six)
             labelSet(label: six)
+            self.addSubview(six)
         }
         if numArray.count > 6 {
             line.addLine(to: CGPoint(x: 325, y: self.numArray[6]))
             seven.frame = CGRect(x:325,y:self.numArray[6]+countHeight,width:cgrect,height:cgrect)
             seven.text = (self.numArray[6]/4).description
-            self.addSubview(seven)
             labelSet(label: seven)
+            self.addSubview(seven)
         }
         if numArray.count > 7 {
             line.addLine(to: CGPoint(x: 375, y: self.numArray[7]))
             eight.frame = CGRect(x:375,y:self.numArray[7]+countHeight,width:cgrect,height:cgrect)
             eight.text = (self.numArray[7]/4).description
-            self.addSubview(eight)
             labelSet(label: eight)
+            self.addSubview(eight)
         }
         
         UIColor.red.setStroke()
