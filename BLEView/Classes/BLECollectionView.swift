@@ -41,9 +41,6 @@ class BLECollectionView: UIView,UICollectionViewDataSource {
         return numArray
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        guard BlModel.sharedBlTextCentral.name == nil else {
-//            return 2
-//        }
         return 1
     }
     
