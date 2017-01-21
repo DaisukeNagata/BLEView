@@ -25,10 +25,10 @@ class BLECollectionView: UIView,UICollectionViewDataSource {
         flowLayout.itemSize = CGSize(width:screenWidth, height:screenHeight)
         collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: flowLayout)
         collectionView.register(BLECell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(BLECell2.self, forCellWithReuseIdentifier: "cell2")
         collectionView.dataSource = self
         collectionView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight/2)
         self.addSubview(collectionView)
-        self.collectionView.reloadData()
         self.transform = CGAffineTransform(scaleX: 1, y: -1)
     }
     
@@ -42,15 +42,17 @@ class BLECollectionView: UIView,UICollectionViewDataSource {
         return numArray
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return getArray().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BLECell
-        
-        if BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx].name == BlModel.sharedBlTextPeripheral.peripheral[indexPath.row].name{
+        if BlModel.sharedBLETableView.indx == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BLECell
             return cell
+        } else {
+            let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath)  as! BLECell2
+            return cell2
         }
-        return cell
+           self.collectionView.reloadData()
     }
 }

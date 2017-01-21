@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BLECell : UICollectionViewCell{
+class BLECell2 : UICollectionViewCell{
     
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
@@ -16,7 +16,7 @@ class BLECell : UICollectionViewCell{
     var num = NSNumber()
     var line = UIBezierPath()
     var lineLayer = CAShapeLayer()
-    var animation = CABasicAnimation(keyPath: "strokeEnd")
+    var animation = CABasicAnimation(keyPath: "strokeEndd")
     var lineW = UIBezierPath()
     var lineCheck  =  0
     var countLine : CGFloat  =  0
@@ -38,7 +38,8 @@ class BLECell : UICollectionViewCell{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        numArray = BlModel.sharedBLECollectionView.getArray()
+        
+        numArray = BlModel.sharedBLECollectionView2.getArray()
         
         self.transform = CGAffineTransform(scaleX: 1, y: -1)
         line.lineWidth = 4

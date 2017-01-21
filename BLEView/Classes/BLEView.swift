@@ -30,11 +30,25 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
             print("3D Touch available")
             registerForPreviewing(with: self, sourceView: view)
         }
+        
+        
+        // single swipe up
+        let swipeUpGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action:#selector(handleSwipeUp))
+        swipeUpGesture.numberOfTouchesRequired = 1
+        swipeUpGesture.direction = UISwipeGestureRecognizerDirection.up
+        self.view.addGestureRecognizer(swipeUpGesture)
+
     }
     
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
+    }
+    
+    func handleSwipeUp(sender: UITapGestureRecognizer){
+        setBLETableView()
+
+        print("Swiped up!")
     }
     
     //接続開始
@@ -49,6 +63,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     
     //接続解除
     open func setCut(){
+         self.setBLETableView()
         BlModel.sharedBLETableView.cellCount = 0
         BlModel.sharedBlTextCentral.pushCut()
         BlModel.sharedBlTextPeripheral.stopAdvertise()
@@ -85,16 +100,10 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     
     public func BLEDrawView(num:NSNumber){
         self.setBLEGraphView()
-        if  BlModel.sharedBlTextPeripheral.characteristic  == nil{
-        self.setBLETableView()
-        }
     }
     
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         self.setBLEGraphView()
-        if  BlModel.sharedBlTextPeripheral.characteristic  == nil{
-        self.setBLETableView()
-        }
         return BlModel.sharedBLEView
     }
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
@@ -104,7 +113,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     func setBLEGraphView(){
         let screenWidth = self.view.bounds.width
         let screenHeight = self.view.bounds.height
-        let BLEDraw = BLECollectionView(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/2))
+        let BLEDraw = BLECollectionView(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/1.7))
         self.view.addSubview(BLEDraw)
     }
     

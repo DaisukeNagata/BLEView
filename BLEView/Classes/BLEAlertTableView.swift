@@ -29,7 +29,8 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
         BlModel.sharedBLEView.nameArray.removeAll()
         BlModel.sharedBLETableView.indx =  indexPath.row
         BlModel.sharedBLEView.setVoice(ddd: "接続しました")
-        tableView.alpha = 0
+        self.reloadData()
+       tableView.alpha = 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{

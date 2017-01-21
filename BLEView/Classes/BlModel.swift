@@ -16,7 +16,8 @@ class BlModel {
     static let sharedBlTextCentral = BlTextCentral()
     static let sharedBlModel = BlModel()
     static let sharedBLECollectionView = BLECollectionView()
-     static let sharedBLECell = BLECell()
+    static let sharedBLECollectionView2 = BLECollectionView()
+    static let sharedBLECell = BLECell()
     static let sharedBLETableView = BLEAlertTableView()
     /////UILabel
     static let sharedBlUILabelOne = BLUILabel()
