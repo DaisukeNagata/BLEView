@@ -46,9 +46,8 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     }
     
     func handleSwipeUp(sender: UITapGestureRecognizer){
+        BlModel.sharedBLEView.setCut()
         setBLETableView()
-
-        print("Swiped up!")
     }
     
     //接続開始
@@ -63,7 +62,6 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     
     //接続解除
     open func setCut(){
-         self.setBLETableView()
         BlModel.sharedBLETableView.cellCount = 0
         BlModel.sharedBlTextCentral.pushCut()
         BlModel.sharedBlTextPeripheral.stopAdvertise()
