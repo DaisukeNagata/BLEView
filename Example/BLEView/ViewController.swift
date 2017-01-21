@@ -14,6 +14,7 @@ class ViewController: BLEView {
     var dd = BLEView().textSam
     var num = NSNumber()
     var st = String()
+    var sks:[String] = []
     
     @IBOutlet weak var textView: UITextView!
     
@@ -24,6 +25,7 @@ class ViewController: BLEView {
         dd?.backgroundColor = UIColor.lightGray
         self.view.addSubview(dd!)
         dd?.delegate = self
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,7 +35,6 @@ class ViewController: BLEView {
     
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         dd?.resignFirstResponder()
-        
         guard dd?.text != "" else {
             BLEView().setCut()
             textView?.text = ""
@@ -47,7 +48,6 @@ class ViewController: BLEView {
         let name = BLEView().setName(name:st)
         textView.text = ("\("Radial strength"+(numRssi * -1 ).description + "\n"+name)")
         BLEDrawView(num: self.num)
-            
         return true
     }
 }

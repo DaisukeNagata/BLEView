@@ -1,15 +1,16 @@
 //
-//  BLEGraph.swift
+//  BLECell.swift
 //  Pods
 //
-//  Created by 永田大祐 on 2017/01/15.
+//  Created by 永田大祐 on 2017/01/21.
 //
 //
 
 import UIKit
 
-class BLEGraph: UIView {
+class BLECell : UICollectionViewCell{
     
+    let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
     var numArray :[Int] = []
     var num = NSNumber()
@@ -19,7 +20,7 @@ class BLEGraph: UIView {
     var lineW = UIBezierPath()
     var lineCheck  =  0
     var countLine : CGFloat  =  0
-    var countHeight = 50
+    var countHeight = 200
     var cgrect = 25
     var one = BlModel.sharedBlUILabelOne
     var two = BlModel.sharedBlUILabelTwo
@@ -31,85 +32,77 @@ class BLEGraph: UIView {
     var eight = BlModel.sharedBlUILabelEight
     
     
-    override func draw(_ rect: CGRect) {
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
+        numArray = BlModel.sharedBLECollectionView.getArray()
         
-        numArray = BlModel.sharedBLEGraph.getArray()
         self.transform = CGAffineTransform(scaleX: 1, y: -1)
         line.lineWidth = 4
-        line.move(to: CGPoint(x: 0, y: 0))
+        line.move(to: CGPoint(x: 0, y: 100))
         lineLayer.fillColor = UIColor.clear.cgColor
-        
+//        if BlModel.sharedBLETableView.indx == 0 {
         if numArray.count > 0 {
-            line.addLine(to: CGPoint(x: 25, y: self.numArray[0]))
+            line.addLine(to: CGPoint(x: 25, y: self.numArray[0]+150))
             one.frame = CGRect(x:25,y:self.numArray[0]+countHeight,width:cgrect,height:cgrect)
             one.text = (self.numArray[0]/4).description
             labelSet(label: one)
             self.addSubview(one)
         }
         if numArray.count > 1 {
-            line.addLine(to: CGPoint(x: 75, y: self.numArray[1]))
+            line.addLine(to: CGPoint(x: 75, y: self.numArray[1]+150))
             two.frame = CGRect(x:75,y:self.numArray[1]+countHeight,width:cgrect,height:cgrect)
             two.text = (self.numArray[1]/4).description
             labelSet(label: two)
             self.addSubview(two)
         }
         if numArray.count > 2 {
-            line.addLine(to: CGPoint(x: 125, y: self.numArray[2]))
+            line.addLine(to: CGPoint(x: 125, y: self.numArray[2]+150))
             three.frame = CGRect(x:125,y:self.numArray[2]+countHeight,width:cgrect,height:cgrect)
             three.text = (self.numArray[2]/4).description
             labelSet(label: three)
             self.addSubview(three)
         }
         if numArray.count > 3 {
-            line.addLine(to: CGPoint(x: 175, y: self.numArray[3]))
+            line.addLine(to: CGPoint(x: 175, y: self.numArray[3]+150))
             four.frame = CGRect(x:175,y:self.numArray[3]+countHeight,width:cgrect,height:cgrect)
             four.text = (self.numArray[3]/4).description
             labelSet(label: four)
             self.addSubview(four)
         }
         if numArray.count > 4 {
-            line.addLine(to: CGPoint(x: 225, y: self.numArray[4]))
+            line.addLine(to: CGPoint(x: 225, y: self.numArray[4]+150))
             five.frame = CGRect(x:225,y:self.numArray[4]+countHeight,width:cgrect,height:cgrect)
             five.text = (self.numArray[4]/4).description
             labelSet(label: five)
             self.addSubview(five)
         }
         if numArray.count > 5 {
-            line.addLine(to: CGPoint(x: 275, y: self.numArray[5]))
+            line.addLine(to: CGPoint(x: 275, y: self.numArray[5]+150))
             six.frame = CGRect(x:275,y:self.numArray[5]+countHeight,width:cgrect,height:cgrect)
             six.text = (self.numArray[5]/4).description
             labelSet(label: six)
             self.addSubview(six)
         }
         if numArray.count > 6 {
-            line.addLine(to: CGPoint(x: 325, y: self.numArray[6]))
+            line.addLine(to: CGPoint(x: 325, y: self.numArray[6]+50))
             seven.frame = CGRect(x:325,y:self.numArray[6]+countHeight,width:cgrect,height:cgrect)
             seven.text = (self.numArray[6]/4).description
             labelSet(label: seven)
             self.addSubview(seven)
         }
         if numArray.count > 7 {
-            line.addLine(to: CGPoint(x: 375, y: self.numArray[7]))
+            line.addLine(to: CGPoint(x: 375, y: self.numArray[7]+150))
             eight.frame = CGRect(x:375,y:self.numArray[7]+countHeight,width:cgrect,height:cgrect)
             eight.text = (self.numArray[7]/4).description
             labelSet(label: eight)
             self.addSubview(eight)
         }
-        
-        UIColor.red.setStroke()
-        line.stroke()
-        
-        for _ in 0...8{
-            lineCheck += 50
-            countLine += 50
-            lineW.move(to: CGPoint(x: 0, y: lineCheck))
-            lineW.addLine(to: CGPoint(x: screenWidth, y: countLine))
-            lineW.close()
-            UIColor.white.setStroke()
-            lineW.lineWidth = 1
-            lineW.stroke()
-        }
+//        }
     }
     
     func labelSet(label:UILabel)->UILabel{
@@ -131,6 +124,7 @@ class BLEGraph: UIView {
         shape.strokeColor = UIColor.blue.cgColor
         shape.fillRule = kCAFillRuleEvenOdd
         shape.path = line.cgPath
+        self.layer.addSublayer(shape)
         return shape
     }
     
