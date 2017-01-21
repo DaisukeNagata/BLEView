@@ -28,6 +28,7 @@ class BLECollectionView: UIView,UICollectionViewDataSource {
         collectionView.dataSource = self
         collectionView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight/2)
         self.addSubview(collectionView)
+        self.collectionView.reloadData()
         self.transform = CGAffineTransform(scaleX: 1, y: -1)
     }
     
@@ -47,12 +48,9 @@ class BLECollectionView: UIView,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BLECell
         
-        if BlModel.sharedBlTextCentral.name == BlModel.sharedBlTextPeripheral.peripheral[indexPath.row].name{
+        if BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx].name == BlModel.sharedBlTextPeripheral.peripheral[indexPath.row].name{
             return cell
         }
-        let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell2.backgroundColor = UIColor.yellow
-        return cell2
+        return cell
     }
-    
 }

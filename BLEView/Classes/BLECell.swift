@@ -45,7 +45,7 @@ class BLECell : UICollectionViewCell{
         line.lineWidth = 4
         line.move(to: CGPoint(x: 0, y: 100))
         lineLayer.fillColor = UIColor.clear.cgColor
-//        if BlModel.sharedBLETableView.indx == 0 {
+
         if numArray.count > 0 {
             line.addLine(to: CGPoint(x: 25, y: self.numArray[0]+150))
             one.frame = CGRect(x:25,y:self.numArray[0]+countHeight,width:cgrect,height:cgrect)
@@ -89,7 +89,7 @@ class BLECell : UICollectionViewCell{
             self.addSubview(six)
         }
         if numArray.count > 6 {
-            line.addLine(to: CGPoint(x: 325, y: self.numArray[6]+50))
+            line.addLine(to: CGPoint(x: 325, y: self.numArray[6]+150))
             seven.frame = CGRect(x:325,y:self.numArray[6]+countHeight,width:cgrect,height:cgrect)
             seven.text = (self.numArray[6]/4).description
             labelSet(label: seven)
@@ -102,7 +102,7 @@ class BLECell : UICollectionViewCell{
             labelSet(label: eight)
             self.addSubview(eight)
         }
-//        }
+
     }
     
     func labelSet(label:UILabel)->UILabel{
