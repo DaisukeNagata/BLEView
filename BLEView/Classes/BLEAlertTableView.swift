@@ -12,7 +12,7 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
     
     var indx = Int()
     var cellCount = Int()
-    var indexCount = 1
+    var indexCount = Int()
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -27,6 +27,7 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         BlModel.sharedBLEView.setCut()
         BlModel.sharedBLEView.nameArray.removeAll()
+        BlModel.sharedBLECollectionView.getArray(reset:9)
         BlModel.sharedBLETableView.indx =  indexPath.row
         BlModel.sharedBLEView.setVoice(ddd: "接続しました")
         self.reloadData()

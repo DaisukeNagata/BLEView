@@ -62,7 +62,6 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     
     //接続解除
     open func setCut(){
-        BlModel.sharedBLETableView.cellCount = 0
         BlModel.sharedBlTextCentral.pushCut()
         BlModel.sharedBlTextPeripheral.stopAdvertise()
         BlModel.sharedBlTextPeripheral.startAdvertise()
