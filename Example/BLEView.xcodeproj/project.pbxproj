@@ -27,7 +27,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		8081977E2E6EBC466B6E6A2E /* Pods_BLEView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BLEView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5CFA58B50BE0CCD2AEC2A89 /* Pods-BLEView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLEView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BLEView_Example/Pods-BLEView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		AB2FF04E45A20A15694D5D06 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B062898EDBC2ABE1940EFA2A /* Pods-BLEView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLEView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BLEView_Tests/Pods-BLEView_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				EF692ED8FA4C55793809F239 /* Pods_BLEView_Example.framework */,
-				8081977E2E6EBC466B6E6A2E /* Pods_BLEView_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

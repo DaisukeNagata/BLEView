@@ -11,10 +11,12 @@
 		21625B9AA2D8E471EA62B30B0BA33396 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		2740BE4D06A8CE9B0D8EBE490EACCC26 /* BlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8540E412CD4D241D9258DEEE6D5DCF /* BlModel.swift */; };
 		5B0A9A9EA1C0C7134473FE9699D21E82 /* BLUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7624EA4BA709002C94A81B31D6A681D /* BLUILabel.swift */; };
-		5BA91C6F172F6D85E083E043406E717F /* BLEGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DB5F8CFAC2EE65D142F1B0D4B53B5 /* BLEGraph.swift */; };
+		5BA91C6F172F6D85E083E043406E717F /* BLECollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0DB5F8CFAC2EE65D142F1B0D4B53B5 /* BLECollectionView.swift */; };
 		69119578D0B9C99AD999500A5208E819 /* Pods-BLEView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BA5A2D1220151E30AE6A9A2C48949D0 /* Pods-BLEView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98FAB19A88AF386B30A7781CDDC3BE9B /* BLEView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 76A9359641A9C01907A4893D3C76E1E0 /* BLEView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A52AC4C21B6711E76D46FEBF7EBE5D19 /* Pods-BLEView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC74DB981FF5C67D917095D9B9CF3356 /* Pods-BLEView_Example-dummy.m */; };
+		BB524EF71E328F0F007D4E72 /* BLECell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB524EF61E328F0F007D4E72 /* BLECell.swift */; };
+		BB928F8A1E33AECA00372650 /* BLEAlertTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB928F891E33AECA00372650 /* BLEAlertTableView.swift */; };
 		BC154608E66DBCB205E49FFE1694A18F /* BlTextCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C5950DD5F6B448D603DC60279F93D6 /* BlTextCentral.swift */; };
 		CE6C123D85DF02FA4FF149CBC96E991A /* BlTextPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB1F5EED7C683DD9C7C7BE3BF9E644 /* BlTextPeripheral.swift */; };
 		E93A84D5AADCF284B711156F0CE8C49B /* SoundNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E2E9557627F8B00E6D38AA3161B4D3 /* SoundNotification.swift */; };
@@ -34,30 +36,32 @@
 
 /* Begin PBXFileReference section */
 		0ABDC41389B4FEA5D1EA8211028ABCBE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1030F6279C0005F0BB8348304E80F28B /* Pods_BLEView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BLEView_Example.framework; path = "Pods-BLEView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		29C5950DD5F6B448D603DC60279F93D6 /* BlTextCentral.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlTextCentral.swift; sourceTree = "<group>"; };
-		35BBA14F72B2003C1252CE11D0B69B5F /* BLEView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BLEView.swift; sourceTree = "<group>"; };
+		1030F6279C0005F0BB8348304E80F28B /* Pods_BLEView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BLEView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29C5950DD5F6B448D603DC60279F93D6 /* BlTextCentral.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlTextCentral.swift; path = Classes/BlTextCentral.swift; sourceTree = "<group>"; };
+		35BBA14F72B2003C1252CE11D0B69B5F /* BLEView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BLEView.swift; path = Classes/BLEView.swift; sourceTree = "<group>"; };
 		4B16A2FCC06BFD06ABECA4FC7226EDA2 /* Pods-BLEView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BLEView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		52860FAB8007A486A51E612287075631 /* Pods-BLEView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BLEView_Example.modulemap"; sourceTree = "<group>"; };
-		69DB1F5EED7C683DD9C7C7BE3BF9E644 /* BlTextPeripheral.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlTextPeripheral.swift; sourceTree = "<group>"; };
+		52860FAB8007A486A51E612287075631 /* Pods-BLEView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BLEView_Example.modulemap"; sourceTree = "<group>"; };
+		69DB1F5EED7C683DD9C7C7BE3BF9E644 /* BlTextPeripheral.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlTextPeripheral.swift; path = Classes/BlTextPeripheral.swift; sourceTree = "<group>"; };
 		76A9359641A9C01907A4893D3C76E1E0 /* BLEView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BLEView-umbrella.h"; sourceTree = "<group>"; };
 		7BA5A2D1220151E30AE6A9A2C48949D0 /* Pods-BLEView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BLEView_Example-umbrella.h"; sourceTree = "<group>"; };
-		7C8540E412CD4D241D9258DEEE6D5DCF /* BlModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BlModel.swift; sourceTree = "<group>"; };
+		7C8540E412CD4D241D9258DEEE6D5DCF /* BlModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlModel.swift; path = Classes/BlModel.swift; sourceTree = "<group>"; };
 		7F03882921962B8071CBBD61EFF38B1A /* BLEView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BLEView-prefix.pch"; sourceTree = "<group>"; };
 		7F8D911E6DF69DB60B7C4BCA42809650 /* Pods-BLEView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BLEView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		83CE640C9BAD04F4259C1E61186C4FD6 /* Pods-BLEView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BLEView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		8D053BB77515838303CC83A0F78E2114 /* Pods-BLEView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BLEView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A5A41FCFB0509EB7AC4E4A40937B9664 /* BLEView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BLEView.xcconfig; sourceTree = "<group>"; };
+		BB524EF61E328F0F007D4E72 /* BLECell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLECell.swift; path = Classes/BLECell.swift; sourceTree = "<group>"; };
+		BB928F891E33AECA00372650 /* BLEAlertTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLEAlertTableView.swift; path = Classes/BLEAlertTableView.swift; sourceTree = "<group>"; };
 		C1285E35F130FD7FDD0FADC3A2FDDF1D /* Pods-BLEView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BLEView_Example-resources.sh"; sourceTree = "<group>"; };
-		C486B810042EC746767DA3605DE9D34F /* BLEView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BLEView.modulemap; sourceTree = "<group>"; };
+		C486B810042EC746767DA3605DE9D34F /* BLEView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BLEView.modulemap; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		CC74DB981FF5C67D917095D9B9CF3356 /* Pods-BLEView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BLEView_Example-dummy.m"; sourceTree = "<group>"; };
-		CF0DB5F8CFAC2EE65D142F1B0D4B53B5 /* BLEGraph.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BLEGraph.swift; sourceTree = "<group>"; };
+		CF0DB5F8CFAC2EE65D142F1B0D4B53B5 /* BLECollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BLECollectionView.swift; path = Classes/BLECollectionView.swift; sourceTree = "<group>"; };
 		D7956202A106CE38AE64559AA32F64AF /* Pods-BLEView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BLEView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		E39B32ABEE09198FB5027D22C1937239 /* BLEView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BLEView.framework; path = BLEView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6E2E9557627F8B00E6D38AA3161B4D3 /* SoundNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SoundNotification.swift; sourceTree = "<group>"; };
-		F7624EA4BA709002C94A81B31D6A681D /* BLUILabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BLUILabel.swift; sourceTree = "<group>"; };
+		E39B32ABEE09198FB5027D22C1937239 /* BLEView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BLEView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6E2E9557627F8B00E6D38AA3161B4D3 /* SoundNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SoundNotification.swift; path = Classes/SoundNotification.swift; sourceTree = "<group>"; };
+		F7624EA4BA709002C94A81B31D6A681D /* BLUILabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BLUILabel.swift; path = Classes/BLUILabel.swift; sourceTree = "<group>"; };
 		F9EACCD8E01871132DCF167FE86B74DE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB121CD037071FCCE82F616ED1D0C029 /* BLEView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BLEView-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,9 +111,16 @@
 		7275A4E873A5D156DCB3DDE4ECC70682 /* BLEView */ = {
 			isa = PBXGroup;
 			children = (
-				CC72CA8D3BE75010331EE3E3B614F791 /* Classes */,
+				E6E2E9557627F8B00E6D38AA3161B4D3 /* SoundNotification.swift */,
+				BB524EF61E328F0F007D4E72 /* BLECell.swift */,
+				69DB1F5EED7C683DD9C7C7BE3BF9E644 /* BlTextPeripheral.swift */,
+				29C5950DD5F6B448D603DC60279F93D6 /* BlTextCentral.swift */,
+				7C8540E412CD4D241D9258DEEE6D5DCF /* BlModel.swift */,
+				35BBA14F72B2003C1252CE11D0B69B5F /* BLEView.swift */,
+				BB928F891E33AECA00372650 /* BLEAlertTableView.swift */,
+				F7624EA4BA709002C94A81B31D6A681D /* BLUILabel.swift */,
+				CF0DB5F8CFAC2EE65D142F1B0D4B53B5 /* BLECollectionView.swift */,
 			);
-			name = BLEView;
 			path = BLEView;
 			sourceTree = "<group>";
 		};
@@ -157,21 +168,6 @@
 			);
 			name = BLEView;
 			path = ../..;
-			sourceTree = "<group>";
-		};
-		CC72CA8D3BE75010331EE3E3B614F791 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				CF0DB5F8CFAC2EE65D142F1B0D4B53B5 /* BLEGraph.swift */,
-				35BBA14F72B2003C1252CE11D0B69B5F /* BLEView.swift */,
-				7C8540E412CD4D241D9258DEEE6D5DCF /* BlModel.swift */,
-				29C5950DD5F6B448D603DC60279F93D6 /* BlTextCentral.swift */,
-				69DB1F5EED7C683DD9C7C7BE3BF9E644 /* BlTextPeripheral.swift */,
-				F7624EA4BA709002C94A81B31D6A681D /* BLUILabel.swift */,
-				E6E2E9557627F8B00E6D38AA3161B4D3 /* SoundNotification.swift */,
-			);
-			name = Classes;
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		D074C7BDDB471628593853D6D921355B /* Pods-BLEView_Example */ = {
@@ -289,11 +285,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BA91C6F172F6D85E083E043406E717F /* BLEGraph.swift in Sources */,
+				5BA91C6F172F6D85E083E043406E717F /* BLECollectionView.swift in Sources */,
 				1797BE26F2EAB664562F3E42B0E43C59 /* BLEView-dummy.m in Sources */,
 				FD2B9AC89D910B73D0872A2E18C957CE /* BLEView.swift in Sources */,
 				2740BE4D06A8CE9B0D8EBE490EACCC26 /* BlModel.swift in Sources */,
+				BB928F8A1E33AECA00372650 /* BLEAlertTableView.swift in Sources */,
 				BC154608E66DBCB205E49FFE1694A18F /* BlTextCentral.swift in Sources */,
+				BB524EF71E328F0F007D4E72 /* BLECell.swift in Sources */,
 				CE6C123D85DF02FA4FF149CBC96E991A /* BlTextPeripheral.swift in Sources */,
 				5B0A9A9EA1C0C7134473FE9699D21E82 /* BLUILabel.swift in Sources */,
 				E93A84D5AADCF284B711156F0CE8C49B /* SoundNotification.swift in Sources */,

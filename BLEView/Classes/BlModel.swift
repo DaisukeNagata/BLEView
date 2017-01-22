@@ -15,7 +15,10 @@ class BlModel {
     static let sharedBlTextPeripheral = BlTextPeripheral()
     static let sharedBlTextCentral = BlTextCentral()
     static let sharedBlModel = BlModel()
-    static let sharedBLEGraph = BLEGraph()
+    static let sharedBLECollectionView = BLECollectionView()
+    static let sharedBLECollectionView2 = BLECollectionView()
+    static let sharedBLECell = BLECell()
+    static let sharedBLETableView = BLEAlertTableView()
     /////UILabel
     static let sharedBlUILabelOne = BLUILabel()
     static let sharedBlUILabelTwo = BLUILabel()
@@ -25,5 +28,4 @@ class BlModel {
     static let sharedBlUILabelSix = BLUILabel()
     static let sharedBlUILabelSeven = BLUILabel()
     static let sharedBlUILabelEight = BLUILabel()
-    
 }

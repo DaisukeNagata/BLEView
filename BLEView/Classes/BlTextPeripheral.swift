@@ -13,13 +13,13 @@ import AVFoundation
 
 class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate,UNUserNotificationCenterDelegate{
     
-    var peripheral:CBPeripheral!
+    var peripheral:[CBPeripheral] = []
     var characteristic:CBCharacteristic!
     let serviceUUID = CBUUID(string: "DD9B8295-E177-4F8A-A5E1-DC5FED19556D")
     var peripheralManager: CBPeripheralManager!
     var characteristicCBC:CBMutableCharacteristic!
     var serString : String!
-    
+    var charaCount : Int!
     
     func bleSetting(){
         
@@ -51,7 +51,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         
         let services = peripheral.services as NSArray!
         print("\(services?.count)サービスを発見",services!.count, services!)
-        
+        charaCount = services?.count
         for  service in services! {
             
             // キャラクタリスティック探索開始
@@ -70,7 +70,6 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         
         let characteristics  = service.characteristics
         print(" \(characteristics?.count)個のキャラクタリスティックを発見!",characteristics!.count, characteristics!)
-        
         
         // 特定のキャラクタリスティックをプロパティに保持
         let uuid = CBUUID(string:"45088E4B-B847-4E20-ACD7-0BEA181075C2")

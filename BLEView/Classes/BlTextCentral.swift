@@ -12,7 +12,7 @@ import UserNotifications
 import AVFoundation
 
 class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
-
+    
     var characteristicMutable: CBMutableCharacteristic!
     var centralManager:CBCentralManager!
     let serviceUUID = CBUUID(string: "DD9B8295-E177-4F8A-A5E1-DC5FED19556D")
@@ -20,8 +20,8 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     var characteristicCBC:CBMutableCharacteristic!
     var name :  String!
     var number : NSNumber!
+    var identifier :  Int!
     
-
     func bleSetting(){
         
         // 初期化
@@ -30,7 +30,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         ]
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
-
+    
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]){
         
         print("Central Manager Restored")
@@ -46,10 +46,11 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
                         rssi RSSI: NSNumber) {
         print("発見したBLEデバイス", peripheral)
         name = peripheral.name
-        BlModel.sharedBlTextPeripheral.peripheral = peripheral
+        BlModel.sharedBlTextPeripheral.peripheral += [peripheral]
         number = RSSI
-    }
-
+        BlModel.sharedBLEView.nameArray.append(contentsOf:  [name])
+      }
+    
     //接続開始
     func pushStart(dddString:Data){
         
@@ -59,7 +60,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         
         if BlModel.sharedBlTextPeripheral.peripheral != nil {
             
-            self.centralManager.connect(BlModel.sharedBlTextPeripheral.peripheral, options: option)
+            self.centralManager.connect(BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx], options: option)
             
             setVoice2(data:dddString)
             
@@ -69,27 +70,26 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     open  func setVoice2(data:Data)   {
         
         if   BlModel.sharedBlTextPeripheral.characteristic != nil {
-            BlModel.sharedBlTextPeripheral.peripheral?.writeValue(data, for: BlModel.sharedBlTextPeripheral.characteristic, type: CBCharacteristicWriteType.withResponse)
+            BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx].writeValue(data, for: BlModel.sharedBlTextPeripheral.characteristic, type: CBCharacteristicWriteType.withResponse)
         }else{
-            self.centralManager.connect(BlModel.sharedBlTextPeripheral.peripheral)
+            self.centralManager.connect(BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx])
             let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
                 if BlModel.sharedBlTextPeripheral.characteristic != nil {
-                    BlModel.sharedBlTextPeripheral.peripheral?.writeValue(data, for: BlModel.sharedBlTextPeripheral.characteristic, type: CBCharacteristicWriteType.withResponse)
-                    
+                    BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx].writeValue(data, for: BlModel.sharedBlTextPeripheral.characteristic, type: CBCharacteristicWriteType.withResponse)
                 }
             })
         }
     }
-
+    
     
     //接続解除
     func pushCut(){
         
         print("接続カット！")
         if BlModel.sharedBlTextPeripheral.peripheral != nil {
-            self.centralManager.cancelPeripheralConnection(BlModel.sharedBlTextPeripheral.peripheral)
-        }        
+            self.centralManager.cancelPeripheralConnection(BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx])
+        }
     }
     
     func centralManager(_ central: CBCentralManager,
@@ -98,7 +98,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         print("接続成功！")
         peripheral.delegate = BlModel.sharedBlTextPeripheral
         //サービス探索開始
-       peripheral.discoverServices(nil)
+        peripheral.discoverServices(nil)
         
     }
     
