@@ -21,7 +21,7 @@ The branch of Collection_BLE is dedicated to the iphone terminal, and the radio 
 For example, you can check with radio field intensity graph for ipad, radio field intensity graph for iphone.
 
 
-![](https://github.com/daisukenagata/BLEView/blob/master/BLE.gif?raw=true)
+![](https://github.com/daisukenagata/BLEView/blob/master/BLE_Movie.gif?raw=true)
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
