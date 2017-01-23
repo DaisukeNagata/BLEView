@@ -203,7 +203,9 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
                 }
             }
             serString = String(data: characteristicCBC.value!,encoding: String.Encoding.utf8)
-            
+            if serString == "" {
+              BlModel.sharedBLEView.setCut()
+            }
             // リクエストに応答
             peripheralManager.respond(to: requests[0] , withResult: CBATTError.Code.success)
             BlModel.sharedSoundNotification.notification()
