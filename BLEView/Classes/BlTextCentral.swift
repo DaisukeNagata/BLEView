@@ -49,6 +49,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         BlModel.sharedBlTextPeripheral.peripheral += [peripheral]
         number = RSSI
         BlModel.sharedBLEView.nameArray.append(contentsOf:  [name])
+
       }
     
     //接続開始
@@ -82,13 +83,13 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         }
     }
     
-    
     //接続解除
     func pushCut(){
         
         print("接続カット！")
         if BlModel.sharedBlTextPeripheral.peripheral != nil {
-            self.centralManager.cancelPeripheralConnection(BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx])
+            BlModel.sharedBlTextCentral.centralManager.cancelPeripheralConnection(BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx])
+            BlModel.sharedBlTextPeripheral.peripheralManager.removeAllServices()
         }
     }
     

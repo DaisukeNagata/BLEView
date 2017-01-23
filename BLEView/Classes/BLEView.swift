@@ -17,7 +17,8 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     open var rtUserDefaults = UserDefaults.standard
     var num = NSNumber()
     var nameArray : [String] = []
-
+   
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
         BlModel.sharedBlTextCentral.bleSetting()
@@ -30,7 +31,6 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
             print("3D Touch available")
             registerForPreviewing(with: self, sourceView: view)
         }
-        
         
         // single swipe up
         let swipeUpGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action:#selector(handleSwipeUp))
@@ -47,11 +47,10 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     
     func handleSwipeUp(sender: UITapGestureRecognizer){
         if BlModel.sharedBlTextCentral.name != ""{
-        BlModel.sharedBLEView.setCut()
         setBLETableView()
         }
     }
-    
+
     //接続開始
     open func setVoice(ddd:String)   {
         let data2 = ddd.data(using: String.Encoding.utf8, allowLossyConversion:true)
@@ -69,7 +68,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         BlModel.sharedBlTextPeripheral.startAdvertise()
         BlModel.sharedBlTextPeripheral.characteristic = nil
     }
-    
+       
     //接続情報の確認
     open func setRSSI(rssi:NSNumber)->Int{
         var  rssi = BlModel.sharedBlTextCentral.number
@@ -108,8 +107,9 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         self.setBLEGraphView()
-       BlModel.sharedBLEView.setCut()
-        return BlModel.sharedBLEView
+       BlModel.sharedBlTextCentral.pushCut()
+        
+        return nil
     }
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         

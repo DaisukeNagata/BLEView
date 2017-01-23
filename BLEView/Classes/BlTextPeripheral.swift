@@ -78,9 +78,16 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
             if aCharacteristic.uuid.isEqual(uuid) {
                 
                 self.characteristic = aCharacteristic
+
                 break;
             }
         }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral,
+                    didModifyServices invalidatedServices: [CBService]){
+        print("サービスの再接続")
+        BlModel.sharedBlTextPeripheral.peripheralManager.removeAllServices()
     }
     
     func  peripheral (_ peripheral: CBPeripheral,
@@ -128,7 +135,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         
         switch peripheral.state {
         case .poweredOn:
-
+            
             // サービス登録開始
             publishservice()
             
@@ -150,7 +157,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         BlModel.sharedBlTextPeripheral.stopAdvertise()
         BlModel.sharedBlTextPeripheral.startAdvertise()
         BlModel.sharedBlTextPeripheral.characteristic = nil
-
+        
         characteristicCBC = CBMutableCharacteristic(
             type: characteristicUUID,
             properties: properties,
@@ -159,8 +166,9 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         
         // キャラクタリスティックをサービスにセット
         service.characteristics = [characteristicCBC]
-        peripheralManager.add(service)
+        BlModel.sharedBlTextPeripheral.peripheralManager.add(service)
     }
+    
     
     // サービス追加処理が完了すると呼ばれる
     func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
@@ -204,9 +212,6 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
                 }
             }
             serString = String(data: characteristicCBC.value!,encoding: String.Encoding.utf8)
-            if serString == "" {
-              BlModel.sharedBLEView.setCut()
-            }
             // リクエストに応答
             peripheralManager.respond(to: requests[0] , withResult: CBATTError.Code.success)
             BlModel.sharedSoundNotification.notification()

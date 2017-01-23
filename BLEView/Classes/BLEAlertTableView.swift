@@ -30,8 +30,7 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
         BlModel.sharedBLECollectionView.getArray(reset:9)
         BlModel.sharedBLETableView.indx =  indexPath.row
         BlModel.sharedBLEView.setVoice(ddd: "接続しました")
-        self.reloadData()
-       tableView.alpha = 0
+        tableView.alpha = 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{

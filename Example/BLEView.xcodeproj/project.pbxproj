@@ -30,6 +30,7 @@
 		A5CFA58B50BE0CCD2AEC2A89 /* Pods-BLEView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLEView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BLEView_Example/Pods-BLEView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		AB2FF04E45A20A15694D5D06 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B062898EDBC2ABE1940EFA2A /* Pods-BLEView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLEView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BLEView_Tests/Pods-BLEView_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		BBBC71CE1E36886400E7C566 /* BLEView_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BLEView_Example.entitlements; sourceTree = "<group>"; };
 		DB56307D5444F8EC90FCA12B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		EF692ED8FA4C55793809F239 /* Pods_BLEView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BLEView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B05FF6EB980765E19F9A06 /* Pods-BLEView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BLEView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BLEView_Tests/Pods-BLEView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -50,6 +51,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				BBBC71CE1E36886400E7C566 /* BLEView_Example.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for BLEView */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -175,6 +177,9 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};
