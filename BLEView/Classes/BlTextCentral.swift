@@ -59,11 +59,11 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         ]
         
         if BlModel.sharedBlTextPeripheral.peripheral != nil {
-            
+            if BlModel.sharedBlTextCentral.name != "" {
             self.centralManager.connect(BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx], options: option)
             
             setVoice2(data:dddString)
-            
+            }
         }
     }
     
