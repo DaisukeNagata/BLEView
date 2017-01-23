@@ -46,8 +46,10 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     }
     
     func handleSwipeUp(sender: UITapGestureRecognizer){
+        if BlModel.sharedBlTextCentral.name != ""{
         BlModel.sharedBLEView.setCut()
         setBLETableView()
+        }
     }
     
     //接続開始
