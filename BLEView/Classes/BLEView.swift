@@ -54,7 +54,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     open func setVoice(ddd:String)   {
         let data2 = ddd.data(using: String.Encoding.utf8, allowLossyConversion:true)
         if  BlModel.sharedBlTextPeripheral.characteristic == nil {
-          //  BlModel.sharedBlTextCentral.pushStart(dddString:data2!)
+            BlModel.sharedBlTextCentral.pushStart(dddString:data2!)
         }else if  BlModel.sharedBlTextPeripheral.characteristic != nil {
             BlModel.sharedBlTextCentral.pushStart(dddString:data2!)
         }
@@ -82,9 +82,11 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     
     //接続端末名の確認
     open func setName(name:String)->String{
+        
         guard BlModel.sharedBLETableView.indx  == nil else {
             return name
         }
+
         var name = BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx].name
         if name == nil {
             name  =  ""
