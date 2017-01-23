@@ -128,9 +128,10 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         
         switch peripheral.state {
         case .poweredOn:
-            
+            if !((self.characteristic == nil) ){
             // サービス登録開始
             publishservice()
+            }
         case.poweredOff:
             BlModel.sharedBlTextCentral.pushCut()
         default:
