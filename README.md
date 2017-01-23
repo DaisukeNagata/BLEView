@@ -14,12 +14,7 @@ iphone端末専用で、グラフを端末毎に電波強度を描画表示で�
 例えばipad用の電波強度グラフ、iphone用電波強度グラフで確認ができます。
 
 
-You can communicate with a terminal that has the same application at the first launch.
-When entering a character string and pressing a line feed, the character string entered to the connected terminal flows by voice.
-When you enter a letter, it represents the strength of the radio waves. When the terminal leaves, the value increases to weakening intensity.
-When you enter empty characters, you will get the radio field intensity again. When you tap the screen, you will only get the radio field intensity.
-It is dedicated to iphone terminal, it can draw and display the radio wave intensity for each terminal on graph.
-For example, you can check with radio field intensity graph for ipad, radio field intensity graph for iphone.
+You can communicate with a terminal that has the same application at the first launch. When entering a character string and pressing a line feed, the character string entered to the connected terminal flows by voice. When you enter a letter, it represents the strength of the radio waves. When the terminal leaves, the value increases to weakening intensity. When you enter empty characters, you will get the radio field intensity again. When you tap the screen, you will only get the radio field intensity. (Only version with 3D function is available.) Swipe up and select connected terminal. It is dedicated to iphone terminal, it can draw and display the radio wave intensity for each terminal on graph. For example, you can check with radio field intensity graph for ipad, radio field intensity graph for iphone.
 
 
 ![](https://github.com/daisukenagata/BLEView/blob/master/BLE_Movie.gif?raw=true)
