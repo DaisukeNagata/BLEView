@@ -14,7 +14,6 @@ class ViewController: BLEView {
     var dd = BLEView().textSam
     var num = NSNumber()
     var st = String()
-    var sks:[String] = []
     
     @IBOutlet weak var textView: UITextView!
     
@@ -22,7 +21,6 @@ class ViewController: BLEView {
         
         super.viewDidLoad()
         dd = UITextField(frame: CGRect(x: 0, y: 150, width: self.view.bounds.width, height: 30))
-        dd?.backgroundColor = UIColor.lightGray
         self.view.addSubview(dd!)
         dd?.delegate = self
         

@@ -24,6 +24,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         BlModel.sharedBlTextCentral.bleSetting()
         BlModel.sharedBlTextPeripheral.bleSetting()
         self.textSam = UITextField(frame: CGRect(x: 0, y: 150, width: self.view.bounds.width, height: 30))
+        self.textSam.backgroundColor = UIColor.lightGray
         self.textSam.delegate = self
         self.view.addSubview(textSam)
         rtUserDefaults.set("", forKey: "DataStore")
