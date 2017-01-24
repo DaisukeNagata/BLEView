@@ -13,13 +13,10 @@ class BLECell : UICollectionViewCell{
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
     var numArray :[Int] = []
-    var numArray2 :[Int] = []
     var num = NSNumber()
     var line = UIBezierPath()
     var lineLayer = CAShapeLayer()
     var animation = CABasicAnimation(keyPath: "strokeEnd")
-    var lineW = UIBezierPath()
-    var countLine  =  Int()
     var countHeight = 200
     var cgrect = 25
     var one = BlModel.sharedBlUILabelOne
@@ -104,6 +101,7 @@ class BLECell : UICollectionViewCell{
             self.addSubview(eight)
         }
     }
+    
     func labelSet(label:UILabel)->UILabel{
         label.alpha = 1
         label.transform = self.transform
