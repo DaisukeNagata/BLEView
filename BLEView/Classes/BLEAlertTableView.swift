@@ -11,8 +11,6 @@ import Foundation
 class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate {
     
     var indx = Int()
-    var cellCount = Int()
-    var indexCount = Int()
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
