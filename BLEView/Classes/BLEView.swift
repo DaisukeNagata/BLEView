@@ -17,13 +17,13 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     open var rtUserDefaults = UserDefaults.standard
     var num = NSNumber()
     var nameArray : [String] = []
-   
+    
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         BlModel.sharedBlTextCentral.bleSetting()
         BlModel.sharedBlTextPeripheral.bleSetting()
-        self.textSam = UITextField(frame: CGRect(x: 0, y: 150, width: self.view.bounds.width, height: 30))
+        self.textSam = UITextField(frame: CGRect(x: 0, y: 50, width: self.view.bounds.width, height: 30))
         self.textSam.backgroundColor = UIColor.lightGray
         self.textSam.delegate = self
         self.view.addSubview(textSam)
@@ -38,7 +38,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         swipeUpGesture.numberOfTouchesRequired = 1
         swipeUpGesture.direction = UISwipeGestureRecognizerDirection.up
         self.view.addGestureRecognizer(swipeUpGesture)
-
+        
     }
     
     override open func didReceiveMemoryWarning() {
@@ -48,10 +48,10 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     
     func handleSwipeUp(sender: UITapGestureRecognizer){
         if BlModel.sharedBlTextCentral.name != ""{
-        setBLETableView()
+            setBLETableView()
         }
     }
-
+    
     //接続開始
     open func setVoice(ddd:String)   {
         let data2 = ddd.data(using: String.Encoding.utf8, allowLossyConversion:true)
@@ -69,7 +69,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         BlModel.sharedBlTextPeripheral.startAdvertise()
         BlModel.sharedBlTextPeripheral.characteristic = nil
     }
-       
+    
     //接続情報の確認
     open func setRSSI(rssi:NSNumber)->Int{
         var  rssi = BlModel.sharedBlTextCentral.number
@@ -88,7 +88,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         guard BlModel.sharedBLETableView.indx  == nil else {
             return name
         }
-
+        
         var name = BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx].name
         if name == nil {
             name  =  ""
@@ -108,7 +108,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         self.setBLEGraphView()
-       BlModel.sharedBlTextCentral.pushCut()
+        BlModel.sharedBlTextCentral.pushCut()
         
         return nil
     }
@@ -127,4 +127,12 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         let BLETable = BLEAlertTableView(frame: CGRect(x: 0, y: 100, width: self.view.bounds.width, height: self.view.bounds.height-100))
         self.view.addSubview(BLETable)
     }
+    
+    open func tekioki () ->NSArray{
+        if BlModel.sharedBlTextPeripheral.nsDat == nil{
+            BlModel.sharedBlTextPeripheral.nsDat  = []
+        }
+        return BlModel.sharedBlTextPeripheral.nsDat
+    }
+    
 }

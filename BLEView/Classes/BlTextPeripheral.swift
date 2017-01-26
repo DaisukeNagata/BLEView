@@ -20,6 +20,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
     var characteristicCBC:CBMutableCharacteristic!
     var serString : String!
     var charaCount : Int!
+    var nsDat: NSArray!
     
     func bleSetting(){
         
@@ -52,13 +53,16 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         let services = peripheral.services as NSArray!
         print("\(services?.count)サービスを発見",services!.count, services!)
         charaCount = services?.count
+        print(services)
         for  service in services! {
-            
-            // キャラクタリスティック探索開始
+                  // キャラクタリスティック探索開始
             peripheral.discoverCharacteristics(nil, for: service as! CBService)
+            if services != nil {
+            nsDat = services
+            }
         }
     }
-    
+       
     // キャラクタリスティック発見時に呼ばれる
     func peripheral(_ peripheral: CBPeripheral,
                     didDiscoverCharacteristicsFor service: CBService,
