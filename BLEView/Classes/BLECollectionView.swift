@@ -20,8 +20,6 @@ class BLECollectionView: UIView,UICollectionViewDataSource {
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-//        flowLayout.minimumInteritemSpacing = 5.0
-//        flowLayout.minimumLineSpacing = 5.0
         flowLayout.itemSize = CGSize(width:screenWidth, height:screenHeight)
         collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: flowLayout)
         collectionView.register(BLECell.self, forCellWithReuseIdentifier: "cell")

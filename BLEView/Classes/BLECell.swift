@@ -10,8 +10,6 @@ import UIKit
 
 class BLECell : UICollectionViewCell{
     
-    let screenHeight = UIScreen.main.bounds.height
-    let screenWidth = UIScreen.main.bounds.width
     var numArray :[Int] = []
     var num = NSNumber()
     var line = UIBezierPath()
