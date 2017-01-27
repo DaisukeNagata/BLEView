@@ -39,7 +39,7 @@ class ViewController: BLEView {
             return true
         }
         //文字列を音声に通知します。
-        setVoice(ddd: (dd?.text!)!)
+        BLEView().setVoice(ddd: (dd?.text!)!)
         //BLEの電波強度を測定します。
         let numRssi = BLEView().setRSSI(rssi: self.num)
         //接続端末の取得

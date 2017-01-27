@@ -60,7 +60,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         ]
         
         if BlModel.sharedBlTextPeripheral.peripheral != nil {
-            if BlModel.sharedBlTextCentral.name != "" {
+            if name != nil {
             self.centralManager.connect(BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx], options: option)
             
             setVoice2(data:dddString)
