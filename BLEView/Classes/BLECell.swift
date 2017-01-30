@@ -11,7 +11,6 @@ import UIKit
 class BLECell : UICollectionViewCell{
     
     var numArray :[Int] = []
-    var num = NSNumber()
     var line = UIBezierPath()
     var lineLayer = CAShapeLayer()
     var animation = CABasicAnimation(keyPath: "strokeEnd")

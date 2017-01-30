@@ -18,8 +18,8 @@ class ViewController: BLEView {
     @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
         dd = UITextField(frame: CGRect(x: 0, y: 50, width: self.view.bounds.width, height: 30))
         self.view.addSubview(dd!)
         dd?.delegate = self
@@ -34,6 +34,7 @@ class ViewController: BLEView {
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         dd?.resignFirstResponder()
         guard dd?.text != "" else {
+            //BLE通信の接続カット
             BLEView().setCut()
             textView?.text = ""
             return true
