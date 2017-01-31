@@ -24,7 +24,6 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
     
     func bleSetting(){
         
-        // 初期化
         let option : Dictionary =  [
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
@@ -41,8 +40,6 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         print("Peripheral Manager Restored")
     }
     
-    
-    // サービス発見時に呼ばれる
     func peripheral(_ peripheral : CBPeripheral, didDiscoverServices error : Error?){
         
         if let error = error {
@@ -60,8 +57,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
             nsDat = services
         }
     }
-       
-    // キャラクタリスティック発見時に呼ばれる
+    
     func peripheral(_ peripheral: CBPeripheral,
                     didDiscoverCharacteristicsFor service: CBService,
                     error: Error?){
@@ -73,7 +69,6 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         let characteristics  = service.characteristics
         print(" \(characteristics?.count)個のキャラクタリスティックを発見!",characteristics!.count, characteristics!)
         
-        // 特定のキャラクタリスティックをプロパティに保持
         let uuid = CBUUID(string:"45088E4B-B847-4E20-ACD7-0BEA181075C2")
         
         for aCharacteristic:CBCharacteristic in characteristics! {
@@ -119,14 +114,12 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
             CBAdvertisementDataServiceUUIDsKey: [serviceUUID]
             ] as [String : Any]
         
-        // アドバタイズ開始
         peripheralManager.startAdvertising(advertisementData)
         
     }
     
     func stopAdvertise () {
         
-        // アドバタイズ停止
         peripheralManager.stopAdvertising()
         
     }
@@ -181,7 +174,6 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         }
         print("サービス追加成功！")
         
-        // アドバタイズ開始
         startAdvertise()
     }
     

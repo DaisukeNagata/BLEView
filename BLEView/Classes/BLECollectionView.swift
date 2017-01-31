@@ -45,7 +45,6 @@ class BLECollectionView: UIView,UICollectionViewDataSource {
         return numArray
     }
 
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return getArray(reset: 1).count
     }

@@ -24,7 +24,6 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     
     func bleSetting(){
         
-        // 初期化
         let option : Dictionary =  [
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
@@ -52,7 +51,6 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
 
       }
     
-    //接続開始
     func pushStart(dddString:Data){
         
         let option : Dictionary =  [
@@ -68,7 +66,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         }
     }
     
-    open  func setVoice2(data:Data)   {
+    open  func setVoice2(data:Data){
         
         if   BlModel.sharedBlTextPeripheral.characteristic != nil {
             BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx].writeValue(data, for: BlModel.sharedBlTextPeripheral.characteristic, type: CBCharacteristicWriteType.withResponse)
@@ -83,7 +81,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         }
     }
     
-    //接続解除
+
     func pushCut(){
         
         print("接続カット！")
