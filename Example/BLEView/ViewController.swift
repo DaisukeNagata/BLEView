@@ -8,9 +8,9 @@
 
 import UIKit
 import BLEView
-
+//BLEViewをデリゲートして機能を付与します。
 class ViewController: BLEView {
-    
+    //BLEViewをtextfiledを追加します。
     var dd = BLEView().textSam
     var num = NSNumber()
     var st = String()
