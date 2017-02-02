@@ -21,6 +21,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     var name :  String!
     var number : NSNumber!
     var identifier :  Int!
+
     
     func bleSetting(){
         
@@ -81,29 +82,28 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         }
     }
     
-
+    //接続カット！
     func pushCut(){
         
-        print("接続カット！")
-        if BlModel.sharedBlTextPeripheral.peripheral != nil {
+        if BlModel.sharedBlTextPeripheral.peripheral != nil  && BlModel.sharedBlTextPeripheral.peripheral.count != 0 {
             BlModel.sharedBlTextCentral.centralManager.cancelPeripheralConnection(BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx])
             BlModel.sharedBlTextPeripheral.peripheralManager.removeAllServices()
         }
     }
     
+    //接続成功
     func centralManager(_ central: CBCentralManager,
                         didConnect peripheral: CBPeripheral){
-        
-        print("接続成功！")
+    
         peripheral.delegate = BlModel.sharedBlTextPeripheral
         //サービス探索開始
         peripheral.discoverServices(nil)
         
     }
     
+    //接続失敗！
     func centralManager(_ central:CBCentralManager,peripheral:CBPeripheral,error: NSError!){
-        
-        print("接続失敗！")
+      
         //スキャン開始
         self.centralManager.scanForPeripherals(withServices: [serviceUUID], options: nil)
         

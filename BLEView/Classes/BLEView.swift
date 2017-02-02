@@ -101,6 +101,13 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         return true
     }
     
+    open func tekioki () ->NSArray{
+        if BlModel.sharedBlTextPeripheral.nsDat == nil{
+            BlModel.sharedBlTextPeripheral.nsDat  = []
+        }
+        return BlModel.sharedBlTextPeripheral.nsDat
+    }
+    
     public func BLEDrawView(num:NSNumber){
         self.setBLEGraphView()
     }
@@ -126,13 +133,6 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     func setBLETableView(){
         let BLETable = BLEAlertTableView(frame: CGRect(x: 0, y: 100, width: self.view.bounds.width, height: self.view.bounds.height-100))
         self.view.addSubview(BLETable)
-    }
-    
-    open func tekioki () ->NSArray{
-        if BlModel.sharedBlTextPeripheral.nsDat == nil{
-            BlModel.sharedBlTextPeripheral.nsDat  = []
-        }
-        return BlModel.sharedBlTextPeripheral.nsDat
     }
     
 }
