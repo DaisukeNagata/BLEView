@@ -134,10 +134,9 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     public func setTimer(sender: UIDatePicker) {
         let myDateFormatter: DateFormatter = DateFormatter()
         myDateFormatter.dateFormat = "yyyy/MM/dd hh:mm"
-        // 日付をフォーマットに則って取得.
+
         mySelectedString = BLTimeCount.stringFromDate(date: myDatePicker.date as NSDate, format: myDateFormatter.dateFormat)
      
-        print(mySelectedString, myDateFormatter.string(from: sender.date),"111111")
         if mySelectedString == myDateFormatter.string(from: sender.date) {
             BlModel.shatedBLEBLTimeCount.timerSetting()
             myDatePicker.alpha = 0
@@ -160,8 +159,8 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     }
     
     func setBLEGraphView(){
-        myDatePicker.isHidden = true
         BlModel.shatedBLEBLTimeCount.stopTimer()
+        myDatePicker.isHidden = true
         let BLEDraw = BLECollectionView(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/1.7))
         self.view.addSubview(BLEDraw)
     }
