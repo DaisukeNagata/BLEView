@@ -22,7 +22,7 @@ class ViewController: BLEView {
         dd = UITextField(frame: CGRect(x: 0, y: 50, width: self.view.bounds.width, height: 30))
         self.view.addSubview(dd!)
         dd?.delegate = self
-                
+       
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,6 +31,7 @@ class ViewController: BLEView {
     }
     
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        BLEView().myDatePicker.alpha = 0
         //文字列を音声に通知します。
         BLEView().setVoice(ddd: (dd?.text!)!)
         //グラフを取得します。
@@ -52,4 +53,14 @@ class ViewController: BLEView {
         }
             return true
     }
+    
+    override func onDidChangeDate(sender: UIDatePicker){
+        
+        let myDateFormatter: DateFormatter = DateFormatter()
+        myDateFormatter.dateFormat = "yyyy/MM/dd hh:mm"
+        
+        BLEView().setTimer(sender: sender)
+        
+    }
+
 }

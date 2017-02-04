@@ -11,22 +11,38 @@ import CoreBluetooth
 
 
 @available(iOS 10.0, *)
-open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UIViewControllerPreviewingDelegate {
+open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UIViewControllerPreviewingDelegate,UIPickerViewDelegate {
     
     open var textSam: UITextField!
+    open let myDatePicker: UIDatePicker = UIDatePicker()
     open var rtUserDefaults = UserDefaults.standard
+    var mySelectedString = String()
+    var mySelectedData = NSDate()
+    
     var num = NSNumber()
     var nameArray : [String] = []
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         BlModel.sharedBlTextCentral.bleSetting()
         BlModel.sharedBlTextPeripheral.bleSetting()
-        self.textSam = UITextField(frame: CGRect(x: 0, y: 50, width: self.view.bounds.width, height: 30))
+        self.textSam = UITextField(frame: CGRect(x: 0, y: 50, width: screenWidth, height: 30))
         self.textSam.backgroundColor = UIColor.lightGray
         self.textSam.delegate = self
         self.view.addSubview(textSam)
         rtUserDefaults.set("", forKey: "DataStore")
+ 
+        // DatePickerを生成する.
+        myDatePicker.frame = CGRect(x:0, y:screenHeight-200, width:screenWidth, height:200)
+        myDatePicker.backgroundColor = UIColor.white
+        myDatePicker.layer.cornerRadius = 5.0
+        myDatePicker.layer.shadowOpacity = 0.5
+        // 値が変わった際のイベントを登録する.
+        myDatePicker.addTarget(self, action: #selector(BLEView.onDidChangeDate(sender:)), for: .valueChanged)
+        
+        
         if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
             print("3D Touch available")
             registerForPreviewing(with: self, sourceView: view)
@@ -48,11 +64,14 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     func handleSwipeUp(sender: UITapGestureRecognizer){
         if BlModel.sharedBlTextCentral.name != ""{
             setBLETableView()
+            BlModel.shatedBLEBLTimeCount.stopTimer()
+            self.view.addSubview(myDatePicker)
+             myDatePicker.isHidden = false
         }
     }
     
     //接続開始
-    open func setVoice(ddd:String)   {
+    public func setVoice(ddd:String)   {
         let data2 = ddd.data(using: String.Encoding.utf8, allowLossyConversion:true)
         if  BlModel.sharedBlTextPeripheral.characteristic == nil {
             BlModel.sharedBlTextCentral.pushStart(dddString:data2!)
@@ -62,7 +81,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     }
     
     //接続解除
-    open func setCut(){
+    public func setCut(){
         BlModel.sharedBlTextCentral.pushCut()
         BlModel.sharedBlTextPeripheral.stopAdvertise()
         BlModel.sharedBlTextPeripheral.startAdvertise()
@@ -70,7 +89,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     }
     
     //接続情報の確認
-    open func setRSSI(rssi:NSNumber)->Int{
+   public  func setRSSI(rssi:NSNumber)->Int{
         var  rssi = BlModel.sharedBlTextCentral.number
         if rssi != nil {
             var rssiSet = rssi as! Int
@@ -82,7 +101,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     }
     
     //接続端末名の確認
-    open func setName(name:String)->String{
+    public func setName(name:String)->String{
         
         guard BlModel.sharedBLETableView.indx  == nil else {
             return name
@@ -95,17 +114,34 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         return name!
     }
     
-    open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textSam.resignFirstResponder()
         BlModel.sharedSoundNotification.notification()
         return true
     }
     
-    open func tekioki () ->NSArray{
+    public func tekioki () ->NSArray{
         if BlModel.sharedBlTextPeripheral.nsDat == nil{
             BlModel.sharedBlTextPeripheral.nsDat  = []
         }
         return BlModel.sharedBlTextPeripheral.nsDat
+    }
+    
+    open func onDidChangeDate(sender: UIDatePicker){
+        
+    }
+    
+    public func setTimer(sender: UIDatePicker) {
+        let myDateFormatter: DateFormatter = DateFormatter()
+        myDateFormatter.dateFormat = "yyyy/MM/dd hh:mm"
+        // 日付をフォーマットに則って取得.
+        mySelectedString = BLTimeCount.stringFromDate(date: myDatePicker.date as NSDate, format: myDateFormatter.dateFormat)
+     
+        print(mySelectedString, myDateFormatter.string(from: sender.date),"111111")
+        if mySelectedString == myDateFormatter.string(from: sender.date) {
+            BlModel.shatedBLEBLTimeCount.timerSetting()
+            myDatePicker.alpha = 0
+        }
     }
     
     public func BLEDrawView(num:NSNumber){
@@ -124,14 +160,14 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     }
     
     func setBLEGraphView(){
-        let screenWidth = self.view.bounds.width
-        let screenHeight = self.view.bounds.height
+        myDatePicker.isHidden = true
+        BlModel.shatedBLEBLTimeCount.stopTimer()
         let BLEDraw = BLECollectionView(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/1.7))
         self.view.addSubview(BLEDraw)
     }
     
     func setBLETableView(){
-        let BLETable = BLEAlertTableView(frame: CGRect(x: 0, y: 100, width: self.view.bounds.width, height: self.view.bounds.height-100))
+        let BLETable = BLEAlertTableView(frame: CGRect(x: 0, y: 100, width: screenWidth, height: self.view.bounds.height-100))
         self.view.addSubview(BLETable)
     }
     
