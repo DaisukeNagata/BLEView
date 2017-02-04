@@ -31,9 +31,8 @@ If the current time matches the date entered by the picker, it will repeat the c
 
 <img src="https://github.com/daisukenagata/BLEView/blob/master/Alarm.png?raw=true" width="280px">
 
-国別日付設定はこのクラスメソッドで実施しています。
-
-Country-specific date settings are implemented in this class method.
+国別日付設定はこのクラスメソッドで実施しています。通知を停止する場合は、文字列を入力か空文字を入力してください。
+Country-specific date settings are implemented in this class method. To stop the notification, enter a character string or enter the empty character.
 
 ```ruby
 class func stringFromDate(date: NSDate, format: String) -> String {
