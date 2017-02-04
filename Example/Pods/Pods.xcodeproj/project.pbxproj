@@ -16,9 +16,9 @@
 		98FAB19A88AF386B30A7781CDDC3BE9B /* BLEView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 76A9359641A9C01907A4893D3C76E1E0 /* BLEView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A52AC4C21B6711E76D46FEBF7EBE5D19 /* Pods-BLEView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC74DB981FF5C67D917095D9B9CF3356 /* Pods-BLEView_Example-dummy.m */; };
 		BB4DEB0B1E45CCD600A65954 /* BLTimeCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4DEB0A1E45CCD600A65954 /* BLTimeCount.swift */; };
-		BB4DEB0F1E464D9E00A65954 /* BLEMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4DEB0E1E464D9E00A65954 /* BLEMethod.swift */; };
 		BB524EF71E328F0F007D4E72 /* BLECell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB524EF61E328F0F007D4E72 /* BLECell.swift */; };
 		BB928F8A1E33AECA00372650 /* BLEAlertTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB928F891E33AECA00372650 /* BLEAlertTableView.swift */; };
+		BBF1F3A11E465F08006636AF /* BLEMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF1F3A01E465F08006636AF /* BLEMethod.swift */; };
 		BC154608E66DBCB205E49FFE1694A18F /* BlTextCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C5950DD5F6B448D603DC60279F93D6 /* BlTextCentral.swift */; };
 		CE6C123D85DF02FA4FF149CBC96E991A /* BlTextPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB1F5EED7C683DD9C7C7BE3BF9E644 /* BlTextPeripheral.swift */; };
 		E93A84D5AADCF284B711156F0CE8C49B /* SoundNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E2E9557627F8B00E6D38AA3161B4D3 /* SoundNotification.swift */; };
@@ -54,9 +54,9 @@
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A5A41FCFB0509EB7AC4E4A40937B9664 /* BLEView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BLEView.xcconfig; sourceTree = "<group>"; };
 		BB4DEB0A1E45CCD600A65954 /* BLTimeCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLTimeCount.swift; path = Classes/BLTimeCount.swift; sourceTree = "<group>"; };
-		BB4DEB0E1E464D9E00A65954 /* BLEMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEMethod.swift; sourceTree = "<group>"; };
 		BB524EF61E328F0F007D4E72 /* BLECell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLECell.swift; path = Classes/BLECell.swift; sourceTree = "<group>"; };
 		BB928F891E33AECA00372650 /* BLEAlertTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLEAlertTableView.swift; path = Classes/BLEAlertTableView.swift; sourceTree = "<group>"; };
+		BBF1F3A01E465F08006636AF /* BLEMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLEMethod.swift; path = Classes/BLEMethod.swift; sourceTree = "<group>"; };
 		C1285E35F130FD7FDD0FADC3A2FDDF1D /* Pods-BLEView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BLEView_Example-resources.sh"; sourceTree = "<group>"; };
 		C486B810042EC746767DA3605DE9D34F /* BLEView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BLEView.modulemap; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -120,8 +120,8 @@
 				69DB1F5EED7C683DD9C7C7BE3BF9E644 /* BlTextPeripheral.swift */,
 				29C5950DD5F6B448D603DC60279F93D6 /* BlTextCentral.swift */,
 				7C8540E412CD4D241D9258DEEE6D5DCF /* BlModel.swift */,
+				BBF1F3A01E465F08006636AF /* BLEMethod.swift */,
 				35BBA14F72B2003C1252CE11D0B69B5F /* BLEView.swift */,
-				BB4DEB0E1E464D9E00A65954 /* BLEMethod.swift */,
 				BB928F891E33AECA00372650 /* BLEAlertTableView.swift */,
 				F7624EA4BA709002C94A81B31D6A681D /* BLUILabel.swift */,
 				CF0DB5F8CFAC2EE65D142F1B0D4B53B5 /* BLECollectionView.swift */,
@@ -293,7 +293,7 @@
 			files = (
 				5BA91C6F172F6D85E083E043406E717F /* BLECollectionView.swift in Sources */,
 				1797BE26F2EAB664562F3E42B0E43C59 /* BLEView-dummy.m in Sources */,
-				BB4DEB0F1E464D9E00A65954 /* BLEMethod.swift in Sources */,
+				BBF1F3A11E465F08006636AF /* BLEMethod.swift in Sources */,
 				FD2B9AC89D910B73D0872A2E18C957CE /* BLEView.swift in Sources */,
 				2740BE4D06A8CE9B0D8EBE490EACCC26 /* BlModel.swift in Sources */,
 				BB928F8A1E33AECA00372650 /* BLEAlertTableView.swift in Sources */,
