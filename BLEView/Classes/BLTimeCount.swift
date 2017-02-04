@@ -31,13 +31,12 @@ class BLTimeCount{
         
         BlModel.sharedBLEView.setCut()
         BlModel.sharedBLEView.setVoice(ddd: "接続しました")
-
+    
     }
     
     func stopTimer(){
         timer.invalidate()
         if timer != nil {
-            timer.isValid
             timer == nil
         }
     }

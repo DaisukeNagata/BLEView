@@ -16,6 +16,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     open var textSam: UITextField!
     open let myDatePicker: UIDatePicker = UIDatePicker()
     open var rtUserDefaults = UserDefaults.standard
+    
     var mySelectedString = String()
     var mySelectedData = NSDate()
     

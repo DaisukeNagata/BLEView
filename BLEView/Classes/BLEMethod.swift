@@ -85,7 +85,6 @@ extension BLEView {
         
         if mySelectedString == myDateFormatter.string(from: sender.date) {
             BlModel.shatedBLEBLTimeCount.timerSetting()
-            myDatePicker.alpha = 0
         }
     }
     
