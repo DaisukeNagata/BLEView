@@ -116,7 +116,6 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     
      open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textSam.resignFirstResponder()
-        BlModel.sharedSoundNotification.notification()
         return true
     }
     
