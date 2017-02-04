@@ -24,6 +24,27 @@ For example, you can check with radio field intensity graph for ipad, radio fiel
 
 
 ![](https://github.com/daisukenagata/BLEView/blob/master/BLE_Movie.gif?raw=true)
+
+現在時刻とピッカーの入力した日付が合えば５秒間づつ通信の接続を繰り返します。
+
+If the current time matches the date entered by the picker, it will repeat the communication connection every 5 seconds.
+
+<img src="https://github.com/daisukenagata/BLEView/blob/master/Alarm.png?raw=true" width="280px">
+
+国別日付設定はこのクラスメソッドで実施しています。
+
+Country-specific date settings are implemented in this class method.
+
+```ruby
+class func stringFromDate(date: NSDate, format: String) -> String {
+        let formatter: DateFormatter = DateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale!
+        formatter.dateStyle = DateFormatter.Style.full
+        formatter.timeStyle = DateFormatter.Style.short
+        formatter.dateFormat = format
+        return formatter.string(from: date as Date)
+    }
+```
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
