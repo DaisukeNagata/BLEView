@@ -31,7 +31,6 @@ class ViewController: BLEView {
     }
     
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        BLEView().myDatePicker.alpha = 0
         //文字列を音声に通知します。
         BLEView().setVoice(ddd: (dd?.text!)!)
         //グラフを取得します。

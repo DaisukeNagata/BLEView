@@ -13,10 +13,10 @@ import CoreBluetooth
 @available(iOS 10.0, *)
 open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UIViewControllerPreviewingDelegate,UIPickerViewDelegate {
     
-    open var textSam: UITextField!
-    open let myDatePicker: UIDatePicker = UIDatePicker()
     open var rtUserDefaults = UserDefaults.standard
-    
+    open var picker = BlModel.sharedBLEPicker.myDatePicker
+    open var textSam = BlModel.sharedBLEFiled.BLTextSam
+
     var mySelectedString = String()
     var mySelectedData = NSDate()
     
@@ -29,20 +29,8 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         super.viewDidLoad()
         BlModel.sharedBlTextCentral.bleSetting()
         BlModel.sharedBlTextPeripheral.bleSetting()
-        self.textSam = UITextField(frame: CGRect(x: 0, y: 50, width: screenWidth, height: 30))
-        self.textSam.backgroundColor = UIColor.lightGray
-        self.textSam.delegate = self
-        self.view.addSubview(textSam)
         rtUserDefaults.set("", forKey: "DataStore")
- 
-        // DatePickerを生成する.
-        myDatePicker.frame = CGRect(x:0, y:screenHeight-200, width:screenWidth, height:200)
-        myDatePicker.backgroundColor = UIColor.white
-        myDatePicker.layer.cornerRadius = 5.0
-        myDatePicker.layer.shadowOpacity = 0.5
-        // 値が変わった際のイベントを登録する.
-        myDatePicker.addTarget(self, action: #selector(BLEView.onDidChangeDate(sender:)), for: .valueChanged)
-        
+        self.view.addSubview(textSam!)
         
         if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
             print("3D Touch available")
@@ -63,7 +51,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     }
     
      open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textSam.resignFirstResponder()
+        textSam?.resignFirstResponder()
         return true
     }
     

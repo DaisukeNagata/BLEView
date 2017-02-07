@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BLEView'
-  s.version          = '0.8.4'
+  s.version          = '0.8.6'
   s.summary       = 'It is a BLE communication librarySetting'
 
 # This description is used to generate tags and improve search results.

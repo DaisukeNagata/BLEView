@@ -15,8 +15,10 @@ extension BLEView {
         if BlModel.sharedBlTextCentral.name != ""{
             setBLETableView()
             BlModel.shatedBLEBLTimeCount.stopTimer()
-            self.view.addSubview(myDatePicker)
-            myDatePicker.isHidden = false
+            self.view.addSubview(BlModel.sharedBLEPicker.myDatePicker)
+            BlModel.sharedBLEPicker.myDatePicker.isHidden = false
+            // 値が変わった際のイベントを登録する.
+            BlModel.sharedBLEPicker.myDatePicker.addTarget(self, action: #selector(BLEView.onDidChangeDate(sender:)), for: .valueChanged)
         }
     }
     
@@ -81,7 +83,7 @@ extension BLEView {
         let myDateFormatter: DateFormatter = DateFormatter()
         myDateFormatter.dateFormat = "yyyy/MM/dd hh:mm"
         
-        mySelectedString = BLTimeCount.stringFromDate(date: myDatePicker.date as NSDate, format: myDateFormatter.dateFormat)
+        mySelectedString = BLTimeCount.stringFromDate(date: BlModel.sharedBLEPicker.myDatePicker.date as NSDate, format: myDateFormatter.dateFormat)
         
         if mySelectedString == myDateFormatter.string(from: sender.date) {
             BlModel.shatedBLEBLTimeCount.timerSetting()
@@ -95,7 +97,7 @@ extension BLEView {
     
     func setBLEGraphView(){
         BlModel.shatedBLEBLTimeCount.stopTimer()
-        myDatePicker.isHidden = true
+        BlModel.sharedBLEPicker.myDatePicker.isHidden = true
         let BLEDraw = BLECollectionView(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/1.7))
         self.view.addSubview(BLEDraw)
     }
@@ -106,3 +108,4 @@ extension BLEView {
     }
 
 }
+
