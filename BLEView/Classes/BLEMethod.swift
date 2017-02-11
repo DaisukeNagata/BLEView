@@ -98,7 +98,7 @@ extension BLEView {
     func setBLEGraphView(){
         BlModel.shatedBLEBLTimeCount.stopTimer()
         BlModel.sharedBLEPicker.myDatePicker.isHidden = true
-        let BLEDraw = BLECollectionView(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/1.7))
+        let BLEDraw = BLECollectionView(frame: CGRect(x: 0, y: screenHeight/2, width: screenWidth, height: screenHeight/2))
         self.view.addSubview(BLEDraw)
     }
     

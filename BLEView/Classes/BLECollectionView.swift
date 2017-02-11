@@ -27,7 +27,10 @@ class BLECollectionView: UIView,UICollectionViewDataSource {
         collectionView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight/2)
         self.addSubview(collectionView)
         self.transform = CGAffineTransform(scaleX: 1, y: -1)
-
+        
+        self.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
+        self.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
+        self.heightAnchor.constraint(equalToConstant:UIScreen.main.bounds.height).isActive = true
     }
     
     func getArray(reset:Int)->[Int]{
