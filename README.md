@@ -44,6 +44,10 @@ class func stringFromDate(date: NSDate, format: String) -> String {
         return formatter.string(from: date as Date)
     }
 ```
+
+#Design documents
+
+<img src="https://github.com/daisukenagata/BLEView/blob/master/BLEVIEWの設計書.png?raw=true" width="1020px" height="510px">
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
