@@ -26,10 +26,6 @@ class BLECell : UICollectionViewCell{
     var eight = BlModel.sharedBlUILabelEight
     
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-    }
-    
     override init(frame: CGRect) {
         
         super.init(frame: frame)
@@ -98,6 +94,11 @@ class BLECell : UICollectionViewCell{
             self.addSubview(eight)
         }
     }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+
     
     func labelSet(label:UILabel)->UILabel{
         label.alpha = 1

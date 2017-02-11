@@ -10,7 +10,7 @@ import Foundation
 
 class BLTimeCount{
     var timer = Timer()
-
+    var st = String()
     class func stringFromDate(date: NSDate, format: String) -> String {
         let formatter: DateFormatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale!
@@ -21,17 +21,17 @@ class BLTimeCount{
     }
     
     @objc func timerSetting(){
-
-            timer.fire()
-            timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(update(tm:)), userInfo: nil, repeats: true)
         
+        timer.fire()
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(update(tm:)), userInfo: nil, repeats: true)
     }
     
     @objc func update(tm: Timer){
         
         BlModel.sharedBLEView.setCut()
         BlModel.sharedBLEView.setVoice(ddd: "接続しました")
-    
+//        BLEView().setName(name:st)
+//        BlModel.sharedBLEView.setBLEGraphView()
     }
     
     func stopTimer(){

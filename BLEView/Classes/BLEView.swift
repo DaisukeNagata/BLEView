@@ -44,7 +44,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         self.view.addGestureRecognizer(swipeUpGesture)
         
     }
-    
+        
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
