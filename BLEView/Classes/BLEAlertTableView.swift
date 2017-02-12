@@ -11,6 +11,7 @@ import Foundation
 class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate {
     
     var indx = Int()
+    private let Bsection : NSArray = [ "BLE" , "Beacon" ]
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -21,6 +22,16 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return Bsection.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return Bsection[section] as? String
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         BlModel.sharedBLEView.setCut()
@@ -37,7 +48,12 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as UITableViewCell
-        cell.textLabel!.text = BlModel.sharedBlTextPeripheral.peripheral[indexPath.row].name
+        if indexPath.section == 0 {
+            cell.textLabel!.text = BlModel.sharedBlTextPeripheral.peripheral[indexPath.row].name
+        }else if indexPath.section == 1 {
+           cell.textLabel!.text = BlModel.sharedBLEBeacon.statusStr
+        }
+        
         return cell
     }
     

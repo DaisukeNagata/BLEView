@@ -4,8 +4,12 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string></string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -26,8 +30,10 @@
 	<true/>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string></string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>use</string>
+	<key>NSLocationUsageDescription</key>
+	<string>use2</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>

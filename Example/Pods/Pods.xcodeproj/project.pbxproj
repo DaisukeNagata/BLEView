@@ -15,6 +15,10 @@
 		69119578D0B9C99AD999500A5208E819 /* Pods-BLEView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BA5A2D1220151E30AE6A9A2C48949D0 /* Pods-BLEView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98FAB19A88AF386B30A7781CDDC3BE9B /* BLEView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 76A9359641A9C01907A4893D3C76E1E0 /* BLEView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A52AC4C21B6711E76D46FEBF7EBE5D19 /* Pods-BLEView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC74DB981FF5C67D917095D9B9CF3356 /* Pods-BLEView_Example-dummy.m */; };
+		BB35F3421E5076210049523A /* BLBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35F3411E5076210049523A /* BLBeacon.swift */; };
+		BB35F3441E5076340049523A /* BLNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35F3431E5076340049523A /* BLNotification.swift */; };
+		BB35F3471E5076430049523A /* BLEBEaconAuthenticationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35F3451E5076430049523A /* BLEBEaconAuthenticationCall.swift */; };
+		BB35F3481E5076430049523A /* BLEBeaconLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35F3461E5076430049523A /* BLEBeaconLocationManager.swift */; };
 		BB4DEB0B1E45CCD600A65954 /* BLTimeCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4DEB0A1E45CCD600A65954 /* BLTimeCount.swift */; };
 		BB524EF71E328F0F007D4E72 /* BLECell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB524EF61E328F0F007D4E72 /* BLECell.swift */; };
 		BB928F8A1E33AECA00372650 /* BLEAlertTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB928F891E33AECA00372650 /* BLEAlertTableView.swift */; };
@@ -55,6 +59,10 @@
 		8D053BB77515838303CC83A0F78E2114 /* Pods-BLEView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BLEView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A5A41FCFB0509EB7AC4E4A40937B9664 /* BLEView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BLEView.xcconfig; sourceTree = "<group>"; };
+		BB35F3411E5076210049523A /* BLBeacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLBeacon.swift; path = Classes/BLBeacon.swift; sourceTree = "<group>"; };
+		BB35F3431E5076340049523A /* BLNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLNotification.swift; path = Classes/BLNotification.swift; sourceTree = "<group>"; };
+		BB35F3451E5076430049523A /* BLEBEaconAuthenticationCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLEBEaconAuthenticationCall.swift; path = Classes/BLEBEaconAuthenticationCall.swift; sourceTree = "<group>"; };
+		BB35F3461E5076430049523A /* BLEBeaconLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLEBeaconLocationManager.swift; path = Classes/BLEBeaconLocationManager.swift; sourceTree = "<group>"; };
 		BB4DEB0A1E45CCD600A65954 /* BLTimeCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLTimeCount.swift; path = Classes/BLTimeCount.swift; sourceTree = "<group>"; };
 		BB524EF61E328F0F007D4E72 /* BLECell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLECell.swift; path = Classes/BLECell.swift; sourceTree = "<group>"; };
 		BB928F891E33AECA00372650 /* BLEAlertTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLEAlertTableView.swift; path = Classes/BLEAlertTableView.swift; sourceTree = "<group>"; };
@@ -127,6 +135,10 @@
 				7C8540E412CD4D241D9258DEEE6D5DCF /* BlModel.swift */,
 				BBF1F3A01E465F08006636AF /* BLEMethod.swift */,
 				35BBA14F72B2003C1252CE11D0B69B5F /* BLEView.swift */,
+				BB35F3451E5076430049523A /* BLEBEaconAuthenticationCall.swift */,
+				BB35F3461E5076430049523A /* BLEBeaconLocationManager.swift */,
+				BB35F3431E5076340049523A /* BLNotification.swift */,
+				BB35F3411E5076210049523A /* BLBeacon.swift */,
 				BB928F891E33AECA00372650 /* BLEAlertTableView.swift */,
 				F7624EA4BA709002C94A81B31D6A681D /* BLUILabel.swift */,
 				CF0DB5F8CFAC2EE65D142F1B0D4B53B5 /* BLECollectionView.swift */,
@@ -297,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB35F3471E5076430049523A /* BLEBEaconAuthenticationCall.swift in Sources */,
 				5BA91C6F172F6D85E083E043406E717F /* BLECollectionView.swift in Sources */,
 				1797BE26F2EAB664562F3E42B0E43C59 /* BLEView-dummy.m in Sources */,
 				BBF1F3A11E465F08006636AF /* BLEMethod.swift in Sources */,
@@ -304,12 +317,15 @@
 				FD2B9AC89D910B73D0872A2E18C957CE /* BLEView.swift in Sources */,
 				2740BE4D06A8CE9B0D8EBE490EACCC26 /* BlModel.swift in Sources */,
 				BB928F8A1E33AECA00372650 /* BLEAlertTableView.swift in Sources */,
+				BB35F3481E5076430049523A /* BLEBeaconLocationManager.swift in Sources */,
+				BB35F3421E5076210049523A /* BLBeacon.swift in Sources */,
 				BB986D471E4A8299004D0A05 /* BLTextFiled.swift in Sources */,
 				BC154608E66DBCB205E49FFE1694A18F /* BlTextCentral.swift in Sources */,
 				BB4DEB0B1E45CCD600A65954 /* BLTimeCount.swift in Sources */,
 				BB524EF71E328F0F007D4E72 /* BLECell.swift in Sources */,
 				CE6C123D85DF02FA4FF149CBC96E991A /* BlTextPeripheral.swift in Sources */,
 				5B0A9A9EA1C0C7134473FE9699D21E82 /* BLUILabel.swift in Sources */,
+				BB35F3441E5076340049523A /* BLNotification.swift in Sources */,
 				E93A84D5AADCF284B711156F0CE8C49B /* SoundNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
