@@ -1,0 +1,16 @@
+PODS:
+  - BLEView (0.5.5)
+
+DEPENDENCIES:
+  - BLEView (from `../`)
+
+EXTERNAL SOURCES:
+  BLEView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BLEView: 8f236ac2a63797346c22c27bca76da5603a588ec
+
+PODFILE CHECKSUM: 555713dd74aa384d32daa0ce72d56ccab63f65fb
+
+COCOAPODS: 1.2.0.beta.1

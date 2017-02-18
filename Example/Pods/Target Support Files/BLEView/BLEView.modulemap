@@ -1,0 +1,6 @@
+framework module BLEView {
+  umbrella header "BLEView-umbrella.h"
+
+  export *
+  module * { export * }
+}
