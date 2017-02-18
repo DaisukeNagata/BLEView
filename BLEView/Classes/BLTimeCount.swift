@@ -27,11 +27,8 @@ class BLTimeCount{
     }
     
     @objc func update(tm: Timer){
-        
         BlModel.sharedBLEView.setCut()
         BlModel.sharedBLEView.setVoice(ddd: "接続しました")
-//        BLEView().setName(name:st)
-//        BlModel.sharedBLEView.setBLEGraphView()
     }
     
     func stopTimer(){

@@ -12,17 +12,20 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
     
     var indx = Int()
     private let Bsection : NSArray = [ "BLE" , "Beacon" ]
-    
+    var tableView = UITableView()
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
-        self.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.dataSource = self
-        self.delegate = self
+        
+        tableView.frame = CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-100)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        self.addSubview(tableView)
+        
     }
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return Bsection.count
@@ -32,8 +35,8 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
         return Bsection[section] as? String
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
         BlModel.sharedBLEView.setCut()
         BlModel.sharedBLEView.nameArray.removeAll()
         BlModel.sharedBLECollectionView.getArray(reset:9)
@@ -47,14 +50,16 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
         if indexPath.section == 0 {
             cell.textLabel!.text = BlModel.sharedBlTextPeripheral.peripheral[indexPath.row].name
-        }else if indexPath.section == 1 {
-           cell.textLabel!.text = BlModel.sharedBLEBeacon.statusStr
         }
-        
+        if indexPath.section == 1 {
+            cell.textLabel!.text = "BeaconData"+" "+BlModel.sharedBLEBeacon.statusStr + " "+BlModel.sharedBLEBeacon.proximity
+        }
         return cell
     }
-    
+    func update(){
+        tableView.reloadData()
+    }
 }

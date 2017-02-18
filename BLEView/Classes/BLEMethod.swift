@@ -13,6 +13,7 @@ extension BLEView {
     //スワイプ
     func handleSwipeUp(sender: UITapGestureRecognizer){
         if BlModel.sharedBlTextCentral.name != ""{
+           BlModel.sharedBLETableView.tableView.alpha = 1
             setBLETableView()
             BlModel.shatedBLEBLTimeCount.stopTimer()
             self.view.addSubview(BlModel.sharedBLEPicker.myDatePicker)
@@ -103,9 +104,7 @@ extension BLEView {
     }
     
     func setBLETableView(){
-        let BLETable = BLEAlertTableView(frame: CGRect(x: 0, y: 100, width: screenWidth, height: self.view.bounds.height-100))
-        self.view.addSubview(BLETable)
+        self.view.addSubview(BlModel.sharedBLETableView.tableView)
     }
-
 }
 
