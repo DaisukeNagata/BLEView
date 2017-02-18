@@ -18,7 +18,7 @@ class BLBeacon: NSObject,CLLocationManagerDelegate {
     var proximity = ""
     
     let UUIDList = [
-        "00000000-0000-0000-0000-0000000000000"
+       "00010203-0405-0607-0809-0A0B0C0D0E0F"
         ]
 
     override init() {
