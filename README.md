@@ -47,7 +47,7 @@ class func stringFromDate(date: NSDate, format: String) -> String {
 
 #Design documents
 
-<img src="https://github.com/daisukenagata/BLEView/blob/master/BLEBiewの設計書.png?raw=true" width="1020px" height="510px">
+<img src="https://github.com/daisukenagata/BLEView/blob/master/BLEView設計図.png?raw=true" width="1020px" height="510px">
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
