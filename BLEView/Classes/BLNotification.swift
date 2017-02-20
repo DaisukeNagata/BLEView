@@ -13,7 +13,6 @@ extension BLBeacon{
 
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion)
     {
-        
         if(beacons.count > 0){
             
             for i in 0 ..< beacons.count {
@@ -50,6 +49,7 @@ extension BLBeacon{
                     break
                 }
                 
+                BlModel.sharedBLEBeacon.blLocationManager = blLocationManager
                 BlModel.sharedBLEBeacon.statusStr =  (rssi * -1 ).description
                 BlModel.sharedBLEBeacon.proximity = proximity
                 if BlModel.sharedBLEBeacon.statusStr != ""{

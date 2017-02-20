@@ -18,9 +18,9 @@ class BLBeacon: NSObject,CLLocationManagerDelegate {
     var proximity = ""
     
     let UUIDList = [
-       "00010203-0405-0607-0809-0A0B0C0D0E0F"
-        ]
-
+        "00010203-0405-0607-0809-0A0B0C0D0E0F"
+    ]
+    
     override init() {
         super.init()
         
@@ -31,8 +31,9 @@ class BLBeacon: NSObject,CLLocationManagerDelegate {
         blLocationManager.distanceFilter = 1
         
         if status == CLAuthorizationStatus.notDetermined {
-
+            
             blLocationManager.requestWhenInUseAuthorization()
+            
         }
     }
 }

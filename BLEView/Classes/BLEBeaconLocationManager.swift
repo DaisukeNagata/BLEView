@@ -45,13 +45,10 @@ extension BLBeacon{
     }
 
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-
         manager.startRangingBeacons(in: region as! CLBeaconRegion)
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        
         manager.stopRangingBeacons(in: region as! CLBeaconRegion)
     }
 }

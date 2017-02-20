@@ -28,11 +28,15 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return Bsection.count
+        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
         return Bsection[section] as? String
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -43,23 +47,35 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
         BlModel.sharedBLETableView.indx =  indexPath.row
         BlModel.sharedBLEView.setVoice(ddd: "接続しました")
         tableView.alpha = 0
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        
         return BlModel.sharedBLEView.nameArray.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath)
+        
         if indexPath.section == 0 {
+            
             cell.textLabel!.text = BlModel.sharedBlTextPeripheral.peripheral[indexPath.row].name
+            
         }
         if indexPath.section == 1 {
-            cell.textLabel!.text = "BeaconData"+" "+BlModel.sharedBLEBeacon.statusStr + " "+BlModel.sharedBLEBeacon.proximity
+            
+            cell.textLabel!.text = "BeaconData"+" "+BlModel.sharedBLEBeacon.statusStr + " "+BlModel.sharedBLEBeacon.proximity 
         }
+        
         return cell
     }
+    
     func update(){
+        
         tableView.reloadData()
+        
     }
 }

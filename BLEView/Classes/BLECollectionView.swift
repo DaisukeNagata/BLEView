@@ -25,24 +25,30 @@ class BLECollectionView: UIView,UICollectionViewDataSource {
         collectionView.register(BLECell.self, forCellWithReuseIdentifier: "cell")
         collectionView.dataSource = self
         collectionView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight/2)
+        
         self.addSubview(collectionView)
         self.transform = CGAffineTransform(scaleX: 1, y: -1)
-        
         self.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         self.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
         self.heightAnchor.constraint(equalToConstant:UIScreen.main.bounds.height).isActive = true
+        
     }
     
     func getArray(reset:Int)->[Int]{
+        
         let number = BLEView().setRSSI(rssi: num) as! Int
         numArray+=[number * -4]
         if numArray.count > 8 {
             numArray.removeAll()
             BlModel.sharedBlUILabelOne.alpha = 0
+            
         }
+        
         if reset > 8 {
+            
             numArray.removeAll()
             BlModel.sharedBlUILabelOne.alpha = 0
+            
         }
 
         return numArray

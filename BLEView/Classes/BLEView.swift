@@ -51,6 +51,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         super.didReceiveMemoryWarning()
         
     }
+    
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textSam?.resignFirstResponder()
         return true
