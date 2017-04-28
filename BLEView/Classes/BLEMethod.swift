@@ -20,6 +20,7 @@ extension BLEView {
             BlModel.sharedBLEPicker.myDatePicker.isHidden = false
             // 値が変わった際のイベントを登録する.
             BlModel.sharedBLEPicker.myDatePicker.addTarget(self, action: #selector(BLEView.onDidChangeDate(sender:)), for: .valueChanged)
+            
         }
     }
     
@@ -43,13 +44,8 @@ extension BLEView {
     
     //接続情報の確認
     public  func setRSSI(rssi:NSNumber)->Int{
-        var  rssi = BlModel.sharedBlTextCentral.number
-        if rssi != nil {
-            rssi = 0
-        }
-        if rssi == nil {
-            rssi = 0
-        }
+        let  rssi = BlModel.sharedBlTextCentral.number
+       
         return  rssi as! Int
     }
     
