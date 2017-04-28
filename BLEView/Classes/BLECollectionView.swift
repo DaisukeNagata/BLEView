@@ -36,7 +36,7 @@ class BLECollectionView: UIView,UICollectionViewDataSource {
     
     func getArray(reset:Int)->[Int]{
         
-        let number = BLEView().setRSSI(rssi: num) as! Int
+        let number = BLEView().setRSSI(rssi: num) 
         numArray+=[number * -4]
         if numArray.count > 8 {
             numArray.removeAll()

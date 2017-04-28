@@ -27,7 +27,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        BlModel.sharedBLEBeacon
+        
         BlModel.sharedBLEBeacon.aurhnticationCall()
         BlModel.sharedBlTextCentral.bleSetting()
         BlModel.sharedBlTextPeripheral.bleSetting()

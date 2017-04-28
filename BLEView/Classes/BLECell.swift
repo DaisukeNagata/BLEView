@@ -41,56 +41,56 @@ class BLECell : UICollectionViewCell{
             line.addLine(to: CGPoint(x: 25, y: self.numArray[0]+150))
             one.frame = CGRect(x:25,y:self.numArray[0]+countHeight,width:cgrect,height:cgrect)
             one.text = (self.numArray[0]/4).description
-            labelSet(label: one)
+            _ =  labelSet(label: one)
             self.addSubview(one)
         }
         if numArray.count > 1 {
             line.addLine(to: CGPoint(x: 75, y: self.numArray[1]+150))
             two.frame = CGRect(x:75,y:self.numArray[1]+countHeight,width:cgrect,height:cgrect)
             two.text = (self.numArray[1]/4).description
-            labelSet(label: two)
+            _ =  labelSet(label: two)
             self.addSubview(two)
         }
         if numArray.count > 2 {
             line.addLine(to: CGPoint(x: 125, y: self.numArray[2]+150))
             three.frame = CGRect(x:125,y:self.numArray[2]+countHeight,width:cgrect,height:cgrect)
             three.text = (self.numArray[2]/4).description
-            labelSet(label: three)
+            _ =  labelSet(label: three)
             self.addSubview(three)
         }
         if numArray.count > 3 {
             line.addLine(to: CGPoint(x: 175, y: self.numArray[3]+150))
             four.frame = CGRect(x:175,y:self.numArray[3]+countHeight,width:cgrect,height:cgrect)
             four.text = (self.numArray[3]/4).description
-            labelSet(label: four)
+            _ =  labelSet(label: four)
             self.addSubview(four)
         }
         if numArray.count > 4 {
             line.addLine(to: CGPoint(x: 225, y: self.numArray[4]+150))
             five.frame = CGRect(x:225,y:self.numArray[4]+countHeight,width:cgrect,height:cgrect)
             five.text = (self.numArray[4]/4).description
-            labelSet(label: five)
+            _ =  labelSet(label: five)
             self.addSubview(five)
         }
         if numArray.count > 5 {
             line.addLine(to: CGPoint(x: 275, y: self.numArray[5]+150))
             six.frame = CGRect(x:275,y:self.numArray[5]+countHeight,width:cgrect,height:cgrect)
             six.text = (self.numArray[5]/4).description
-            labelSet(label: six)
+            _ =  labelSet(label: six)
             self.addSubview(six)
         }
         if numArray.count > 6 {
             line.addLine(to: CGPoint(x: 325, y: self.numArray[6]+150))
             seven.frame = CGRect(x:325,y:self.numArray[6]+countHeight,width:cgrect,height:cgrect)
             seven.text = (self.numArray[6]/4).description
-            labelSet(label: seven)
+            _ =  labelSet(label: seven)
             self.addSubview(seven)
         }
         if numArray.count > 7 {
             line.addLine(to: CGPoint(x: 375, y: self.numArray[7]+150))
             eight.frame = CGRect(x:375,y:self.numArray[7]+countHeight,width:cgrect,height:cgrect)
             eight.text = (self.numArray[7]/4).description
-            labelSet(label: eight)
+            _ =  labelSet(label: eight)
             self.addSubview(eight)
         }
     }
@@ -108,8 +108,8 @@ class BLECell : UICollectionViewCell{
     }
     
     func setShapeLayer(){
-        shapeLayer(shape: lineLayer)
-        animationDraw(animation: animation)
+        _ = shapeLayer(shape: lineLayer)
+        _ = animationDraw(animation: animation)
         self.layer.addSublayer(shapeLayer(shape: lineLayer))
         shapeLayer(shape: lineLayer).add(animation, forKey: nil)
     }

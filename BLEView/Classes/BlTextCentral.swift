@@ -25,9 +25,6 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     
     func bleSetting(){
         
-        let option : Dictionary =  [
-            CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
-        ]
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
     
@@ -58,12 +55,11 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
             CBCentralManagerRestoredStatePeripheralsKey: "dddaisuke"
         ]
         
-        if BlModel.sharedBlTextPeripheral.peripheral != nil {
             if name != nil {
             self.centralManager.connect(BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx], options: option)
             
             setVoice2(data:dddString)
-            }
+
         }
     }
     
@@ -85,7 +81,7 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
     //接続カット！
     func pushCut(){
         
-        if BlModel.sharedBlTextPeripheral.peripheral != nil  && BlModel.sharedBlTextPeripheral.peripheral.count != 0 {
+        if  BlModel.sharedBlTextPeripheral.peripheral.count != 0 {
             BlModel.sharedBlTextCentral.centralManager.cancelPeripheralConnection(BlModel.sharedBlTextPeripheral.peripheral[BlModel.sharedBLETableView.indx])
             BlModel.sharedBlTextPeripheral.peripheralManager.removeAllServices()
         }

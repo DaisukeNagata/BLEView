@@ -37,10 +37,5 @@ class BLTimeCount{
         
         timer.invalidate()
         
-        if timer != nil {
-            
-            timer == nil
-            
-        }
     }
 }

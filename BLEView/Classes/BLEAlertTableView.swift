@@ -43,7 +43,6 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
        
         BlModel.sharedBLEView.setCut()
         BlModel.sharedBLEView.nameArray.removeAll()
-        BlModel.sharedBLECollectionView.getArray(reset:9)
         BlModel.sharedBLETableView.indx =  indexPath.row
         BlModel.sharedBLEView.setVoice(ddd: "接続しました")
         tableView.alpha = 0

@@ -48,7 +48,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         }
         
         let services = peripheral.services as NSArray!
-        print("\(services?.count)サービスを発見",services!.count, services!)
+        print("\(String(describing: services?.count))サービスを発見",services!.count, services!)
         charaCount = services?.count
         for  service in services! {
             // キャラクタリスティック探索開始
@@ -67,7 +67,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         }
         
         let characteristics  = service.characteristics
-        print(" \(characteristics?.count)個のキャラクタリスティックを発見!",characteristics!.count, characteristics!)
+        print(" \(String(describing: characteristics?.count))個のキャラクタリスティックを発見!",characteristics!.count, characteristics!)
         
         let uuid = CBUUID(string:"45088E4B-B847-4E20-ACD7-0BEA181075C2")
         

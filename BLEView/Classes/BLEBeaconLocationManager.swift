@@ -30,9 +30,6 @@ extension BLBeacon{
             
         case .unknown:
             break
-        default:
-            
-            break;
             
         }
     }

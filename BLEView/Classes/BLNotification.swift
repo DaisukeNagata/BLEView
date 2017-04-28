@@ -19,9 +19,6 @@ extension BLBeacon{
                 
                 let beacon = beacons[i]
                 
-                let beaconUUID = beacon.proximityUUID;
-                let minorID = beacon.minor;
-                let majorID = beacon.major;
                 let rssi = beacon.rssi;
                 
                 var proximity = ""
