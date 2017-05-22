@@ -45,7 +45,9 @@ class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
         name = peripheral.name
         BlModel.sharedBlTextPeripheral.peripheral += [peripheral]
         number = RSSI
+        if name != "" {
         BlModel.sharedBLEView.nameArray.append(contentsOf:  [name])
+        }
 
       }
     

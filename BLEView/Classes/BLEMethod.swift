@@ -45,14 +45,16 @@ extension BLEView {
     //接続情報の確認
     public  func setRSSI(rssi:NSNumber)->Int{
         let  rssi = BlModel.sharedBlTextCentral.number
-       
+        if rssi != nil {
         return  rssi as! Int
+        }
+        return 0
     }
     
     //接続端末名の確認
     public func setName(name:String)->String{
         
-        guard BlModel.sharedBLETableView.indx  ==  0  else {
+        guard BlModel.sharedBLETableView.indx  !=  0  else {
             return name
         }
         
