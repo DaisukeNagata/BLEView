@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BLECell : UICollectionViewCell{
+class BLECell : UICollectionViewCell {
     
     var numArray :[Int] = []
     var line = UIBezierPath()

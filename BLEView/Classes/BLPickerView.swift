@@ -21,8 +21,12 @@ class BLPickerView: UIPickerView {
         myDatePicker.backgroundColor = UIColor.white
         myDatePicker.layer.cornerRadius = 5.0
         myDatePicker.layer.shadowOpacity = 0.5
+        
     }
+    
     required init?(coder aDecoder: NSCoder) {
+        
         fatalError("init(coder:) has not been implemented")
+        
     }
 }

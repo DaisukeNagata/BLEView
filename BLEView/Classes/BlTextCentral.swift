@@ -11,7 +11,7 @@ import CoreBluetooth
 import UserNotifications
 import AVFoundation
 
-class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate{
+class BlTextCentral: NSObject,CBCentralManagerDelegate,CBPeripheralDelegate {
     
     var characteristicMutable: CBMutableCharacteristic!
     var centralManager:CBCentralManager!

@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-extension BLBeacon{
+extension BLBeacon {
 
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
         

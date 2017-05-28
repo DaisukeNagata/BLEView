@@ -11,7 +11,7 @@ import CoreBluetooth
 import UserNotifications
 import AVFoundation
 
-class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate,UNUserNotificationCenterDelegate{
+class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate,UNUserNotificationCenterDelegate {
     
     var peripheral:[CBPeripheral] = []
     var characteristic:CBCharacteristic!
@@ -118,7 +118,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         
     }
     
-    func stopAdvertise () {
+    func stopAdvertise() {
         
         peripheralManager.stopAdvertising()
         
@@ -141,7 +141,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
         }
     }
     
-    func publishservice () {
+    func publishservice() {
         
         // サービスを作成
         let service = CBMutableService(type: serviceUUID, primary: true)
