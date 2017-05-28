@@ -8,9 +8,10 @@
 
 import Foundation
 
-class BLTimeCount{
+class BLTimeCount {
+    
     var timer = Timer()
-    var st = String()
+
     class func stringFromDate(date: NSDate, format: String) -> String {
         let formatter: DateFormatter = DateFormatter()
         formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale!
