@@ -12,13 +12,18 @@ import AVFoundation
 
 class SoundNotification: NSObject,AVSpeechSynthesizerDelegate,UNUserNotificationCenterDelegate {
     
-        open func userNotificationCenter(_ center: UNUserNotificationCenter,
+    func soundSet(){
+        
+        notification()
+    }
+    
+     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                      willPresent notification: UNNotification,
                                      withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void){
         completionHandler([.badge])
     }
     
-    open func notification() {
+    private func notification() {
         
         let centerAuthorization = UNUserNotificationCenter.current()
         centerAuthorization.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
