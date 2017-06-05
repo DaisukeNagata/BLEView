@@ -45,7 +45,7 @@ class ViewController: BLEView {
         textView.text = ("\("Radial strength"+(numRssi * -1 ).description  + "\n"+name + dx.description )")
         
         dd?.resignFirstResponder()
-        guard dd?.text != "" else {
+        guard dd?.text != nil else {
             //BLE通信の接続カット
             BLEView().setCut()
             return true
