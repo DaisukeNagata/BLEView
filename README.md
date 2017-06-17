@@ -1,5 +1,6 @@
 # BLEView
 
+
 [![CI Status](http://img.shields.io/travis/永田大祐/BLEView.svg?style=flat)](https://travis-ci.org/永田大祐/BLEView)
 [![Version](https://img.shields.io/cocoapods/v/BLEView.svg?style=flat)](http://cocoapods.org/pods/BLEView)
 [![License](https://img.shields.io/cocoapods/l/BLEView.svg?style=flat)](http://cocoapods.org/pods/BLEView)
@@ -12,6 +13,12 @@
 上スワイプで、接続端末を選択できます。
 iphone端末専用で、グラフを端末毎に電波強度を描画表示できます。
 例えばipad用の電波強度グラフ、iphone用電波強度グラフで確認ができます。
+
+
+参考記事
+
+http://dbank0208.com/TransformationStructure.html
+
 
 
 You can communicate with a terminal that has the same application at the first launch.
