@@ -45,12 +45,14 @@ class ViewController: BLEView {
         textView.text = ("\("Radial strength"+(numRssi * -1 ).description  + "\n"+name + dx.description )")
         
         dd?.resignFirstResponder()
-        guard dd?.text != "" else {
+        
+        if dd?.text == ""  {
             //BLE通信の接続カット
             BLEView().setCut()
-            return true
+            
         }
-            return true
+        
+        return true
     }
     
     override func onDidChangeDate(sender: UIDatePicker){
