@@ -38,13 +38,13 @@ class BLECollectionView: UIView,UICollectionViewDataSource {
         
         let number = BLEView().setRSSI(rssi: num) 
         numArray+=[number * -4]
-        if numArray.count > 8 {
+        if numArray.count >= 8 {
             numArray.removeAll()
             BlModel.sharedBlUILabelOne.alpha = 0
             
         }
         
-        if reset > 8 {
+        if reset >= 8 {
             
             numArray.removeAll()
             BlModel.sharedBlUILabelOne.alpha = 0
