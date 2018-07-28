@@ -14,7 +14,7 @@ class BLTimeCount {
 
     class func stringFromDate(date: NSDate, format: String) -> String {
         let formatter: DateFormatter = DateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale!
+        formatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale?
         formatter.dateStyle = DateFormatter.Style.full
         formatter.timeStyle = DateFormatter.Style.short
         formatter.dateFormat = format

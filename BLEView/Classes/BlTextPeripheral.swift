@@ -47,7 +47,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
             return
         }
         
-        let services = peripheral.services as NSArray!
+        let services = peripheral.services as NSArray?
         print("\(String(describing: services?.count))サービスを発見",services!.count, services!)
         charaCount = services?.count
         for  service in services! {

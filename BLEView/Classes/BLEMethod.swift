@@ -11,7 +11,7 @@ import Foundation
 extension BLEView {
     
     //スワイプ
-    func handleSwipeUp(sender: UITapGestureRecognizer){
+    @objc func handleSwipeUp(sender: UITapGestureRecognizer){
         if BlModel.sharedBlTextCentral.name != ""{
            BlModel.sharedBLETableView.tableView.alpha = 1
             setBLETableView()
@@ -73,7 +73,7 @@ extension BLEView {
         return BlModel.sharedBlTextPeripheral.nsDat
     }
     
-    open func onDidChangeDate(sender: UIDatePicker){
+    @objc open func onDidChangeDate(sender: UIDatePicker){
         
     }
     
