@@ -13,6 +13,7 @@
 上スワイプで、接続端末を選択できます。
 iphone端末専用で、グラフを端末毎に電波強度を描画表示できます。
 例えばipad用の電波強度グラフ、iphone用電波強度グラフで確認ができます。
+電波強度を変更したい場合は上スワイプで端末選択画面に遷移して、端末を選択、文字入力すると電波強度が変化します。
 
 
 参考記事
@@ -28,7 +29,7 @@ When you enter empty characters, you will get the radio field intensity again. W
 With the up swipe, you can select the connected terminal.
 It is dedicated to iphone terminal, it can draw and display the radio wave intensity for each terminal on graph.
 For example, you can check with radio field intensity graph for ipad, radio field intensity graph for iphone.
-
+If you want to change the radio field strength, select the terminal according to the terminal selection screen by adding it, input characters and change the radio field strength.
 
 ![](https://github.com/daisukenagata/BLEView/blob/master/BLE_Movie.gif?raw=true)
 
