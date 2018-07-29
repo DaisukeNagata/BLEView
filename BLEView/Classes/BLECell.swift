@@ -62,7 +62,6 @@ class BLECell : UICollectionViewCell {
         super.init(coder: aDecoder)!
     }
 
-    
     func labelSet(label:UILabel)->UILabel{
         label.alpha = 1
         label.transform = self.transform

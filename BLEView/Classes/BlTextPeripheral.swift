@@ -21,6 +21,7 @@ class BlTextPeripheral:NSObject,CBPeripheralDelegate,CBPeripheralManagerDelegate
     var serString : String!
     var charaCount : Int!
     var nsDat: NSArray!
+
     
     func bleSetting(){
         
