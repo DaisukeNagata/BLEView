@@ -42,7 +42,7 @@ open class BLEView: UIViewController,CBPeripheralDelegate,UITextFieldDelegate,UI
         // single swipe up
         let swipeUpGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action:#selector(handleSwipeUp))
         swipeUpGesture.numberOfTouchesRequired = 1
-        swipeUpGesture.direction = UISwipeGestureRecognizerDirection.up
+        swipeUpGesture.direction = UISwipeGestureRecognizer.Direction.up
         self.view.addGestureRecognizer(swipeUpGesture)
         
     }

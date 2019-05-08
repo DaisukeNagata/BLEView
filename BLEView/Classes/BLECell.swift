@@ -79,7 +79,7 @@ class BLECell : UICollectionViewCell {
     func shapeLayer(shape:CAShapeLayer)->CAShapeLayer{
         shape.lineWidth = 4
         shape.strokeColor = UIColor.blue.cgColor
-        shape.fillRule = kCAFillRuleEvenOdd
+        shape.fillRule = CAShapeLayerFillRule.evenOdd
         shape.path = line.cgPath
         self.layer.addSublayer(shape)
         return shape
@@ -87,10 +87,10 @@ class BLECell : UICollectionViewCell {
     
     func animationDraw(animation:CABasicAnimation)->CABasicAnimation{
         animation.duration = 1.0
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
         animation.fromValue = 0.0
         animation.toValue = 1.0
-        animation.fillMode = kCAFillModeForwards
+        animation.fillMode = CAMediaTimingFillMode.forwards
         animation.isRemovedOnCompletion = true
         return animation
     }

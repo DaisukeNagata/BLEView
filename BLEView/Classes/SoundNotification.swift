@@ -41,7 +41,7 @@ class SoundNotification: NSObject,AVSpeechSynthesizerDelegate,UNUserNotification
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         content.body = BlModel.sharedBlTextPeripheral.serString
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
         let request = UNNotificationRequest(identifier: "Second",

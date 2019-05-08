@@ -13,7 +13,7 @@ class BLEAlertTableView:UITableView, UITableViewDataSource, UITableViewDelegate 
     var indx = Int()
     private let Bsection : NSArray = [ "BLE" , "Beacon" ]
     var tableView = UITableView()
-    override init(frame: CGRect, style: UITableViewStyle) {
+    override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
         tableView.frame = CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-100)
