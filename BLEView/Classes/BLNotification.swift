@@ -44,8 +44,7 @@ extension BLBeacon {
                     print("Proximity: Immediate");
                     proximity = "Immediate"
                     break
-                @unknown default:
-                    <#fatalError()#>
+                @unknown default: break
                 }
                 
                 BlModel.sharedBLEBeacon.blLocationManager = blLocationManager
